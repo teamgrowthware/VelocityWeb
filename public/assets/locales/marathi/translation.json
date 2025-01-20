@@ -1,0 +1,20 @@
+{
+  "select_language": "Select Language",
+  "hello_welcome_to_react": "Hello, Welcome to React",
+  "this_is_an_example": "This is an example of Franch",
+  "please_enter_name": "Please enter your name",
+  "welcome": "स्वागत आहे",
+  "Building Permit Proposal": "इमारत परमिट प्रस्ताव",
+  "New Challan": "नवीन चलन",
+  "Development fee": "विकास शुल्क",
+  "Office Comment": "कार्यालयीन टिप्पणी",
+  "Latest 5 Proposal": "नवीनतम 5 प्रस्ताव",
+  "View All Proposal": "सर्व प्रस्ताव पहा",
+  "Latest 5 Payment": "नवीनतम 5 पेमेंट",
+  "View All Payment": "सर्व देय पहा",
+  "Latest 5 Challan": "नवीनतम 5 चलन",
+  "Name": "नाव",
+  "Created Date": "तयार केलेली तारीख",
+  "Status": "स्थिती",
+  "Application Management":"Application Management"
+}

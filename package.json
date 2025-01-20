@@ -1,0 +1,79 @@
+{
+  "name": "vctc-pune",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://206.189.143.73/",
+  "dependencies": {
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/date-fns": "^2.6.0",
+    "axios": "^1.7.7",
+    "axios-extensions": "^3.1.6",
+    "date-fns": "^3.6.0",
+    "filepond": "^4.31.3",
+    "filepond-plugin-image-exif-orientation": "^1.0.11",
+    "filepond-plugin-image-preview": "^4.6.12",
+    "font-awesome": "^4.7.0",
+    "history": "^5.3.0",
+    "i18next": "^23.15.0",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "i18next-http-backend": "^2.6.1",
+    "i18next-xhr-backend": "^3.2.2",
+    "json-to-txt": "^2.1.1",
+    "moment": "^2.30.1",
+    "moment-weekday-calc": "^1.1.5",
+    "prop-types": "^15.8.1",
+    "quill": "^2.0.2",
+    "quill-better-table": "^1.2.10",
+    "random-number": "^0.0.9",
+    "react": "^18.3.1",
+    "react-confirm-alert": "^3.0.6",
+    "react-data-table-component": "^7.6.2",
+    "react-datepicker": "^7.3.0",
+    "react-dom": "^18.3.1",
+    "react-filepond": "^7.1.2",
+    "react-i18next": "^15.0.1",
+    "react-lazy-load-image-component": "^1.6.2",
+    "react-quilljs": "^2.0.4",
+    "react-responsive-modal": "^6.4.2",
+    "react-router-dom": "^6.26.2",
+    "react-scripts": "5.0.1",
+    "react-swipeable-views": "^0.14.0",
+    "react-tippy": "^1.4.0",
+    "react-toastify": "^10.0.5",
+    "sass": "^1.78.0",
+    "save": "^2.9.0",
+    "styled-components": "^6.1.13",
+    "typescript": "^5.6.2",
+    "web-vitals": "^4.2.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-datepicker": "^7.0.0"
+  }
+}

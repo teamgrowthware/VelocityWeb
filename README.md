@@ -1,4 +1,4 @@
-# vctcpune frontend 2024
+# national homeo lab backend
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/vctc2024/vctcpune-frontend-2024.git
+git remote add origin https://gitlab.com/national-homeo-lab/national-homeo-lab-backend.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/vctc2024/vctcpune-frontend-2024/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.com/national-homeo-lab/national-homeo-lab-backend/-/settings/integrations)
 
 ## Collaborate with your team
 

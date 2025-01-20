@@ -1,0 +1,10 @@
+.ql-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .ql-table td, .ql-table th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
