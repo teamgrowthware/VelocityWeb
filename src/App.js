@@ -3,10 +3,11 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import './css/style.css';
 import './css/bootstrap.css';
+import './css/style.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'font-awesome/css/font-awesome.css';
+import "./css/remixicon/fonts/remixicon.css"
 import { ToastContainer } from 'react-toastify';
 import { setUpAxios } from './servies/services';
 
@@ -14,6 +15,14 @@ import PageNotFound from './container/PageNotFound/PageNotFound';
 import Home from './container/Home/Home';
 import { ThemeProvider } from './container/Context/Theme/Context';
 import CourseDetails from './container/courseDetails/courseDetails';
+import Courses from './container/Courses/Courses';
+import TestimonialsWrapper from './container/Testimonials/TestimonialsWrapper';
+import CMSPages from './container/CMS/CMSPages';
+import ScrollToTop from './components/ScrollToTop';
+import Contact from './container/Contact/Contact';
+import UpcomingBatches from './container/UpcomingBatches/UpcomingBatches';
+import AboutUs from './container/AboutUs/AboutUs';
+import CampaignShareMarket from './container/Campaign/CampaignShareMarket';
 
 function App() {
   setUpAxios();
@@ -22,9 +31,17 @@ function App() {
     <>
       <BrowserRouter basename={'/'} >
         <ThemeProvider>
+          <ScrollToTop path={window.location.pathname} />
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/testimonials" element={<TestimonialsWrapper />} />
+            <Route path="/courses" element={<Courses />} />
             <Route path="/courses/:title" element={<CourseDetails />} />
+            <Route path="/cms/:slug" element={<CMSPages />} />
+            <Route path="/contact-us" element={<Contact />} />
+            <Route path="/upcoming-batches" element={<UpcomingBatches />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/campaign/share-market" element={<CampaignShareMarket />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
           <ToastContainer></ToastContainer>

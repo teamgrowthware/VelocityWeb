@@ -25,7 +25,6 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 
 import App from "./App";
-import "./i18nextConf";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

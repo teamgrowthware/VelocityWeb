@@ -1,4 +1,5 @@
 /* eslint-disable no-empty-pattern */
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 interface AlertProps {
   children?: any;
@@ -18,6 +19,7 @@ const Wrapper = ({
         <div className="mailbox">
           <Header isLoading={isLoading}></Header>
           {children}
+          <Footer></Footer>
         </div>
       </div>
     </>

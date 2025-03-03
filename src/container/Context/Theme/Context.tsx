@@ -1,10 +1,13 @@
 import React, { createContext, useEffect, useState } from "react";
-import { getCourses } from "../../../servies/services";
+import { getCMS, getCourses } from "../../../servies/services";
 type ThemeContextType = {
     coursesList: any;
+    pagesList: any;
+
 };
 export const ThemeContext = createContext<ThemeContextType>({
     coursesList: [],
+    pagesList: [],
 });
 
 const { Provider } = ThemeContext;
@@ -16,10 +19,11 @@ type ThemeProviderProps = {
 };
 
 const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
-    
+
     console.log("coursesList")
-    
+
     const [coursesList, setCoursesList] = useState([]);
+    const [pagesList, setPagesList] = useState([]);
 
     useEffect(() => {
         const getData = async () => {
@@ -35,11 +39,26 @@ const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
 
     console.log("coursesList", coursesList)
 
+    useEffect(() => {
+        const getData = async () => {
+            const APIResponse = await getCMS();
+            if (APIResponse?.data?.isSuccess === true) {
+                setPagesList(APIResponse?.data?.data);
+            } else {
+                console.error("something went wrong, please try after sometime.")
+            }
+        };
+        getData();
+    }, [])
+
+    console.log("pagesList", pagesList)
+
     return (
         <>
             <Provider
                 value={{
                     coursesList,
+                    pagesList
                 }}
             >
                 {children}
