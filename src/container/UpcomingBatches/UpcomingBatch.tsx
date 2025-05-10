@@ -32,12 +32,16 @@ const UpcomingBatch = () => {
                                 return (
                                     <>
                                         <tr>
-                                            <td style={{ fontSize: '14px', lineHeight: '18px' }}>
-                                                {item.name}  {item.start_date !== 'TBD' ? <span className='newTag'>New</span> : ''}  </td>
-                                            <td> {item?.duration} </td>
-                                            <td> {item.start_date} </td>
-                                            <td> {item.batch_days} </td>
-                                            <td>
+                                            <td data-label="Course Name" style={{ fontSize: '14px', lineHeight: '18px' }}>
+                                                <span>
+                                                    {item.name}  {item.start_date !== 'TBD' ? <span className='newTag'>New</span> : ''}
+                                                </span>
+                                            </td>
+
+                                            <td data-label="Duration"> {item?.duration} </td>
+                                            <td data-label="Date"> {item.start_date} </td>
+                                            <td data-label="Slot"> {item.batch_days} </td>
+                                            <td data-label="Payment">
                                                 {item.end_date === 'https://www.google.com' ?
                                                     <button className='btn btn-outline-primary btn-sm' disabled={item.end_date === 'https://www.google.com'}>
                                                         Pay Now</button> : <a aria-disabled={true} className='btn btn-primary btn-sm' rel="noopener noreferrer" target='_blank' href={item.end_date}>Pay Now</a>}

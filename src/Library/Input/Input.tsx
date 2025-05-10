@@ -162,6 +162,7 @@ const Input = ({
             className={`position-relative input-group ${icon ? "has-icon" : ""
               } ${inputSubType === "incrementer" ? "IncrementerWrapper" : ""}`}
           >
+
             <input
               id={id}
               value={inputValue}
@@ -172,7 +173,7 @@ const Input = ({
               type={inputType}
               name={inputName}
               className={`form-control ${className} ${hasError ? "parsley-error" : ""
-                } ${hasCustomError ? "" : "parsley-error"} 
+                } ${hasCustomError && inputValue?.toString()?.length > 2 ? "" : "parsley-error"} 
               ${icon ? "has-icon" : ""}`}
               placeholder={`${placeholder} ${required ? "*" : ""}`}
               min={min}

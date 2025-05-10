@@ -24,17 +24,20 @@ const Testimonials = ({
             <div className="row">
 
                 {data?.slice(0, slice)?.map((item: any) => {
+                    console.log("item?.cms_tags", item, item?.cms_tags)
                     return (
                         <>
                             <div className="col-md-4 mb-4">
                                 <div className="innerBoxTestimonails">
                                     <div className="headerTestimonails">
                                         <div className="iconTestimonails">
-                                            <img src={Logo} alt="" title="" />
+                                            <img className="infoBoxImg" src={item?.cms_image?.length > 5 ? process.env.react_app_base_url + "/" + item?.cms_image : Logo} alt="" title="" />
                                         </div>
                                         <div className="titleTestimonails">
                                             <p className="ttitle"><strong>{item?.cms_title}</strong></p>
-                                            <p className="ttitle2">SDE 1</p>
+                                            <p className="ttitle2">
+                                                {item?.cms_tags ?? "SDE 1"}
+                                            </p>
                                             <div className="tag">{item?.cms_course_name}</div>
                                         </div>
                                     </div>

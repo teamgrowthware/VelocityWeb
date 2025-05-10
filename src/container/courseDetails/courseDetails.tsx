@@ -1,46 +1,53 @@
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { ThemeContext } from "../Context/Theme/Context";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Wrapper from "../Wrapper";
 import { useParams } from "react-router-dom";
 import TabContainer from "../../Library/Tab/TabContainer";
-import { getCenterBatchByCourseId, getModuleByCourseId } from "../../servies/services";
-import { Button } from "../../Library/Module";
+import { getCenterBatchByCourseId, getCourseSlug } from "../../servies/services";
 import Testimonials from "../Testimonials/Testimonials";
+import CourseModules from "./CourseModules";
+import Clients from "../../components/Clients";
 
 const CourseDetails = () => {
-    const { coursesList } = useContext(ThemeContext);
     const { title } = useParams();
+    const [pageContentLoading, setPageContentLoading] = useState<any>(false);
     const [pageContent, setPageContent] = useState<any>({});
     const [upcomingBatches, setUpcomingBatches] = useState([]);
-    const [courseModule, setCourseModule] = useState([]);
-    const [showModule, setShowModule] = useState<any>([])
+    const [courseModule, setCourseModule] = useState([])
+    const [activeItem, setActiveItem] = useState<any>("Why");
     const [activeTab, setActiveTab] = useState('')
     const [isLoadinngUB, setIsLoadingUB] = useState(false)
 
-    const sectionRef = useRef<any>(null);
+    useEffect(() => {
+        if (title) {
+            setPageContent([])
+            const getData = async () => {
+                setPageContentLoading(false)
+                const data = await getCourseSlug(title);
+                console.log("getCourseSlug", data?.data?.data);
+                setPageContent(data?.data?.data);
+                setPageContentLoading(true)
+            };
+            getData();
+        }
+    }, [title]);
 
     useEffect(() => {
-        const content = coursesList?.find((item: any) => {
-            return item?.slug === title;
-        });
-        setPageContent(content);
-    }, [coursesList, title]);
-
-    useEffect(() => {
-        const getData = async () => {
+        if (pageContent?._id) {
             setUpcomingBatches([])
-            setCourseModule([])
-            setIsLoadingUB(false)
-            const data = await getCenterBatchByCourseId(pageContent?._id);
-            console.log("getCenterBatchByCourseId", data?.data?.data);
-            setUpcomingBatches(data?.data?.data);
-            setIsLoadingUB(true)
-            const moduleData = await getModuleByCourseId(pageContent?._id);
-            console.log("getCenterBatchByCourseId", data?.data?.data);
-            setCourseModule(moduleData?.data?.data);
-        };
-        getData();
-    }, [pageContent?._id]);
+            const getData = async () => {
+                setIsLoadingUB(false)
+                const data = await getCenterBatchByCourseId(pageContent?._id);
+                console.log("getCenterBatchByCourseId", data?.data);
+                setUpcomingBatches(data?.data?.data);
+                setIsLoadingUB(true)
+
+            };
+            getData();
+        }
+    }, [pageContent, title]);
+
+
+
 
     const UpcomingCourse = useCallback(() => {
         return isLoadinngUB && (
@@ -48,8 +55,6 @@ const CourseDetails = () => {
                 <table className="table table-bordered">
                     <thead>
                         <tr>
-                            {/* <th>Course Name</th> */}
-                            {/* <th>Duration</th> */}
                             <th>Date</th>
                             <th>Slot</th>
                             <th>Payment</th>
@@ -59,8 +64,6 @@ const CourseDetails = () => {
                         return (
                             <>
                                 <tr>
-                                    {/* <td>{item?.name}</td> */}
-                                    {/* <td>{item?.duration}</td> */}
                                     <td>{item?.start_date}</td>
                                     <td>{item?.batch_days}</td>
                                     <td><a href={item?.end_date} target="_blank" rel="noreferrer" >Pay Now</a></td>
@@ -69,88 +72,27 @@ const CourseDetails = () => {
                         );
                     })}
                 </table>
-                {/* <div className="paymentContent content">
-                    <h5>
-                        Please read the Terms and Conditions (T&amp;Cs)
-                        carefully prior to enroll the course
-                    </h5>
-                    <ol>
-                        <li>
-                            The fees will be non-refundable and
-                            non-transferable in any circumstances.
-                        </li>
-                        <li>
-                            Batch or Course change is strictly not
-                            allowed.
-                        </li>
-                        <li>
-                            Velocity provides corporate level training.
-                        </li>
-                        <li>
-                            Training will be provided according to the
-                            specified curriculum.
-                        </li>
-                        <li>
-                            Candidates will get interview calls from
-                            different job portals.
-                        </li>
-                    </ol>
-                    <p>
-                        All rights reserved to Velocity Corporate
-                        Training Center*
-                    </p>
-                    <p>
-                        If you have any queries/ doubt regarding
-                        payment, please contact us at
-                        support@vctcpune.com
-                    </p>
-                </div> */}
-
             </>
         );
     }, [upcomingBatches, isLoadinngUB]);
 
-    const addItem = (id: any) => {
-        setShowModule((prevItems: any) => prevItems.includes(id) ?
-            prevItems.filter((item: any) => item !== id)
-            : [...prevItems, id]);
-    };
 
 
-    const CourseModules = useCallback(() => {
-        return (
-            <>
-                {courseModule?.map((item: any, index: any) => {
-                    console.log("item ------- ", item?._id)
-                    return (
-                        <>
-                            <div onClick={() => {
-                                addItem(item?._id)
-                            }} className={`module-header ${showModule.includes(item?._id) ? 'selected' : ''}`}>
-                                {showModule.includes(item?._id) ?
-                                    <span className="material-symbols-outlined">chevron_right</span>
-                                    :
-                                    <span className="material-symbols-outlined">keyboard_arrow_down</span>
-                                }
-                                <Button className="courseBtn">{item?.name}</Button>
-                            </div>
-                            {showModule.includes(item?._id) &&
-                                <div ref={sectionRef} className="module-content">
-                                    <div
-                                        className="ql-editor"
-                                        dangerouslySetInnerHTML={{
-                                            __html: item?.description,
-                                        }}
-                                    ></div>
-                                </div>
-                            }
-                        </>
-                    )
-                })}
-            </>
-        );
-    }, [courseModule, showModule]);
 
+
+
+    const accordienContent = useMemo(() => [
+        {
+            name: "Why",
+        },
+        {
+            name: "Key Features",
+        },
+        {
+            name: "Upcoming Batches",
+        }
+    ], [])
+    console.log("id, title -----------", pageContent)
     return (
         <>
             <Wrapper>
@@ -161,12 +103,13 @@ const CourseDetails = () => {
                         title=""
                     />
                 </div>
+
                 <div className="contentMain">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8">
                                 <div className="innerBox">
-                                    <h2>{pageContent?.name}</h2>
+                                    <h2>{!pageContentLoading && "loading..."} {pageContent?.name}</h2>
                                     <div
                                         className="ql-editor"
                                         dangerouslySetInnerHTML={{
@@ -175,40 +118,51 @@ const CourseDetails = () => {
                                     ></div>
                                     <div className="syllabus">
                                         <h4>Syllabus</h4>
-                                        <CourseModules></CourseModules>
+                                        <CourseModules
+                                            id={pageContent?._id}
+                                            title={title}
+                                            courseModuleCallback={setCourseModule}
+                                        ></CourseModules>
                                     </div>
-                                    <TabContainer
-                                        activeTab={activeTab}
-                                        activeTabCallout={setActiveTab}
-                                        list={[
-                                            {
-                                                name: "Why",
-                                                content: (
-                                                    <div
-                                                        className="content"
-                                                        dangerouslySetInnerHTML={{
-                                                            __html: pageContent?.why_this_course,
+
+                                    <div className="tab">
+                                        <ul>
+                                            {accordienContent?.map((item: any) => {
+                                                return (
+                                                    <li
+                                                        className={activeItem === item?.name ? "selected" : ""}
+                                                        onClick={() => {
+                                                            setActiveItem(item?.name);
                                                         }}
-                                                    ></div>
-                                                ),
-                                            },
-                                            {
-                                                name: "Key features",
-                                                content: (
-                                                    <div
-                                                        className="content"
-                                                        dangerouslySetInnerHTML={{
-                                                            __html: pageContent?.key_features,
-                                                        }}
-                                                    ></div>
-                                                ),
-                                            },
-                                            {
-                                                name: "Upcoming Batches",
-                                                content: <UpcomingCourse></UpcomingCourse>,
-                                            }
-                                        ]}
-                                    ></TabContainer>
+                                                    >
+                                                        {item?.name}
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    </div>
+                                    <div className="clearfix"></div>
+                                    <div className="tab-content">
+                                        {activeItem === "Why" &&
+                                            <div
+                                                className="content"
+                                                dangerouslySetInnerHTML={{
+                                                    __html: pageContent?.why_this_course,
+                                                }}
+                                            ></div>
+                                        }
+                                        {activeItem === "Key Features" &&
+                                            <div
+                                                className="content"
+                                                dangerouslySetInnerHTML={{
+                                                    __html: pageContent?.key_features,
+                                                }}
+                                            ></div>
+                                        }
+                                        {activeItem === "Upcoming Batches" &&
+                                            <UpcomingCourse></UpcomingCourse>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-md-4">
@@ -254,7 +208,7 @@ const CourseDetails = () => {
                             </div>
                         </div>
                     </div>
-
+                    <Clients></Clients>
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">

@@ -135,7 +135,7 @@ export const getCourses = async (id, useCache) => {
 // https://vctcpune.com/nodeapi/api/v1/centerbatch/byCourseId/63a541f10e1f6a2fe00a708d?status=0
 export const getCenterBatchByCourseId = async (id, useCache) => {
     console.log("service FieldById", id)
-    const response = await API.get(process.env.react_app_base_url + `/api/v1/centerbatch/byCourseId/${id}`, {
+    const response = await API.get(process.env.react_app_base_url + `/api/v1/centerbatch/byCourseId/${id}?status=0`, {
         headers: {
             "auth-token": `${token}`,
         }
@@ -212,6 +212,64 @@ export const getCenters = async (id, useCache) => {
 
 export const getSliders = async () => {
     const response = await API.get(process.env.react_app_base_url + '/api/v1/cms/cms/bytype/Slider?sortBy=order_id', {
+        headers: {
+            "auth-token": `${token}`,
+        }
+    })
+    console.log("response", response)
+    return response;
+};
+
+// https://vctcpune.com/nodeapi/api/v1/centerbatch/byCourseId/63a541f10e1f6a2fe00a708d?status=0
+export const getCourseSlug = async (id, useCache) => {
+    console.log("service FieldById", id)
+    const response = await API.get(process.env.react_app_base_url + `/api/v1/cources/course-slug/${id}`, {
+        headers: {
+            "auth-token": `${token}`,
+        }
+    })
+    console.log("response", response)
+    return response;
+};
+
+// EnquiryDetails
+export const EnquiryDetails = async (data, useCache) => {
+    console.log("service CustomTypeById", data)
+    const response = await API.post(process.env.react_app_base_url + '/api/v1/enquiry', data, {
+        headers: {
+            "auth-token": `${token}`,
+        }
+    })
+    return response;
+};
+
+// api/v1/frontend
+export const EnquiryFrontendDetails = async (data, useCache) => {
+    console.log("service CustomTypeById", data)
+    const response = await API.post(process.env.react_app_base_url + '/api/v1/frontend/subscribe', data, {
+        headers: {
+            "auth-token": `${token}`,
+        }
+    })
+    return response;
+};
+
+// https://vctcpune.com/nodeapi/api/v1/cms/cms/bytype/Why%20Velocity?sortBy=order_id
+
+export const getWhyUs = async () => {
+    const response = await API.get(process.env.react_app_base_url + `/api/v1/cms/cms/bytype/Why%20Velocity?sortBy=order_id&status=0`, {
+        headers: {
+            "auth-token": `${token}`,
+        }
+    })
+    console.log("response", response)
+    return response;
+};
+
+// https://vctcpune.com/nodeapi/api/v1/cms/cms/bytype/clients?sortBy=order_id
+
+export const getClients = async () => {
+    const response = await API.get(process.env.react_app_base_url + `/api/v1/cms/cms/bytype/clients?sortBy=order_id&status=0`, {
         headers: {
             "auth-token": `${token}`,
         }

@@ -14,7 +14,7 @@ import { setUpAxios } from './servies/services';
 import PageNotFound from './container/PageNotFound/PageNotFound';
 import Home from './container/Home/Home';
 import { ThemeProvider } from './container/Context/Theme/Context';
-import CourseDetails from './container/courseDetails/courseDetails';
+import CourseDetails from './container/CourseDetails/CourseDetails';
 import Courses from './container/Courses/Courses';
 import TestimonialsWrapper from './container/Testimonials/TestimonialsWrapper';
 import CMSPages from './container/CMS/CMSPages';

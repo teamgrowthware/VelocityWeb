@@ -180,36 +180,38 @@ const Select = ({
                 }`}
               onClick={openOptions}
             >
-              {multiple ? (
-                multipleSelected?.length === 0 ?
-                  placeholder ?
-                    <span className="placeholderText">{placeholder}</span> : '' :
-                  <div className="multiSelectWrap float-left">
-                    {multipleSelected?.map((item: any) => {
-                      return (
-                        <Button
-                          icon="close"
-                          buttonStyleRounded
-                          buttonStyleOutline
-                          buttonSize="sm"
-                          buttonStyleType="dark"
-                          className="m-1"
-                          onClick={() => removeItem(item)}
-                          disabled={disabled}
-                        >
-                          {" "}
-                          {item?.text}{" "}
-                        </Button>
-                      );
-                    })}
-                  </div>
-              ) :
-                selected ?
-                  selected?.text
-                  : placeholder ?
-                    <span className="placeholderText">{placeholder}</span>
-                    : ''
-              }
+              <span>
+                {multiple ? (
+                  multipleSelected?.length === 0 ?
+                    placeholder ?
+                      <span className="placeholderText">{placeholder}</span> : '' :
+                    <div className="multiSelectWrap float-left">
+                      {multipleSelected?.map((item: any) => {
+                        return (
+                          <Button
+                            icon="close"
+                            buttonStyleRounded
+                            buttonStyleOutline
+                            buttonSize="sm"
+                            buttonStyleType="dark"
+                            className="m-1"
+                            onClick={() => removeItem(item)}
+                            disabled={disabled}
+                          >
+                            {" "}
+                            {item?.text}{" "}
+                          </Button>
+                        );
+                      })}
+                    </div>
+                ) :
+                  selected ?
+                    selected?.text
+                    : placeholder ?
+                      <span className="placeholderText">{placeholder}</span>
+                      : ''
+                }
+              </span>
               <i className="mdi mdi-chevron-down ml-1 float-end">
                 <img className="iconMain" src={downArrow} alt="" title="" />
               </i>

@@ -68,7 +68,7 @@ const ResponsiveMenu = () => {
                                 buttonStyleOutline
                                 buttonStyleType="primary"
                                 className="btn btn-primary"
-                                >
+                            >
                                 <span className='lineBox'>
                                     <span className='line'></span>
                                     <span className='line'></span>

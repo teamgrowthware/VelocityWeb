@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
 
-const TabContainer = ({ list, activeTab, activeTabCallout }: { list: any, activeTab: any, activeTabCallout: any }) => {
+const TabContainer = ({
+    list,
+    activeTab,
+    activeTabCallout,
+    title
+}: { list: any, activeTab: any, activeTabCallout: any, title: any }) => {
     const [activeItem, setActiveItem] = useState<any>();
 
     useEffect(() => {
         if (activeTab) {
             setActiveItem(activeTab)
+        } else {
+            setActiveItem(list?.[0])
         }
-    }, [activeTab])
+    }, [activeTab, list, title])
 
     return (
         <>

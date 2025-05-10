@@ -1,11 +1,78 @@
 /* eslint-disable no-empty-pattern */
-import { useState } from "react";
-import { Button, Card, Input } from "../../Library/Module";
+import { useContext, useEffect, useState } from "react";
+import { Button, Input, Select } from "../../Library/Module";
 import Wrapper from "../Wrapper";
 import BannerCourses from "../../images/BannerCourses.png"
+import { ThemeContext } from "../Context/Theme/Context";
+import { EnquiryDetails } from "../../servies/services";
+import { toast } from "react-toastify";
 
 const Contact = () => {
     const [pageContent, setPageContent] = useState<any>({})
+    const [formData, setFormData] = useState<any>();
+    const [courseOptions, setCourseOptions] = useState<any>([]);
+    const onChangeSingleCallback = (data: any) => {
+        setFormData((prevState: any) => ({
+            ...prevState,
+            ...data,
+        }));
+    };
+
+    const { coursesList } = useContext(ThemeContext)
+
+
+
+    useEffect(() => {
+        if (coursesList?.length > 0) {
+            let list: any = []
+            coursesList?.forEach((item: any) => {
+                list.push({
+                    text: item?.name,
+                    value: item?.slug,
+                    id: item?.slug,
+                })
+            })
+            setCourseOptions(list)
+        }
+    }, [coursesList])
+
+
+    const submit = async () => {
+        if (formData?.name?.length > 1 &&
+            formData?.email?.length > 1 &&
+            formData?.mobile?.length > 1 &&
+            formData?.course?.length > 1
+        ) {
+            const date = new Date()
+            const userInput = {
+                name: formData.name,
+                email_id: formData.email,
+                mobile: formData.mobile,
+                course_preference_1: formData.course,
+                description: formData.message,
+                created_by: formData.name,
+                enquiry_mode: "student",
+                next_followup_date: date.toISOString(),
+                status: "0"
+            }
+            const response = await EnquiryDetails(userInput);
+            console.log("response", response?.data)
+            if (response?.data?.isSuccess) {
+                toast.success("Email has been sent");
+                setFormData({
+                    name: '',
+                    email: '',
+                    course: '',
+                    message: ''
+                })
+            } else {
+                toast.error("Something went wrong, please try again");
+            }
+        } else {
+            toast.error("Fill all required fields");
+        }
+    }
+
     return (
         <Wrapper pageTitle="Dashboard" breadcrumbList={null}>
             <div className="bannerInner">
@@ -38,8 +105,8 @@ const Contact = () => {
                                                 Near Bharti Vidyapeeth,<br></br>
                                                 Shriram Nagar, Katraj,<br></br>
                                                 Pune, Maharashtra 411046.</p>
-                                            <p><span className="material-symbols-outlined">phone_in_talk</span> 9422761663</p>
-                                            <p><span className="material-symbols-outlined">mail</span>info@vctcpune.com</p>
+                                                <p><a className={"none"} href="tel:+919422761663"><span className="material-symbols-outlined">phone_in_talk</span> +91 94227 61663 </a> </p>
+                                                <p><a className={"none"} href="mailto:info@vctcpune.com" title="info@vctcpune.com"><span className="material-symbols-outlined">mail</span>info@vctcpune.com </a></p>
                                             <p><span className="material-symbols-outlined">schedule</span> 10:00AM to 05:30PM</p>
                                         </div>
                                     </div>
@@ -71,7 +138,7 @@ const Contact = () => {
 
 
                                     <div className="col-md-12">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.249750223696!2d73.92811047519274!3d18.562775782538942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c114cb2be381%3A0xb647cfeb251665eb!2sVelocity%20Corporate%20Training%20Centre!5e0!3m2!1sen!2sin!4v1740928810141!5m2!1sen!2sin" width="600" height="450" loading="lazy" ></iframe>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.249750223696!2d73.92811047519274!3d18.562775782538942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c114cb2be381%3A0xb647cfeb251665eb!2sVelocity%20Corporate%20Training%20Centre!5e0!3m2!1sen!2sin!4v1740928810141!5m2!1sen!2sin" width="100%" height="450" loading="lazy" ></iframe>
                                     </div>
 
                                 </div>
@@ -89,12 +156,28 @@ const Contact = () => {
                                     <h5>Enquiry Now</h5>
                                     <p className="none">Drop us a line, someone from our team will get in touch with you shortly.</p>
                                     <div className="row">
-                                        <Input col="6" labelName="Name" inputName=""></Input>
-                                        <Input col="6" labelName="Email Id" inputName=""></Input>
-                                        <Input col="6" labelName="Contact No" inputName=""></Input>
-                                        <Input col="6" labelName="Course" inputName=""></Input>
+                                        <Input col="6" onChangeSingleCallback={onChangeSingleCallback} labelName="Name" inputName="name"></Input>
+                                        <Input col="6" onChangeSingleCallback={onChangeSingleCallback} labelName="Email Id" inputName="email"></Input>
+                                        <Input col="6" onChangeSingleCallback={onChangeSingleCallback} labelName="Contact No" inputName="mobile"></Input>
+                                        <Select
+                                            col="6"
+                                            inputName={"course"}
+                                            labelName={"Course"}
+                                            options={courseOptions ?? []}
+                                            onChangeSingleCallback={onChangeSingleCallback}
+                                            selectedItem={courseOptions?.find(
+                                                (selected: any) => {
+                                                    console.log("item.value", courseOptions, selected)
+                                                    return (selected.value === formData?.course)
+                                                }
+                                            )}
+                                            required={true}
+                                            placeholder={"Select Course"}
+                                            search_option={false}
+                                            isLoading={true}
+                                            value={formData?.course}></Select>
                                         <div className="col-12">
-                                            <Button className="btn btn-primary col-1">Submit</Button>
+                                            <Button onClick={() => submit()} className="btn btn-primary col-1">Submit</Button>
                                         </div>
 
                                     </div>

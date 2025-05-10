@@ -1,0 +1,19 @@
+.btn .line {
+    border-bottom: 2px solid #fff;
+    display: block;
+    margin-bottom: 5px;
+    width: 25px;
+}
+
+.hangerMenuClose button,
+.hangerMenuOpen button {
+    color: #fff !important;
+    display: flex;
+    gap: 16px;
+}
+.btn-primary {
+    background: #fd5f07 !important;
+    border: none;
+    border-bottom: 2px solid #b7735f !important;
+    border-radius: 8px;
+}

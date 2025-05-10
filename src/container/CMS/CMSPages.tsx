@@ -3,8 +3,10 @@ import BannerCourses from "../../images/BannerCourses.png"
 import { ThemeContext } from "../Context/Theme/Context"
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import ReferrerForm from "./ReferrerForm"
 
 const CMSPages = () => {
+
     const { pagesList } = useContext(ThemeContext)
     const [pageContent, setPageContent] = useState<any>({})
     const { slug } = useParams();
@@ -15,6 +17,7 @@ const CMSPages = () => {
         });
         setPageContent(content);
     }, [pagesList, slug]);
+
 
     return (
         <>
@@ -29,7 +32,7 @@ const CMSPages = () => {
                 <div className="cmsWrapper">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-12">
+                            <div className={slug === 'refer-and-earn' ? "col-md-8" : "col-md-12"}>
                                 <h1>{pageContent?.title}</h1>
                                 <div
                                     className="ql-editor"
@@ -38,6 +41,13 @@ const CMSPages = () => {
                                     }}
                                 ></div>
                             </div>
+
+
+                            {slug === 'refer-and-earn' &&
+                                <div className="col-md-4">
+                                    <ReferrerForm></ReferrerForm>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
