@@ -23,25 +23,31 @@ import Contact from './container/Contact/Contact';
 import UpcomingBatches from './container/UpcomingBatches/UpcomingBatches';
 import AboutUs from './container/AboutUs/AboutUs';
 import CampaignShareMarket from './container/Campaign/CampaignShareMarket';
+import Blog from './container/Blog/Blog';
+import BlogDetails from './container/Blog/BlogDetails';
+import ThankYouCampaign from './container/Campaign/ThankYouCampaign';
 
 function App() {
   setUpAxios();
 
   return (
     <>
-      <BrowserRouter basename={'/'} >
+       <BrowserRouter basename={'/beta'} >
         <ThemeProvider>
           <ScrollToTop path={window.location.pathname} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/testimonials" element={<TestimonialsWrapper />} />
             <Route path="/courses" element={<Courses />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogDetails />} />
             <Route path="/courses/:title" element={<CourseDetails />} />
             <Route path="/cms/:slug" element={<CMSPages />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/upcoming-batches" element={<UpcomingBatches />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/campaign/share-market" element={<CampaignShareMarket />} />
+            <Route path="/campaign/share-market-thank-you" element={<ThankYouCampaign />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
           <ToastContainer></ToastContainer>

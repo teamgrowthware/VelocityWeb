@@ -34,18 +34,14 @@ const HomeSlider = () => {
                 return (
                     <div className='sliderWrapper2'>
                         <div className='itemPlacement'>
-                            <img src={item?.cms_image?.length > 5 ? process.env.react_app_base_url + "/" + item?.cms_image : ''} alt="" title="" />
-                        </div>
-                        <div className='courseCategory2'>
-                            <div className='inner'>
-                                {/* <h3>{item.cms_title}</h3>
-                                <div className='short_description'>
-                                    <div className="ql-editor" dangerouslySetInnerHTML={{ __html: item.cms_description }}></div>
-                                </div> */}
-                                <NavLink to={item?.cms_tags}>View Details</NavLink>
-                                <div className='clearfix'></div>
+                            <div className='courseCategory2'>
+                                <div className='inner'>
+                                    <NavLink to={item?.cms_tags}>View Details</NavLink>
+                                    <div className='clearfix'></div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 )
             })}

@@ -130,7 +130,7 @@ const Input = ({
   return (
     <div className={`mb-3 col-md-${col}`}>
       {labelName && (
-        <label>
+        <label htmlFor={labelName}>
           {labelName} {required ? <span className="red">*</span> : ""}
           {toolTipContent &&
             <CustomTooltip position="top" content={toolTipContent}>

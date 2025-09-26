@@ -24,13 +24,7 @@ const AboutUs = () => {
     return (
         <>
             <Wrapper>
-                <div className="bannerInner">
-                    <img
-                        src={pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses}
-                        alt=""
-                        title=""
-                    />
-                </div>
+                <div className="bannerInner" style={{background:`url(${pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses})`}}> </div>
                 <div className='eventsUpcomingBatchWrapper' id='upcoming_batches'>
                     <div className="container">
                         <div className='row'>

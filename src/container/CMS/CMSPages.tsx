@@ -22,13 +22,7 @@ const CMSPages = () => {
     return (
         <>
             <Wrapper>
-                <div className="bannerInner">
-                    <img
-                        src={pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses}
-                        alt=""
-                        title=""
-                    />
-                </div>
+                <div className="bannerInner" style={{background:`url(${pageContent?.cms_image ? process.env.react_app_base_url + "/" + pageContent?.cms_image : BannerCourses})`}}> </div>
                 <div className="cmsWrapper">
                     <div className="container">
                         <div className="row">

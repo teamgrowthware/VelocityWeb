@@ -16,9 +16,7 @@ const TestimonialsWrapper = () => {
     return (
         <>
             <Wrapper>
-                <div className="bannerInner">
-                    <img src={data?.image?.length > 5 ? process.env.react_app_base_url + "/" + data?.image : BannerCourses} alt="" title="" />
-                </div>
+               <div className="bannerInner" style={{background:`url(${data?.image ? process.env.react_app_base_url + "/" + data?.image : BannerCourses})`}}> </div>
                 <div className="testimonialsWrapper2">
                     <div className="container">
                         <div className="row">

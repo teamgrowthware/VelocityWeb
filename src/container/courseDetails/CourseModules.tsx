@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "../../Library/Module";
 import { getModuleByCourseId } from "../../servies/services";
+import FloatMenu from "../../components/FloatMenu";
+import EnquiryForm from "../Contact/EnquiryForm";
 
 const CourseModules = ({
     id,
@@ -11,8 +13,15 @@ const CourseModules = ({
     const sectionRef = useRef<any>(null);
     const [isCourseModuleLoading, setIsCourseModuleLoading] = useState(false);
     const [courseModule, setCourseModule] = useState([]);
+    const [enquiryFormSubmitted, setEnquiryFormSubmitted] = useState<any>("")
+    const [showFloatingMenu, setShowFloatingMenu] = useState(false)
+    // useEffect(() => {
+    //     const enquiryFormSubmit = sessionStorage.getItem("enquiryFormSubmitted") ?? ""
+    //     setEnquiryFormSubmitted(enquiryFormSubmit)
+    // }, [id, title])
 
     useEffect(() => {
+        // setShowFloatingMenu(false)
         setCourseModule([])
         if (id && title) {
             console.log("id, title -----------", id, title)
@@ -29,10 +38,16 @@ const CourseModules = ({
 
 
     const addItem = (id: any) => {
+        // setShowFloatingMenu(true)
         setShowModule((prevItems: any) => prevItems.includes(id) ?
             prevItems.filter((item: any) => item !== id)
             : [...prevItems, id]);
     };
+
+    // const callback = useCallback(() => {
+    //     setShowFloatingMenu(false)
+    // }, [])
+
     return (
         <>
             {!isCourseModuleLoading && 'Loading ...'}
@@ -63,6 +78,16 @@ const CourseModules = ({
                     </>
                 )
             })}
+
+
+            {/* {enquiryFormSubmitted !== title && isCourseModuleLoading && showFloatingMenu &&
+                <>
+                    <div className="popup-course-overlay"></div>
+                    <div className="popup-course">
+                        <EnquiryForm courseId={title} callback={callback}></EnquiryForm></div>
+                </>
+            } */}
+            
         </>
     )
 }

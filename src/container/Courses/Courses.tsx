@@ -10,9 +10,7 @@ const Courses = () => {
     return (
         <>
             <Wrapper>
-                <div className="bannerInner">
-                    <img src={BannerCourses} alt="" title="" />
-                </div>
+                <div className="bannerInner" style={{background:`url(${BannerCourses})`}}> </div>
 
                 <div className="container">
                     <div className="courseList">

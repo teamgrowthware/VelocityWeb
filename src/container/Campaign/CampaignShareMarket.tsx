@@ -57,12 +57,13 @@ import WarrenBuffett from "../../images/campaign/buffett_0.jpg"
 import BenjaminGraham from "../../images/campaign/Benjamin-graham.jpg"
 
 import { useCallback, useEffect, useState } from "react";
+import CampaignForm from "./CampaignForm";
 
 
 const getNextFriday = () => {
     const today = new Date();
     const dayOfWeek = today.getDay();
-    const daysUntilFriday = (6 - dayOfWeek + 7) % 7;
+    const daysUntilFriday = (7 - dayOfWeek + 7) % 7;
     const nextFriday = new Date(today);
     nextFriday.setDate(today.getDate() + daysUntilFriday);
 
@@ -73,16 +74,18 @@ const getNextFriday = () => {
 
 const CampaignShareMarket = () => {
 
+    const [showModal, setShowModal] = useState(false)
+
     const [timeLeft, setTimeLeft] = useState<any>('');
 
     // Function to calculate the next Friday at 4 PM
     const getNextFridayAt4PM = () => {
         const now = new Date();
         const dayOfWeek = now.getDay();
-        const daysUntilFriday = (6 - dayOfWeek + 7) % 7; // 5 is Friday
+        const daysUntilFriday = (7 - dayOfWeek + 7) % 7; // 5 is Friday
         const nextFriday = new Date(now);
         nextFriday.setDate(now.getDate() + daysUntilFriday); // Set to next Friday
-        nextFriday.setHours(16, 0, 0, 0); // Set time to 4 PM (16:00)
+        nextFriday.setHours(20, 0, 0, 0); // Set time to 4 PM (16:00)
 
         return nextFriday;
     };
@@ -123,6 +126,15 @@ const CampaignShareMarket = () => {
         return () => clearInterval(intervalId as any);
     }, [updateCountdown]);
 
+    const showModalClick = useCallback(() => {
+        setShowModal(true)
+    }, [])
+
+    const hideModalClick = useCallback(() => {
+        setShowModal(false)
+    }, [])
+
+
     return (
         <>
             <div className="campaignWrapper">
@@ -146,7 +158,7 @@ const CampaignShareMarket = () => {
                                 <h3 className="mb-4">
                                     Learn How to <span>Trade,</span> <span>Invest,</span> and{" "}
                                     <span>Grow</span>{" "}<br></br>
-                               
+
                                     <span>Your Wealth</span> - Even if You've <span>Failed</span>{" "}
                                     Before!
                                 </h3>
@@ -165,7 +177,7 @@ const CampaignShareMarket = () => {
                     <div className="container">
                         <div className="row justify-content-center">
                             <div className="col-md-8 col-12 text-center">
-                                <Button className="btn btn-outline-primary">
+                                <Button onClick={() => showModalClick()} className="btn btn-outline-primary">
                                     Yes, Show Me To How To Make Profit!
                                 </Button>
                             </div>
@@ -191,11 +203,11 @@ const CampaignShareMarket = () => {
                                     <li><span>
                                         <img src={Icon2} alt="" title="" />
                                         Time
-                                    </span> 4:00 PM</li>
+                                    </span> 8:00 PM</li>
                                     <li> <span>
                                         <img src={Icon3} alt="" title="" />
                                         Duration
-                                    </span>  1 Hour</li>
+                                    </span>  2 Hour</li>
                                     <li> <span>
                                         <img src={Icon4} alt="" title="" />
                                         Venue
@@ -317,7 +329,7 @@ const CampaignShareMarket = () => {
                     <div className="container">
                         <div className="row justify-content-center">
                             <div className="col-md-8 col-12 text-center">
-                                <Button className="btn btn-outline-primary">
+                                <Button onClick={() => showModalClick()} className="btn btn-outline-primary">
                                     Yes, Show Me To How To Make Profit!
                                 </Button>
                             </div>
@@ -657,7 +669,7 @@ const CampaignShareMarket = () => {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className="faqs">
                     <div className="container">
                         <div className="row justify-content-center ">
@@ -719,9 +731,21 @@ const CampaignShareMarket = () => {
                         </div>
                     </div>
                 </div>
-
- 
             </div>
+            {showModal &&
+                <>
+                    <div className="modelPopupOverlay"></div>
+                    <div className="modelPopup">
+                        <div className="modelPopupInner">
+                            <div className="header">
+                                <h5>Register Now</h5>
+                                <Button className="btn btn-primary closeButton" onClick={() => hideModalClick()} >X</Button>
+                            </div>
+                            <CampaignForm></CampaignForm>
+                        </div>
+                    </div>
+                </>
+            }
         </>
     );
 };

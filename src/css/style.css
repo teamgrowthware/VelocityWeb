@@ -127,6 +127,8 @@ body {
     text-align: center;
     width: 100%;
     aspect-ratio: 16 / 6; /* Height will be auto-calculated */
+    height: 300px;
+    background-position: center !important;
 }
 .overLay {
     position: absolute;
@@ -683,7 +685,7 @@ p {
     max-width: 900px;
     margin: auto;
     z-index: 1;
-    margin-top: 60px;
+    margin-top: -35px;
     position: relative;
     display: flex;
     gap: 8px;
@@ -1769,9 +1771,12 @@ tbody tr:hover,
     height: 40px;
     width: 40px;
     text-align: center;
+    transition: transform 0.3s ease; /* Smooth zoom effect */
     line-height: 40px;
 }
-
+.floatedMenu ul li a:hover {
+    transform: scale(1.25);
+}
 .floatedMenu ul li:last-child {
     margin-bottom: 0px;
 }
@@ -1801,4 +1806,234 @@ tbody tr:hover,
         display: block;
         margin: 0px;
     }
+}
+.modelPopupOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #00000090;
+    z-index: 1001;
+    top: 0px;
+    left: 0px;
+    animation: slideUp 0.1s ease-out forwards;
+}
+.modelPopup {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    height: 360px;
+    z-index: 10002;
+    background: #fff;
+    margin: -225px 0 0 -200px;
+    animation: slideUp 0.3s ease-out forwards;
+}
+.modelPopupInner {
+    padding: 30px;
+}
+.modelPopup .header {
+    margin: -25px -25px 15px -25px;
+    padding: 8px;
+    background: #ffdfce;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modelPopup .header h5 {
+    margin: 0px;
+    padding: 0px;
+}
+.modelPopup .btn {
+    width: 150px;
+}
+.modelPopup .btn.closeButton {
+    width: 50px;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.float-menu-outer {
+    position: fixed;
+    left: 30px;
+    bottom: 10px;
+    z-index: 100;
+}
+.float-menu-outer-course.float-menu-outer {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+    margin: -200px 0px 0px -150px;
+}
+.float-menu {
+    box-shadow: 5px 5px 15px #ccc;
+    background: #ffe8db;
+    padding: 16px;
+    width: 400px;
+}
+.float-menu-button {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 10000;
+}
+.close.float-menu-outer .float-menu-button {
+    left: 0px;
+    top: -40px;
+    box-shadow: 0px 5px 15px #00000090;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 135px;
+    background: #fff !important;
+}
+.btn.float-menu-button {
+    border: 1px solid #fd5f07 !important;
+    color: #fd5f07;
+    background: none !important;
+    height: 30px;
+    padding: 0px;
+    line-height: 30px;
+    /* width: 30px; */
+    padding-top: 2px;
+}
+.btn.float-menu-button:hover {
+    background: #fd5f07 !important;
+    color: #fff !important;
+}
+.dropdown-menu2 {
+    overflow-y: scroll;
+    height: 300px;
+}
+.float-menu .dropdown-menu2 {
+    top: auto;
+    bottom: 100%;
+    z-index: 100000;
+}
+/* .float-menu .dropdown-menu2 .selectList li {
+    font-size: 12px;
+}
+.float-menu .dropdown .form-control {
+    font-size: 12px;
+    white-space: nowrap;
+} */
+
+.float-menu-overlay {
+}
+
+.popup-course-overlay {
+    background: #00000099;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    z-index: 10001;
+}
+.popup-course {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 10002;
+    width: 360px;
+    background: #fff;
+    padding: 16px;
+    margin: -160px 0px 0px -160px;
+}
+
+@media only screen and (max-width: 540px) {
+    .float-menu-outer {
+        width: 90%;
+    }
+
+    .modelPopup {
+        position: absolute;
+        left: 3%;
+        top: 0%;
+        width: 96%;
+        height: auto;
+        z-index: 10002;
+        margin: 0px;
+    }
+}
+
+.form-control.PhoneInput {
+    display: flex;
+}
+.form-control.PhoneInput .PhoneInputInput,
+.form-control.PhoneInput .PhoneInputInput:focus,
+.form-control.PhoneInput .PhoneInputInput--focus,
+.form-control.PhoneInput .PhoneInputInput:hover {
+    border: none !important;
+}
+
+.pfa {
+    background: url(../images/pfa.jpg) center center no-repeat fixed;
+    background-size: cover;
+    padding: 80px 0px 120px 0px;
+    position: relative;
+    color: #fff;
+}
+
+.pfa .overlay {
+    background: #00000095;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+.pfa .container {
+    position: relative;
+    z-index: 1;
+}
+.pfa strong {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+.SubscribeNewsletter .error-msg.display-block {
+    position: absolute;
+}
+
+.bannerInner2 {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    aspect-ratio: 16 / 6; /* Height will be auto-calculated */
+    height: 350px;
+}
+
+.courseList3 {
+    padding: 30px 0px;
+}
+.courseList3 .infoBox {
+    border: 1px solid #cccccc90;
+    padding: 20px 20px 20px 20px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth zoom effect */
+    background: #fff;
+}
+
+.courseList3 .infoBox:hover {
+    border: 1px solid #fd5f07;
+
+    position: relative;
+    z-index: 10;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+.sliderWrapper2 {
+    height: 300px;
 }

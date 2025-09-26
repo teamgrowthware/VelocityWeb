@@ -6,8 +6,17 @@ import BannerCourses from "../../images/BannerCourses.png"
 import { ThemeContext } from "../Context/Theme/Context";
 import { EnquiryDetails } from "../../servies/services";
 import { toast } from "react-toastify";
+import validateEmail, { hasOnlyLetters, isOnlyNumbers } from "../../Library/Utility/Utility";
+
+declare global {
+    interface Window {
+        fbq: (...args: any[]) => void;
+    }
+}
+
 
 const Contact = () => {
+    const [isInValid, setIsInValid] = useState(true)
     const [pageContent, setPageContent] = useState<any>({})
     const [formData, setFormData] = useState<any>();
     const [courseOptions, setCourseOptions] = useState<any>([]);
@@ -43,45 +52,60 @@ const Contact = () => {
             formData?.mobile?.length > 1 &&
             formData?.course?.length > 1
         ) {
-            const date = new Date()
-            const userInput = {
-                name: formData.name,
-                email_id: formData.email,
-                mobile: formData.mobile,
-                course_preference_1: formData.course,
-                description: formData.message,
-                created_by: formData.name,
-                enquiry_mode: "student",
-                next_followup_date: date.toISOString(),
-                status: "0"
-            }
-            const response = await EnquiryDetails(userInput);
-            console.log("response", response?.data)
-            if (response?.data?.isSuccess) {
-                toast.success("Email has been sent");
-                setFormData({
-                    name: '',
-                    email: '',
-                    course: '',
-                    message: ''
-                })
+
+            const cusotmValidateInput = validateEmail(formData?.email);
+            const hasOnlyLetterstt = hasOnlyLetters(formData?.name)
+            const isOnlyNumbersValid = isOnlyNumbers(formData?.mobile)
+
+            if (cusotmValidateInput && hasOnlyLetterstt && isOnlyNumbersValid && formData?.mobile?.length === 10) {
+                const date = new Date()
+                const userInput = {
+                    name: formData.name,
+                    email_id: formData.email,
+                    mobile: formData.mobile,
+                    course_preference_1: formData.course,
+                    description: formData.message,
+                    created_by: formData.name,
+                    enquiry_mode: "student",
+                    next_followup_date: date.toISOString(),
+                    status: "0"
+                }
+                const response = await EnquiryDetails(userInput);
+                console.log("response", response?.data)
+                if (response?.data?.isSuccess) {
+                    if (window.fbq) {
+                        window.fbq('track', 'Lead');
+                    }
+                    toast.success("Email has been sent");
+                    setFormData({
+                        name: '',
+                        email: '',
+                        course: '',
+                        message: ''
+                    })
+                } else {
+                    toast.error("Something went wrong, please try again");
+                }
+
             } else {
-                toast.error("Something went wrong, please try again");
+                toast.error("Enter valid email id or mobile number or name");
             }
         } else {
             toast.error("Fill all required fields");
         }
     }
 
+    useEffect(() => {
+        if (formData?.name?.length > 1 && formData?.email?.length > 1 && formData?.mobile?.length > 1 && formData?.course?.length > 1) {
+            setIsInValid(false)
+        } else {
+            setIsInValid(true)
+        }
+    }, [formData])
+
     return (
         <Wrapper pageTitle="Dashboard" breadcrumbList={null}>
-            <div className="bannerInner">
-                <img
-                    src={pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses}
-                    alt=""
-                    title=""
-                />
-            </div>
+           <div className="bannerInner" style={{background:`url(${pageContent?.cms_image ? process.env.react_app_base_url + "/" + pageContent?.cms_image : BannerCourses})`}}> </div>
             <div className="contactUsPage">
                 <div className="container">
                     <h1 className="text-center">Contact Us</h1>
@@ -105,8 +129,8 @@ const Contact = () => {
                                                 Near Bharti Vidyapeeth,<br></br>
                                                 Shriram Nagar, Katraj,<br></br>
                                                 Pune, Maharashtra 411046.</p>
-                                                <p><a className={"none"} href="tel:+919422761663"><span className="material-symbols-outlined">phone_in_talk</span> +91 94227 61663 </a> </p>
-                                                <p><a className={"none"} href="mailto:info@vctcpune.com" title="info@vctcpune.com"><span className="material-symbols-outlined">mail</span>info@vctcpune.com </a></p>
+                                            <p><a className={"none"} href="tel:+919422761663"><span className="material-symbols-outlined">phone_in_talk</span> +91 94227 61663 </a> </p>
+                                            <p><a className={"none"} href="mailto:info@vctcpune.com" title="info@vctcpune.com"><span className="material-symbols-outlined">mail</span>info@vctcpune.com </a></p>
                                             <p><span className="material-symbols-outlined">schedule</span> 10:00AM to 05:30PM</p>
                                         </div>
                                     </div>
@@ -156,9 +180,9 @@ const Contact = () => {
                                     <h5>Enquiry Now</h5>
                                     <p className="none">Drop us a line, someone from our team will get in touch with you shortly.</p>
                                     <div className="row">
-                                        <Input col="6" onChangeSingleCallback={onChangeSingleCallback} labelName="Name" inputName="name"></Input>
-                                        <Input col="6" onChangeSingleCallback={onChangeSingleCallback} labelName="Email Id" inputName="email"></Input>
-                                        <Input col="6" onChangeSingleCallback={onChangeSingleCallback} labelName="Contact No" inputName="mobile"></Input>
+                                        <Input col="6" inputType="text" onChangeSingleCallback={onChangeSingleCallback} labelName="Name" inputName="name"></Input>
+                                        <Input col="6" inputType="email" onChangeSingleCallback={onChangeSingleCallback} labelName="Email Id" inputName="email"></Input>
+                                        <Input col="6" inputType="number" onChangeSingleCallback={onChangeSingleCallback} labelName="Contact No" inputName="mobile"></Input>
                                         <Select
                                             col="6"
                                             inputName={"course"}
@@ -177,7 +201,7 @@ const Contact = () => {
                                             isLoading={true}
                                             value={formData?.course}></Select>
                                         <div className="col-12">
-                                            <Button onClick={() => submit()} className="btn btn-primary col-1">Submit</Button>
+                                            <Button onClick={() => submit()} disabled={isInValid} className="btn btn-primary col-1">Submit</Button>
                                         </div>
 
                                     </div>

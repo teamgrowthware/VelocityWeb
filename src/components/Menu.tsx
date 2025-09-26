@@ -11,6 +11,7 @@ const Menu = () => {
                     <CourseMenu></CourseMenu>
                 </li>
                 <li><NavLink to={"/upcoming-batches"}>Upcoming Batches</NavLink></li>
+                {/* <li><NavLink to={"/blog"}>Blog</NavLink></li>s */}
                 <li><NavLink to={"/testimonials"}>Testimonials</NavLink></li>
                 <li><NavLink to={"/cms/refer-and-earn"}>Refer & Earn</NavLink></li>
                 <li><NavLink to={"/contact-us"}>Contact Us</NavLink></li>

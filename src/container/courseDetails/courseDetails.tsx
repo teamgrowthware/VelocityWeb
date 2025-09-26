@@ -6,6 +6,7 @@ import { getCenterBatchByCourseId, getCourseSlug } from "../../servies/services"
 import Testimonials from "../Testimonials/Testimonials";
 import CourseModules from "./CourseModules";
 import Clients from "../../components/Clients";
+import BannerCourses from "../../images/BannerCourses.png"
 
 const CourseDetails = () => {
     const { title } = useParams();
@@ -96,13 +97,7 @@ const CourseDetails = () => {
     return (
         <>
             <Wrapper>
-                <div className="bannerInner">
-                    <img
-                        src={process.env.react_app_base_url + "/" + pageContent?.image}
-                        alt=""
-                        title=""
-                    />
-                </div>
+                <div className="bannerInner" style={{background:`url(${pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses})`}}> </div>
 
                 <div className="contentMain">
                     <div className="container">

@@ -161,7 +161,7 @@ body {
     margin-bottom: 36px;
     text-align: center;
 }
-
+.aboutTrainers  a{ color: #fff; text-decoration: underline;}
 .aboutTrainers h3 {
     font-size: 21px;
     color: #fff;

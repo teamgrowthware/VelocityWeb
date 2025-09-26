@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { EnquiryFrontendDetails } from "../servies/services";
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
+import validateEmail, { isOnlyNumbers } from "../Library/Utility/Utility";
+import FloatMenu from "./FloatMenu";
 const Footer = () => {
 
     const [formData, setFormData] = useState<any>();
@@ -18,7 +20,7 @@ const Footer = () => {
 
     useEffect(() => {
         if (formData?.email_id?.length > 3 &&
-            formData?.mobile?.length > 3) {
+            formData?.mobile?.length === 10) {
             setDisabled(false)
         } else {
             setDisabled(true)
@@ -29,23 +31,30 @@ const Footer = () => {
         if (formData?.email_id?.length > 1 &&
             formData?.mobile?.length > 1
         ) {
-            const userInput = {
-                email: formData.email_id,
-                mobile: formData.mobile,
-                organization_id: "vctc",
-                created_by: formData.email_id,
-                status: "0"
-            }
-            const response = await EnquiryFrontendDetails(userInput);
-            console.log("response", response?.data)
-            if (response?.data?.isSuccess) {
-                toast.success("Email has been sent");
-                setFormData({
-                    name: '',
-                    email: '',
-                })
+            const cusotmValidateInput = validateEmail(formData?.email);
+            const isOnlyNumbersValid = isOnlyNumbers(formData?.mobile)
+            if (cusotmValidateInput && isOnlyNumbersValid) {
+                const userInput = {
+                    email: formData.email_id,
+                    mobile: formData.mobile,
+                    organization_id: "vctc",
+                    created_by: formData.email_id,
+                    status: "0"
+                }
+                const response = await EnquiryFrontendDetails(userInput);
+                console.log("response", response?.data)
+                if (response?.data?.isSuccess) {
+                    toast.success("Email has been sent");
+                    setFormData({
+                        name: '',
+                        email: '',
+                    })
+                } else {
+                    toast.error("Something went wrong, please try again");
+                }
             } else {
-                toast.error("Something went wrong, please try again");
+                toast.error("Enter valid email id or mobile number");
+
             }
         } else {
             toast.error("Fill all required fields");
@@ -54,6 +63,20 @@ const Footer = () => {
 
     return (
         <>
+            <div className="pfa">
+                <div className="overlay"></div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col"> <strong>1,00,000+</strong> Students Trained </div>
+                        <div className="col"> <strong>5+</strong> Centers </div>
+                        <div className="col"> <strong>5+</strong> Expert Instructors </div>
+                        <div className="col"> <strong>15+</strong> Courses </div>
+                        <div className="col"> <strong>105+</strong> Corporate Clients </div>
+                        <div className="col"> <strong>50+</strong> Academic Associations</div>
+                    </div>
+                </div>
+            </div>
+
             <div className="floatedMenu">
                 <ul>
                     <li><a className={"btn btn-primary"} href="tel:+919422761663"><span className="material-symbols-outlined">
@@ -106,6 +129,8 @@ const Footer = () => {
                 </div>
 
             </div>
+
+            <FloatMenu></FloatMenu>
         </>
     )
 }

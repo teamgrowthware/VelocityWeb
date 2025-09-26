@@ -277,3 +277,32 @@ export const getClients = async () => {
     console.log("response", response)
     return response;
 };
+
+
+// Blog
+
+export const getBlog = async (id, useCache) => {
+    console.log("service getBlog", id)
+    const response = await API.get(process.env.react_app_base_url + '/api/v1/cms/cms/bytype/Blog?sortBy=order_id', {
+        headers: {
+            "auth-token": `${token}`,
+        }
+    })
+    console.log("response", response)
+    return response;
+};
+
+// cms-slug
+
+
+
+export const getBlogDetails = async (slug, useCache) => {
+    console.log("service getBlog", slug)
+    const response = await API.get(process.env.react_app_base_url + `/api/v1/cms/cms-slug/${slug}`, {
+        headers: {
+            "auth-token": `${token}`,
+        }
+    })
+    console.log("response", response)
+    return response;
+};

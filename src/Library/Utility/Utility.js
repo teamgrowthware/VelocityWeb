@@ -7,6 +7,14 @@ export const validateEmail = (email) => {
     return regexp.test(email);
 }
 
+export const hasOnlyLetters = (str) => {
+    return /^[A-Za-z]+$/.test(str);
+}
+
+export const isOnlyNumbers = (str) => {
+    return /^\d+$/.test(str);
+}
+
 export const validateUrl = (url) => {
     const regexp = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
     return url.match(regexp);
