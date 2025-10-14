@@ -12,7 +12,7 @@ const Testimonials = ({
     useEffect(() => {
         const getData = async () => {
             const testimonialsData = await getTestimonialsByCourseId('Testimonials')
-            console.log("testimonialsData?", testimonialsData?.data?.data)
+            console.log("testimonialsData?--", testimonialsData?.data?.data)
             setData(testimonialsData?.data?.data)
         }
         getData()
