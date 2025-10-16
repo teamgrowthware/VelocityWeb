@@ -14,7 +14,6 @@ declare global {
     }
 }
 
-
 const Contact = () => {
     const [isInValid, setIsInValid] = useState(true)
     const [pageContent, setPageContent] = useState<any>({})
@@ -28,8 +27,6 @@ const Contact = () => {
     };
 
     const { coursesList } = useContext(ThemeContext)
-
-
 
     useEffect(() => {
         if (coursesList?.length > 0) {
@@ -110,31 +107,60 @@ const Contact = () => {
 
 
             <div className="container py-5">
-                <h1 className=" text-center fw-bold text-black shadow-sm">Contact Us</h1>
-                <p className="text-center mb-5 text-muted">
+                <h1 className="text-center fw-bold text-black shadow-sm animate-fadeInDown" style={{
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                }}>
+                    Contact Us
+                </h1>
+                <p className="text-center mb-5 text-muted animate-fadeInDown delay-100">
                     We would love to provide you with more information and answer any questions that you might have. <br />
                     We look forward to hearing from you.
                 </p>
 
                 {/* Branch Locations Section */}
-                <h1 className="text-center mb-4">Our Branches</h1>
+                <h1 className="text-center mb-4 animate-fadeInUp delay-200" style={{
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                }}>
+                    Our Branches
+                </h1>
                 <div className="row g-4 mb-5">
 
-                    {/* Katraj Branch */}
-                    <div className="col-md-6">
-                        <div className="card shadow-lg p-3 h-100 rounded-3 border-info border-3">
+                    <div className="col-md-6 animate-fadeInLeft delay-300">
+                        <div className="card shadow-lg p-3 h-100 rounded-3 branch-card hover-lift">
                             <div className="card-body">
-                                <h4 className="card-title text-primary fw-bold mb-3">Katraj Branch</h4>
+                                <h4 className="card-title fw-bold mb-3 d-flex align-items-center gap-2" style={{ color: '#667eea' }}>
+                                    <span className="material-symbols-outlined icon-float">location_city</span>
+                                    Katraj Branch
+                                </h4>
                                 <div className="mb-4">
-                                    <p className="text-dark">
-                                        <span className="material-symbols-outlined align-middle me-2 text-info">map</span>
+                                    <p className="text-dark contact-info-item">
+                                        <span className="material-symbols-outlined align-middle me-2" style={{ color: '#667eea' }}>map</span>
                                         Velocity Corporate Training Center, Panche Mall, 12, Datta Nagar Rd,
                                         Near Bharti Vidyapeeth, Shriram Nagar, Katraj,
                                         Pune, Maharashtra 411046.
                                     </p>
-                                    <p><a className="text-decoration-none text-dark" href="tel:+919422761663"><span className="material-symbols-outlined align-middle me-2 text-info">phone_in_talk</span> +91 94227 61663 </a></p>
-                                    <p><a className="text-decoration-none text-dark" href="mailto:info@vctcpune.com" title="info@vctcpune.com"><span className="material-symbols-outlined align-middle me-2 text-info">mail</span> info@vctcpune.com </a></p>
-                                    <p className="text-dark"><span className="material-symbols-outlined align-middle me-2 text-info">schedule</span> 10:00AM to 05:30PM</p>
+                                    <p className="contact-info-item">
+                                        <a className="text-decoration-none text-dark" href="tel:+919422761663">
+                                            <span className="material-symbols-outlined align-middle me-2" style={{ color: '#667eea' }}>phone_in_talk</span>
+                                            +91 94227 61663
+                                        </a>
+                                    </p>
+                                    <p className="contact-info-item">
+                                        <a className="text-decoration-none text-dark" href="mailto:info@vctcpune.com" title="info@vctcpune.com">
+                                            <span className="material-symbols-outlined align-middle me-2" style={{ color: '#667eea' }}>mail</span>
+                                            info@vctcpune.com
+                                        </a>
+                                    </p>
+                                    <p className="text-dark contact-info-item">
+                                        <span className="material-symbols-outlined align-middle me-2" style={{ color: '#667eea' }}>schedule</span>
+                                        10:00AM to 05:30PM
+                                    </p>
                                 </div>
 
                                 <iframe
@@ -144,26 +170,43 @@ const Contact = () => {
                                     height="450"
                                     loading="lazy"
                                     className="border rounded-3"
+                                    style={{ border: '3px solid #667eea' }}
                                 ></iframe>
                             </div>
                         </div>
                     </div>
 
                     {/* Viman Nagar Branch */}
-                    <div className="col-md-6">
-                        <div className="card shadow-lg p-3 h-100 rounded-3 border-info border-3">
+                    <div className="col-md-6 animate-fadeInRight delay-400">
+                        <div className="card shadow-lg p-3 h-100 rounded-3 branch-card hover-lift">
                             <div className="card-body">
-                                <h4 className="card-title text-primary fw-bold mb-3">Viman Nagar Branch</h4>
+                                <h4 className="card-title fw-bold mb-3 d-flex align-items-center gap-2" style={{ color: '#667eea' }}>
+                                    <span className="material-symbols-outlined icon-float">location_city</span>
+                                    Viman Nagar Branch
+                                </h4>
                                 <div className="mb-4">
-                                    <p className="text-dark">
-                                        <span className="material-symbols-outlined align-middle me-2 text-info">map</span>
+                                    <p className="text-dark contact-info-item">
+                                        <span className="material-symbols-outlined align-middle me-2" style={{ color: '#667eea' }}>map</span>
                                         Velocity Corporate Training Center, Laxmi Narsinh Nivas, 2nd floor,
                                         Kanhur Pathar Patsanstha, Chandan Nagar,
                                         Pune, Maharashtra 411014
                                     </p>
-                                    <p><a className="text-decoration-none text-dark" href="tel:+919422761663"><span className="material-symbols-outlined align-middle me-2 text-info">phone_in_talk</span> +91 94227 61663 </a></p>
-                                    <p><a className="text-decoration-none text-dark" href="mailto:info@vctcpune.com" title="info@vctcpune.com"><span className="material-symbols-outlined align-middle me-2 text-info">mail</span> info@vctcpune.com </a></p>
-                                    <p className="text-dark"><span className="material-symbols-outlined align-middle me-2 text-info">schedule</span> 10:00AM to 05:30PM</p>
+                                    <p className="contact-info-item">
+                                        <a className="text-decoration-none text-dark" href="tel:+919422761663">
+                                            <span className="material-symbols-outlined align-middle me-2" style={{ color: '#667eea' }}>phone_in_talk</span>
+                                            +91 94227 61663
+                                        </a>
+                                    </p>
+                                    <p className="contact-info-item">
+                                        <a className="text-decoration-none text-dark" href="mailto:info@vctcpune.com" title="info@vctcpune.com">
+                                            <span className="material-symbols-outlined align-middle me-2" style={{ color: '#667eea' }}>mail</span>
+                                            info@vctcpune.com
+                                        </a>
+                                    </p>
+                                    <p className="text-dark contact-info-item">
+                                        <span className="material-symbols-outlined align-middle me-2" style={{ color: '#667eea' }}>schedule</span>
+                                        10:00AM to 05:30PM
+                                    </p>
                                 </div>
 
                                 <iframe
@@ -173,6 +216,7 @@ const Contact = () => {
                                     height="450"
                                     loading="lazy"
                                     className="border rounded-3"
+                                    style={{ border: '3px solid #667eea' }}
                                 ></iframe>
                             </div>
                         </div>

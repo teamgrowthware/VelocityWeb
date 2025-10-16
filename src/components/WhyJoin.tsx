@@ -1,19 +1,8 @@
 import { useEffect, useState } from "react"
 import Img1 from "../images/why1.png"
 import { getWhyUs } from "../servies/services"
-// import './WhyJoin.css'
-// Import Check icon from a library like react-icons if available, or just use a simple div/span with a checkmark
-// For this example, I'll use a simple SVG or a stylized character in the CSS
-// import { Check } from 'react-feather'; // Example using react-feather
 
-// Define the structure for your data items
-interface WhyUsItem {
-  cms_id: string | number;
-  cms_title: string;
-  cms_image: string;
-  cms_description: string;
-}
-
+// Color gradient mapping
 const colorGradients = [
   "linear-gradient(135deg, #f97316 0%, #ea580c 100%)", // orange
   "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)", // blue
@@ -23,187 +12,376 @@ const colorGradients = [
   "linear-gradient(135deg, #ec4899 0%, #db2777 100%)", // pink
 ];
 
-
-
 const WhyJoin = () => {
-  const [data, setData] = useState<WhyUsItem[]>([]);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [pageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
+    // Trigger page load animation
+    const timer = setTimeout(() => {
+      setPageLoaded(true);
+    }, 100);
+
     const getData = async () => {
+      setLoading(true);
       const testimonialsData = await getWhyUs()
-      setData(testimonialsData?.data?.data || [])
+      console.log("testimonialsData?", testimonialsData?.data?.data)
+      setData(testimonialsData?.data?.data)
+      setLoading(false);
     }
     getData()
-  }, [])
 
-  // Determines the color gradient for the sticky card's border/accent
-  const getBorderColor = (index: number) => {
-    return colorGradients[index % colorGradients.length];
-  };
+    return () => clearTimeout(timer);
+  }, [])
 
   return (
     <>
       <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInDown {
+          from {
+            opacity: 0;
+            transform: translateY(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes floatImage {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        @keyframes shimmer {
+          0% {
+            background-position: -1000px 0;
+          }
+          100% {
+            background-position: 1000px 0;
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
         .why-join-section {
+          min-height: 100vh;
           background: linear-gradient(135deg, #fff5f0 0%, #ffffff 50%, #fef1f8 100%);
           padding: 80px 0;
+          opacity: 0;
+          animation: fadeIn 0.8s ease-out forwards;
         }
+
+        .why-join-section.loaded {
+          animation: fadeIn 0.8s ease-out forwards;
+        }
+
         .section-header {
           text-align: center;
-          margin-bottom:375px;
+          margin-bottom: 60px;
+          opacity: 0;
         }
+
+        .section-header.loaded {
+          animation: fadeInDown 1s ease-out forwards;
+        }
+
         .section-title {
           font-size: 3.5rem;
           font-weight: bold;
           color: #1e293b;
           margin-bottom: 1rem;
         }
+
         .section-title .highlight {
           color: #2563eb;
           background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
+
         .section-subtitle {
           font-size: 1.25rem;
           color: #64748b;
           max-width: 700px;
           margin: 0 auto;
         }
-       
-        .sticky-container {
+
+        .grid-container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+          padding: 20px 0;
+          opacity: 0;
+        }
+
+        .grid-container.loaded {
+          animation: fadeInScale 0.8s ease-out 0.3s forwards;
+        }
+
+        /* Loading Skeleton Styles */
+        .skeleton-card {
+          background: white;
+          border-radius: 24px;
+          padding: 2rem;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+          height: 100%;
+          opacity: 0;
+          animation: scaleIn 0.5s ease-out forwards;
+        }
+
+        .skeleton-card:nth-child(1) { animation-delay: 0.1s; }
+        .skeleton-card:nth-child(2) { animation-delay: 0.2s; }
+        .skeleton-card:nth-child(3) { animation-delay: 0.3s; }
+        .skeleton-card:nth-child(4) { animation-delay: 0.4s; }
+        .skeleton-card:nth-child(5) { animation-delay: 0.5s; }
+        .skeleton-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .skeleton {
+          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+          background-size: 1000px 100%;
+          animation: shimmer 2s infinite;
+          border-radius: 8px;
+        }
+
+        .skeleton-image {
+          width: 80px;
+          height: 80px;
+          margin: 0 auto 1.5rem;
+          border-radius: 16px;
+        }
+
+        .skeleton-title {
+          height: 24px;
+          width: 70%;
+          margin-bottom: 1rem;
+        }
+
+        .skeleton-line {
+          height: 12px;
+          margin-bottom: 0.75rem;
+          border-radius: 4px;
+        }
+
+        .skeleton-line:nth-child(1) { width: 100%; }
+        .skeleton-line:nth-child(2) { width: 90%; }
+        .skeleton-line:nth-child(3) { width: 80%; }
+
+        /* Feature Card Styles */
+        .feature-card {
+          opacity: 0;
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .content-card {
+          background: white;
+          border-radius: 24px;
+          padding: 2rem;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          height: 100%;
+          display: flex;
+          flex-direction: column;
           position: relative;
-          paddingBottom: '100px'
+          overflow: hidden;
         }
-       
-        /* Adjust this value to control the "height/spacing between cards"
-          - Higher value means more space/scroll before the next card sticks. */
-    .sticky-item-wrapper {
-  min-height: 100vh;
-  margin-top: -40vh; /* overlap effect */
-  position: relative;
-}
 
-.sticky-card {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background: white;
-  border-radius: 24px;
-  padding: 3rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  border-width: 4px;
-  border-style: solid;
-  border-color: transparent;
-  max-width: 1140px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
+        .content-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--card-gradient);
+          transform: scaleX(0);
+          transition: transform 0.4s ease;
+        }
 
-.sticky-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
- 
-        /* Responsive adjustments for the sticky effect */
-        @media (max-width: 991.98px) {
-          .sticky-item-wrapper {
-            min-height: auto;
-            margin-bottom: 40px;
-          }
-          .sticky-card {
-            position: static;
-            top: auto;
-            margin: 0 auto;
-            display: block;
-            max-width: 100%;
-          }
-          .sticky-card img {
-            max-width: 50%;
-            margin-bottom: 20px;
-          }
+        .content-card:hover::before {
+          transform: scaleX(1);
         }
- 
-        /* ========================================================= */
-        /* --- Content Styles --- */
-        /* ========================================================= */
-       
-        .content-title {
-          font-size: 2rem;
-          font-weight: bold;
-          color: #1e293b;
-          margin-bottom: 1.5rem;
+
+        .content-card:hover {
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+          transform: translateY(-10px);
         }
-       
-        .feature-image-wrapper {
-          flex-shrink: 0;
-          width: 45%;
+
+        .image-container {
           display: flex;
           justify-content: center;
           align-items: center;
+          margin-bottom: 1.5rem;
+          padding: 1.5rem;
+          background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+          border-radius: 16px;
+          transition: all 0.3s ease;
         }
-       
-        .feature-image-wrapper img {
-          max-width: 40%;
-          height: auto;
-          transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-          border-radius: 12px;
+
+        .content-card:hover .image-container {
+          background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
         }
-       
-        .sticky-card:hover .feature-image-wrapper img {
-          transform: scale(1.05);
+
+        .feature-image {
+          width: 80px;
+          height: 80px;
+          object-fit: contain;
+          transition: transform 0.3s ease;
         }
-       
-        .feature-content-side {
-          width: 55%;
-          padding-left: 2rem;
+
+        .content-card:hover .feature-image {
+          animation: floatImage 2s ease-in-out infinite;
         }
- 
-        /* RTL/Reverse layout styles */
-        .reverse .feature-content-side {
-          padding-left: 0;
-          padding-right: 2rem;
+
+        .content-title {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #1e293b;
+          margin-bottom: 1rem;
+          transition: color 0.3s ease;
         }
-       
-        .reverse {
-          flex-direction: row-reverse;
+
+        .content-card:hover .content-title {
+          color: #2563eb;
         }
- 
-        /* Style the dynamically loaded content (using ql-editor) */
+
+        .ql-editor {
+          flex: 1;
+        }
+
         .ql-editor ul {
           list-style: none;
           padding: 0;
           margin: 0;
         }
-       
+
         .ql-editor li {
           display: flex;
           align-items: flex-start;
-          margin-bottom: 1rem;
-          font-size: 1.05rem;
+          margin-bottom: 0.75rem;
+          font-size: 0.95rem;
           color: #475569;
-          transition: color 0.2s ease;
+          transition: all 0.2s ease;
+          padding-left: 0;
         }
-       
+
+        .ql-editor li:hover {
+          color: #1e293b;
+          padding-left: 5px;
+        }
+
         .ql-editor li::before {
           content: "✓";
-          width: 24px;
-          height: 24px;
-          margin-right: 12px;
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
           margin-top: 2px;
           flex-shrink: 0;
           color: #2563eb;
           font-weight: bold;
-          font-size: 1.2rem;
+          font-size: 1rem;
+          transition: transform 0.2s ease;
+        }
+
+        .ql-editor li:hover::before {
+          transform: scale(1.2);
+        }
+
+        .ql-editor p {
+          margin-bottom: 0.75rem;
+          color: #475569;
+          line-height: 1.6;
+          font-size: 0.95rem;
+        }
+
+        @media (max-width: 1199.98px) {
+          .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+          }
+        }
+
+        @media (max-width: 767.98px) {
+          .section-title {
+            font-size: 2rem;
+          }
+
+          .grid-container {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+
+          .content-card {
+            padding: 1.5rem;
+          }
+
+          .feature-image {
+            width: 60px;
+            height: 60px;
+          }
+
+          .content-title {
+            font-size: 1.25rem;
+          }
         }
       `}</style>
 
-      <div className="why-join-section py-6 py-md-7">
+      <div className={`why-join-section ${pageLoaded ? 'loaded' : ''}`}>
         <div className="container">
           {/* Header Section */}
-          <div className="section-header mb-6">
+          <div className={`section-header ${pageLoaded ? 'loaded' : ''}`}>
             <h1 className="section-title">
               Why to join <span className="highlight">Velocity?</span>
             </h1>
@@ -212,39 +390,38 @@ const WhyJoin = () => {
             </p>
           </div>
 
-          {/* Sticky Scroll Container */}
-          <div className="sticky-container">
-            {data?.map((item: WhyUsItem, index: number) => {
+          {/* Grid Features Section */}
+          <div className={`grid-container ${pageLoaded ? 'loaded' : ''}`}>
+            {loading ? (
+              // Loading Skeleton
+              [...Array(6)].map((_, index) => (
+                <div key={index} className="skeleton-card">
+                  <div className="skeleton skeleton-image"></div>
+                  <div className="skeleton skeleton-title"></div>
+                  <div className="skeleton-lines">
+                    <div className="skeleton skeleton-line"></div>
+                    <div className="skeleton skeleton-line"></div>
+                    <div className="skeleton skeleton-line"></div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              // Actual Content
+              data?.map((item: any, index: any) => {
+                return (
+                  <div key={item?.cms_id || index} className="feature-card">
+                    <div className="content-card">
+                      {/* Image */}
+                      <div className="image-container">
+                        <img
+                          className="feature-image"
+                          src={item?.cms_image?.length > 5 ? process.env.react_app_base_url + "/" + item?.cms_image : Img1}
+                          alt={item.cms_title || "Feature"}
+                          title={item.cms_title || ""}
+                        />
+                      </div>
 
-              const isReverse = index % 2 !== 0;
-              const zIndex = index + 1;
-
-              return (
-                <div
-                  key={item?.cms_id || index}
-                  className="sticky-item-wrapper"
-                >
-
-                  <div
-                    className={`sticky-card ${isReverse ? 'reverse' : ''}`}
-                    style={{
-                      zIndex: zIndex,
-                      // borderImage: `${getBorderColor(index)} 1`,
-                      borderImageSlice: 1,
-                    }}
-
-                  >
-                    {/* Image Side */}
-                    <div className="feature-image-wrapper">
-                      <img
-                        src={item?.cms_image?.length > 5 ? process.env.react_app_base_url + "/" + item?.cms_image : Img1}
-                        alt={item.cms_title}
-                        title={item.cms_title}
-                      />
-                    </div>
-
-                    {/* Content Side */}
-                    <div className="feature-content-side">
+                      {/* Content */}
                       <h2 className="content-title">{item.cms_title}</h2>
                       <div
                         className="ql-editor"
@@ -252,9 +429,9 @@ const WhyJoin = () => {
                       />
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
         </div>
       </div>
