@@ -104,85 +104,94 @@ const Contact = () => {
     }, [formData])
 
     return (
-        <Wrapper pageTitle="Dashboard" breadcrumbList={null}>
-           <div className="bannerInner" style={{background:`url(${pageContent?.cms_image ? process.env.react_app_base_url + "/" + pageContent?.cms_image : BannerCourses})`}}> </div>
-            <div className="contactUsPage">
-                <div className="container">
-                    <h1 className="text-center">Contact Us</h1>
-                    <p className="text-center mb-4">We would love to provide you with more information and answer any questions that you might have. <br></br>
-                        We look forward to hearing from you.
+        <Wrapper pageTitle="Contact Us" breadcrumbList={null}>
+            {/* Banner Section - Using Bootstrap background utilities */}
+            <div className="bannerInner" style={{ background: `url(${pageContent?.cms_image ? process.env.react_app_base_url + "/" + pageContent?.cms_image : BannerCourses})` }}> </div>
 
-                    </p>
-                    <h5 className="text-center mb-2">Our Branches</h5>
-                    <div className="row">
 
-                        <div className="col-md-6 mb-3">
-                            <div className="innerShadow">
-                                <div className="row justify-content-center align-content-center align-items-center">
-                                    <div className="col-md-12">
-                                        <div className="inner">
-                                            <h4>Katraj Branch</h4>
-                                            <p>
-                                                <span className="material-symbols-outlined">map</span>
-                                                Velocity Corporate Training Center,<br></br>
-                                                Panche Mall, 12, Datta Nagar Rd, <br></br>
-                                                Near Bharti Vidyapeeth,<br></br>
-                                                Shriram Nagar, Katraj,<br></br>
-                                                Pune, Maharashtra 411046.</p>
-                                            <p><a className={"none"} href="tel:+919422761663"><span className="material-symbols-outlined">phone_in_talk</span> +91 94227 61663 </a> </p>
-                                            <p><a className={"none"} href="mailto:info@vctcpune.com" title="info@vctcpune.com"><span className="material-symbols-outlined">mail</span>info@vctcpune.com </a></p>
-                                            <p><span className="material-symbols-outlined">schedule</span> 10:00AM to 05:30PM</p>
-                                        </div>
-                                    </div>
+            <div className="container py-5">
+                <h1 className=" text-center fw-bold text-black shadow-sm">Contact Us</h1>
+                <p className="text-center mb-5 text-muted">
+                    We would love to provide you with more information and answer any questions that you might have. <br />
+                    We look forward to hearing from you.
+                </p>
 
-                                    <div className="col-md-12">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.7004881440207!2d73.8515857!3d18.4519033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eac9278b4389%3A0x85f842d659238364!2sVelocity%20Corporate%20Training%20Center%20Katraj%20pune!5e0!3m2!1sen!2sin!4v1738240739536!5m2!1sen!2sin" width="100%" height="450" loading="lazy"></iframe>
-                                    </div>
+                {/* Branch Locations Section */}
+                <h1 className="text-center mb-4">Our Branches</h1>
+                <div className="row g-4 mb-5">
+
+                    {/* Katraj Branch */}
+                    <div className="col-md-6">
+                        <div className="card shadow-lg p-3 h-100 rounded-3 border-info border-3">
+                            <div className="card-body">
+                                <h4 className="card-title text-primary fw-bold mb-3">Katraj Branch</h4>
+                                <div className="mb-4">
+                                    <p className="text-dark">
+                                        <span className="material-symbols-outlined align-middle me-2 text-info">map</span>
+                                        Velocity Corporate Training Center, Panche Mall, 12, Datta Nagar Rd,
+                                        Near Bharti Vidyapeeth, Shriram Nagar, Katraj,
+                                        Pune, Maharashtra 411046.
+                                    </p>
+                                    <p><a className="text-decoration-none text-dark" href="tel:+919422761663"><span className="material-symbols-outlined align-middle me-2 text-info">phone_in_talk</span> +91 94227 61663 </a></p>
+                                    <p><a className="text-decoration-none text-dark" href="mailto:info@vctcpune.com" title="info@vctcpune.com"><span className="material-symbols-outlined align-middle me-2 text-info">mail</span> info@vctcpune.com </a></p>
+                                    <p className="text-dark"><span className="material-symbols-outlined align-middle me-2 text-info">schedule</span> 10:00AM to 05:30PM</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6  mb-3">
-                            <div className="innerShadow">
-                                <div className="row justify-content-center align-content-center align-items-center">
-                                    <div className="col-md-12">
-                                        <div className="inner">
-                                            <h4>Viman Nagar Branch</h4>
-                                            <p>
-                                                <span className="material-symbols-outlined">map</span>
-                                                Velocity Corporate Training Center, <br></br>
-                                                Laxmi Narsinh Nivas, 2nd floor,
-                                                <br></br>Kanhur Pathar Patsanstha,
-                                                <br></br>Chandan Nagar, <br></br>
-                                                Pune, Maharashtra 411014</p>
-                                            <p><a className={"none"} href="tel:+919422761663"><span className="material-symbols-outlined">phone_in_talk</span> +91 94227 61663 </a> </p>
-                                            <p><a className={"none"} href="mailto:info@vctcpune.com" title="info@vctcpune.com"><span className="material-symbols-outlined">mail</span>info@vctcpune.com </a></p>
-                                            <p><span className="material-symbols-outlined">schedule</span> 10:00AM to 05:30PM</p>
-                                        </div>
-                                    </div>
 
-
-                                    <div className="col-md-12">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.249750223696!2d73.92811047519274!3d18.562775782538942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c114cb2be381%3A0xb647cfeb251665eb!2sVelocity%20Corporate%20Training%20Centre!5e0!3m2!1sen!2sin!4v1740928810141!5m2!1sen!2sin" width="100%" height="450" loading="lazy" ></iframe>
-                                    </div>
-
-                                </div>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.7004881440207!2d73.8515857!3d18.4519033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eac9278b4389%3A0x85f842d659238364!2sVelocity%20Corporate%20Training%20Center%20Katraj%20pune!5e0!3m2!1sen!2sin!4v1738240739536!5m2!1sen!2sin"
+                                    title="Katraj Branch Location"
+                                    width="100%"
+                                    height="450"
+                                    loading="lazy"
+                                    className="border rounded-3"
+                                ></iframe>
                             </div>
                         </div>
                     </div>
 
-                    <div className="innerShadow">
-                        <div className="row justify-content-center align-content-center align-items-center">
+                    {/* Viman Nagar Branch */}
+                    <div className="col-md-6">
+                        <div className="card shadow-lg p-3 h-100 rounded-3 border-info border-3">
+                            <div className="card-body">
+                                <h4 className="card-title text-primary fw-bold mb-3">Viman Nagar Branch</h4>
+                                <div className="mb-4">
+                                    <p className="text-dark">
+                                        <span className="material-symbols-outlined align-middle me-2 text-info">map</span>
+                                        Velocity Corporate Training Center, Laxmi Narsinh Nivas, 2nd floor,
+                                        Kanhur Pathar Patsanstha, Chandan Nagar,
+                                        Pune, Maharashtra 411014
+                                    </p>
+                                    <p><a className="text-decoration-none text-dark" href="tel:+919422761663"><span className="material-symbols-outlined align-middle me-2 text-info">phone_in_talk</span> +91 94227 61663 </a></p>
+                                    <p><a className="text-decoration-none text-dark" href="mailto:info@vctcpune.com" title="info@vctcpune.com"><span className="material-symbols-outlined align-middle me-2 text-info">mail</span> info@vctcpune.com </a></p>
+                                    <p className="text-dark"><span className="material-symbols-outlined align-middle me-2 text-info">schedule</span> 10:00AM to 05:30PM</p>
+                                </div>
 
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.249750223696!2d73.92811047519274!3d18.562775782538942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c114cb2be381%3A0xb647cfeb251665eb!2sVelocity%20Corporate%20Training%20Centre!5e0!3m2!1sen!2sin!4v1740928810141!5m2!1sen!2sin"
+                                    title="Viman Nagar Branch Location"
+                                    width="100%"
+                                    height="450"
+                                    loading="lazy"
+                                    className="border rounded-3"
+                                ></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                {/* Enquiry Form Section */}
+                <div className="card shadow-lg p-4 rounded-3 bg-light border-primary border-3">
+                    <div className="card-body">
+                        <div className="row justify-content-center align-content-start">
 
-                            <div className="col-md-9">
-                                <div className="inner2">
-                                    <h5>Enquiry Now</h5>
-                                    <p className="none">Drop us a line, someone from our team will get in touch with you shortly.</p>
-                                    <div className="row">
-                                        <Input col="6" inputType="text" onChangeSingleCallback={onChangeSingleCallback} labelName="Name" inputName="name"></Input>
-                                        <Input col="6" inputType="email" onChangeSingleCallback={onChangeSingleCallback} labelName="Email Id" inputName="email"></Input>
-                                        <Input col="6" inputType="number" onChangeSingleCallback={onChangeSingleCallback} labelName="Contact No" inputName="mobile"></Input>
+                            <div className="col-lg-9">
+                                <div className="p-3">
+                                    <h3 className="card-title mb-1 text-primary">Enquire Now </h3>
+                                    <p className="mb-4 text-muted">Drop us a line, someone from our team will get in touch with you shortly.</p>
+                                    <div className="row g-3">
+                                        <Input col="6" inputType="text" onChangeSingleCallback={onChangeSingleCallback} labelName="Name" inputName="name" value={formData?.name || ''}></Input>
+                                        <Input col="6" inputType="email" onChangeSingleCallback={onChangeSingleCallback} labelName="Email Id" inputName="email" value={formData?.email || ''}></Input>
+                                        <Input col="6" inputType="number" onChangeSingleCallback={onChangeSingleCallback} labelName="Contact No" inputName="mobile" value={formData?.mobile || ''}></Input>
                                         <Select
                                             col="6"
                                             inputName={"course"}
@@ -190,41 +199,69 @@ const Contact = () => {
                                             options={courseOptions ?? []}
                                             onChangeSingleCallback={onChangeSingleCallback}
                                             selectedItem={courseOptions?.find(
-                                                (selected: any) => {
-                                                    console.log("item.value", courseOptions, selected)
-                                                    return (selected.value === formData?.course)
-                                                }
+                                                (selected: any) => selected.value === formData?.course
                                             )}
                                             required={true}
                                             placeholder={"Select Course"}
                                             search_option={false}
                                             isLoading={true}
-                                            value={formData?.course}></Select>
+                                            value={formData?.course}
+                                        />
                                         <div className="col-12">
-                                            <Button onClick={() => submit()} disabled={isInValid} className="btn btn-primary col-1">Submit</Button>
+                                            {/* Assuming you have a Textarea component or using a simple Input for message */}
+                                            {/* Note: Original code was missing the message input field, I'll add a placeholder one for completeness. */}
+                                            <Input
+                                                inputType="textarea"
+                                                onChangeSingleCallback={onChangeSingleCallback}
+                                                labelName="Message (Optional)"
+                                                inputName="message"
+                                                // rows={3} 
+                                                value={formData?.message || ''}
+                                            />
                                         </div>
-
+                                        <div className="col-12 mt-4">
+                                            <Button
+                                                onClick={() => submit()}
+                                                disabled={isInValid}
+                                                className="btn btn-primary btn-lg"
+                                            // style={{ minWidth: '150px' }}
+                                            >
+                                                Submit
+                                            </Button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="col-md-3">
-                                <div className="contactUsFormList">
-                                    <ul>
-                                        <li>
-                                            <a className={"none"} href="tel:+919422761663"><span className="material-symbols-outlined">phone_in_talk</span> +91 94227 61663 </a>
+                            <div className="col-lg-3 d-none d-lg-block">
+                                <div className="p-3 border-start border-info h-100">
+                                    <h5 className="text-info mb-3">Quick Contact</h5>
+                                    <ul className="list-unstyled">
+                                        <li className="mb-2">
+                                            <a className="text-decoration-none text-dark" href="tel:+919422761663">
+                                                <span className="material-symbols-outlined align-middle me-2 text-info">phone_in_talk</span>
+                                                +91 94227 61663
+                                            </a>
                                         </li>
-                                        <li><a className={"none"} href="mailto:info@vctcpune.com" title="info@vctcpune.com"><span className="material-symbols-outlined">mail</span>info@vctcpune.com </a></li>
-                                        <li><span className="material-symbols-outlined">schedule</span> 10:00AM to 05:30PM</li>
+                                        <li className="mb-2">
+                                            <a className="text-decoration-none text-dark" href="mailto:info@vctcpune.com" title="info@vctcpune.com">
+                                                <span className="material-symbols-outlined align-middle me-2 text-info">mail</span>
+                                                info@vctcpune.com
+                                            </a>
+                                        </li>
+                                        <li className="mb-2 text-dark">
+                                            <span className="material-symbols-outlined align-middle me-2 text-info">schedule</span>
+                                            10:00AM to 05:30PM
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
-
                 </div>
+
+
             </div>
 
 

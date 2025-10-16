@@ -1,0 +1,248 @@
+/* Main Footer */
+.main-footer {
+    background: linear-gradient(to bottom right, #0f172a, #581c87, #0f172a);
+    color: #ccc;
+    padding: 60px 20px 40px;
+}
+
+.footer-section {
+    margin-bottom: 30px;
+}
+
+.footer-title {
+    color: #ff9500;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: #ff9500;
+}
+
+.footer-description {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.visit-us {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: rgba(255, 149, 0, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.visit-us .material-symbols-outlined {
+    color: #ff9500;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.visit-us p {
+    margin: 0;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-links a::before {
+    content: '›';
+    color: #ff9500;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.footer-links a:hover {
+    color: #ff9500;
+    transform: translateX(5px);
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px;
+    color: #ccc;
+    font-size: 0.95rem;
+    padding: 10px 0px 10px 0px;
+}
+
+.contact-info .material-symbols-outlined {
+    color: #ff9500;
+    font-size: 20px;
+}
+
+.separator {
+    color: #555;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    /* justify-content: flex-end; */
+    gap: 15px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 149, 0, 0.2);
+    border-radius: 50%;
+    color: #ff9500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.social-icons a:hover {
+    background: #ff9500;
+    color: white;
+    transform: translateY(-5px);
+}
+
+/* Copyright */
+.copyright-text {
+    color: #999;
+    font-size: 0.9rem;
+    margin: 0 0 15px;
+}
+
+.footer-bottom-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: #ff9500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stat-item h3 {
+        font-size: 2rem;
+    }
+
+    .newsletter-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .footer-title {
+        font-size: 1.1rem;
+    }
+
+    .social-icons {
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .contact-info {
+        justify-content: center;
+    }
+
+    .floated-menu {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .btn-floating {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-section {
+        padding: 40px 15px;
+    }
+
+    .stat-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .stat-item p {
+        font-size: 0.85rem;
+    }
+
+    .main-footer {
+        padding: 40px 15px 30px;
+    }
+
+    .newsletter-form {
+        max-width: 100%;
+    }
+
+    .footer-title::after {
+        width: 30px;
+    }
+}
+
+
+.hover-scale {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.5rem 1rem rgba(0, 123, 255, 0.25) !important;
+}
+
+.btn-subscribe {
+    background: linear-gradient(to right, #f97316, #ec4899);
+    /* orange to pink */
+    color: white;
+    font-weight: 200;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.65rem 1.4rem;
+    margin-bottom: 4px;
+    box-shadow: 0 10px 15px rgba(249, 115, 22, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}

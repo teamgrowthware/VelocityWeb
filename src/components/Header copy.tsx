@@ -11,17 +11,16 @@ const Header = ({
 
         <div className="container">
           <div className="row justify-content-center align-items-center">
-            <div className="col-md-2 col-4">
+            <div className="col-md-2  col-6">
               <div className="logoPlaceholder">
-                <NavLink to={"/"}> <img src={Logo} alt="" title="" style={{ width: "30%" }} />
-                </NavLink>
+                <NavLink to={"/"}><img src={Logo} alt="" title="" /></NavLink>
               </div>
             </div>
-            <div className="col-md-8 col-4 text-right">
+            <div className="col-md-8 col-6 text-right">
               <ResponsiveMenu></ResponsiveMenu>
             </div>
 
-            <div className="col-md-2 col-4 text-right">
+            <div className="col-md-2 text-right">
               <a className={"btn btn-primary"} href="tel:+919422761663">Call Us</a>
             </div>
           </div>
