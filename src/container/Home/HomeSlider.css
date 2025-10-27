@@ -1,0 +1,105 @@
+/* Container height reduced: use max-height to control banner size */
+.slider-container {
+  height: 60vh;            /* reduced height */
+  max-height: 500px;       /* never taller than 500px */
+  min-height: 300px;       /* reasonable minimum on small screens */
+}
+
+/* Each slide content fills container */
+.slide-content {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Pagination Dots */
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.62);
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+  transition: all 0.25s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #0d6efd; /* Bootstrap primary */
+  transform: scale(1.25);
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #0d6efd !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+  z-index: 30;
+}
+
+.nav-btn:hover {
+  background: #0d6efd !important;
+  color: #fff !important;
+  transform: scale(1.05);
+}
+
+/* Slide Transition */
+.swiper-slide {
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.swiper-slide-active {
+  transform: scale(1.02);
+}
+
+/* Fade-Up Animation for content */
+.fade-up {
+  animation: fadeUp 900ms ease both;
+  z-index: 20;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Text Shadow for Readability */
+.text-shadow {
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Slight background zoom for active slide */
+.slider-container .swiper-slide-active {
+  background-size: 105%;
+  transition: background-size 4s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .slider-container {
+    height: 45vh;
+    max-height: 380px;
+    min-height: 220px;
+  }
+
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .fade-up .display-6 {
+    font-size: 1.25rem;
+  }
+}

@@ -4,7 +4,6 @@ import { ThemeContext } from '../Context/Theme/Context';
 import Wrapper from '../Wrapper';
 import ReferrerForm from './ReferrerForm';
 import BannerCourses from '../../images/BannerCourses.png';
-// import './CMSPages.css';
 
 const CMSPages = () => {
     const { pagesList } = useContext(ThemeContext);

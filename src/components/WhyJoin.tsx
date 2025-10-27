@@ -2,23 +2,12 @@ import { useEffect, useState } from "react"
 import Img1 from "../images/why1.png"
 import { getWhyUs } from "../servies/services"
 
-// Color gradient mapping
-const colorGradients = [
-  "linear-gradient(135deg, #f97316 0%, #ea580c 100%)", // orange
-  "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)", // blue
-  "linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)", // teal
-  "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)", // yellow
-  "linear-gradient(135deg, #a855f7 0%, #9333ea 100%)", // purple
-  "linear-gradient(135deg, #ec4899 0%, #db2777 100%)", // pink
-];
-
 const WhyJoin = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
-    // Trigger page load animation
     const timer = setTimeout(() => {
       setPageLoaded(true);
     }, 100);
@@ -380,7 +369,6 @@ const WhyJoin = () => {
 
       <div className={`why-join-section ${pageLoaded ? 'loaded' : ''}`}>
         <div className="container">
-          {/* Header Section */}
           <div className={`section-header ${pageLoaded ? 'loaded' : ''}`}>
             <h1 className="section-title">
               Why to join <span className="highlight">Velocity?</span>
@@ -393,7 +381,6 @@ const WhyJoin = () => {
           {/* Grid Features Section */}
           <div className={`grid-container ${pageLoaded ? 'loaded' : ''}`}>
             {loading ? (
-              // Loading Skeleton
               [...Array(6)].map((_, index) => (
                 <div key={index} className="skeleton-card">
                   <div className="skeleton skeleton-image"></div>
@@ -406,12 +393,10 @@ const WhyJoin = () => {
                 </div>
               ))
             ) : (
-              // Actual Content
               data?.map((item: any, index: any) => {
                 return (
                   <div key={item?.cms_id || index} className="feature-card">
                     <div className="content-card">
-                      {/* Image */}
                       <div className="image-container">
                         <img
                           className="feature-image"
@@ -421,7 +406,6 @@ const WhyJoin = () => {
                         />
                       </div>
 
-                      {/* Content */}
                       <h2 className="content-title">{item.cms_title}</h2>
                       <div
                         className="ql-editor"

@@ -9,6 +9,7 @@ const AboutUs = () => {
     const [pageContent, setPageContent] = useState<any>({})
     const [centerData, setCenterData] = useState<any>([])
 
+    
     useEffect(() => {
         const getData = async () => {
             const data = await getCenters()

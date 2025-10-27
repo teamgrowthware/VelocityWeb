@@ -14,7 +14,6 @@ const Courses = () => {
 
             <div className="bannerInner" style={{ background: `url(${BannerCourses})` }}> </div>
 
-            {/* Courses Grid */}
             <div style={{
                 background: 'linear-gradient(to bottom, #f8f9fa, #ffffff)',
                 minHeight: 'calc(100vh - 400px)',
