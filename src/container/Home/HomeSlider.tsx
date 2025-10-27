@@ -3,10 +3,9 @@ import { getSliders } from "../../servies/services";
 import { NavLink } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "./HomeSlider.css";
 
 const HomeSlider: React.FC = () => {
@@ -17,30 +16,24 @@ const HomeSlider: React.FC = () => {
     useEffect(() => {
         const getData = async () => {
             const data = await getSliders();
-            // safe fallback if API shape differs
             setSliderData(data?.data?.data || []);
         };
         getData();
     }, []);
 
     return (
-        <div className="position-relative w-100 overflow-hidden home-slider">
+        <div className="position-relative w-100 overflow-hidden home-slider mb-0">
             <Swiper
-                modules={[Navigation, Pagination, Autoplay]}
-                // We will wire navigation elements using onBeforeInit so refs work
+                modules={[Navigation, Autoplay]} // Removed Pagination
                 navigation={{
                     prevEl: prevRef.current,
                     nextEl: nextRef.current,
                 }}
-                pagination={{ clickable: true }}
                 autoplay={{ delay: 4000, disableOnInteraction: false }}
                 loop={true}
                 speed={800}
-                // reduced height via CSS class (see HomeSlider.css)
                 className="w-100 slider-container"
                 onBeforeInit={(swiper) => {
-                    // assign navigation elements before init so custom buttons work
-                    // @ts-ignore - Swiper types expect different shape, this is a reliable workaround
                     if (swiper.params && (swiper.params as any).navigation) {
                         (swiper.params as any).navigation.prevEl = prevRef.current;
                         (swiper.params as any).navigation.nextEl = nextRef.current;
@@ -48,7 +41,6 @@ const HomeSlider: React.FC = () => {
                 }}
             >
                 {sliderData.length === 0 ? (
-                    // Single fallback slide while data is loading or empty
                     <SwiperSlide>
                         <div
                             className="d-flex flex-column justify-content-center align-items-center text-center position-relative slide-content"
@@ -57,6 +49,7 @@ const HomeSlider: React.FC = () => {
                                     'url("https://img.freepik.com/free-photo/hercules-hall-surrounded-by-greenery-sunlight-daytime-munich-germany_181624-17876.jpg?w=1060")',
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
+                                height: "68vh",
                             }}
                         >
                             <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
@@ -85,19 +78,18 @@ const HomeSlider: React.FC = () => {
                                         }")`,
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
+                                    height: "40vh",
                                 }}
                             >
-                                {/* Dark Overlay */}
                                 <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
 
-                                {/* Content */}
                                 <div className="position-relative text-white px-4 fade-up">
                                     <h2 className="display-6 fw-bold mb-3 text-shadow text-white">
                                         {item?.cms_title || "Welcome to Velocity Training Center"}
                                     </h2>
                                     <p className="lead mb-3 text-light">
-
-                                        "Empowering learners with industry-ready skills in IT, Software, and Emerging Technologies. Start your journey today!"
+                                        Empowering learners with industry-ready skills in IT, Software, and
+                                        Emerging Technologies. Start your journey today!
                                     </p>
 
                                     {item?.cms_tags && (
@@ -114,7 +106,7 @@ const HomeSlider: React.FC = () => {
                     ))
                 )}
 
-                {/* Custom Navigation Buttons wired by refs */}
+                {/* Navigation Buttons */}
                 <button
                     ref={prevRef}
                     className="swiper-button-prev btn btn-light rounded-circle position-absolute top-50 start-0 translate-middle-y ms-3 shadow nav-btn"

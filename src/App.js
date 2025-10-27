@@ -26,7 +26,7 @@ import CampaignShareMarket from './container/Campaign/CampaignShareMarket';
 import Blog from './container/Blog/Blog';
 import BlogDetails from './container/Blog/BlogDetails';
 import ThankYouCampaign from './container/Campaign/ThankYouCampaign';
-import InstituteGallery from './container/Gallary/InstituteGallery';
+import Ourgallary from './container/Gallary/OurGallary';
 
 function App() {
   setUpAxios();
@@ -35,7 +35,7 @@ function App() {
     <>
       <BrowserRouter basename={'/beta'} >
         <ThemeProvider>
-          <ScrollToTop path={window.location.pathname} />
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/testimonials" element={<TestimonialsWrapper />} />
@@ -49,7 +49,7 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/campaign/share-market" element={<CampaignShareMarket />} />
             <Route path="/campaign/share-market-thank-you" element={<ThankYouCampaign />} />
-            <Route path="/gallary" element={<InstituteGallery />} />
+            <Route path="/gallary" element={<Ourgallary />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
           <ToastContainer></ToastContainer>

@@ -5,12 +5,14 @@ import WhyJoin from "../../components/WhyJoin"
 import CourseCluster from "./CourseCluster"
 import UpcomingBatch from "../UpcomingBatches/UpcomingBatch"
 import Clients from "../../components/Clients"
+import InstituteGallery from "../Gallary/InstituteGallery"
 
 const Home = () => {
     return (
         <>
             <Wrapper>
                 <HomeSlider></HomeSlider>
+                <WhyJoin></WhyJoin>
                 <CourseCluster></CourseCluster>
                 <div className="container mb-5">
                     <div className="row">
@@ -28,7 +30,8 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <WhyJoin></WhyJoin>
+                <InstituteGallery />
+
 
 
                 {/* <div className="container">

@@ -101,7 +101,7 @@ const WhyJoin = () => {
         .why-join-section {
           min-height: 100vh;
           background: linear-gradient(135deg, #fff5f0 0%, #ffffff 50%, #fef1f8 100%);
-          padding: 80px 0;
+          padding-top: 40px;
           opacity: 0;
           animation: fadeIn 0.8s ease-out forwards;
         }
@@ -112,7 +112,7 @@ const WhyJoin = () => {
 
         .section-header {
           text-align: center;
-          margin-bottom: 60px;
+          margin-bottom: 20px;
           opacity: 0;
         }
 

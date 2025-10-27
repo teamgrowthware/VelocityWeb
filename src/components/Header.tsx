@@ -22,7 +22,7 @@ const Header = ({
             </div>
 
             <div className="col-md-2 col-4 text-right">
-              <a className={"btn btn-primary"} href="tel:+919422761663">Call Us</a>
+              <NavLink to={"/contact-us"}>  <a className={"btn btn-primary"} href="tel:+919422761663">Call Us</a></NavLink>
             </div>
           </div>
 

@@ -1,190 +1,263 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal } from "react-bootstrap";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface GalleryItem {
-  id: number;
-  title: string;
-  category: string;
-  imageUrl: string;
-  description: string;
+interface GalleryImage {
+    id: number;
+    src: string;
+    title: string;
+    description: string;
+    category: string;
 }
 
 const InstituteGallery: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
-  const galleryItems: GalleryItem[] = [
-    {
-      id: 1,
-      title: 'Main Campus Building',
-      category: 'campus',
-      imageUrl: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop',
-      description: 'Our state-of-the-art main campus building'
-    },
-    {
-      id: 2,
-      title: 'Computer Laboratory',
-      category: 'facilities',
-      imageUrl: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&h=400&fit=crop',
-      description: 'Modern computer lab with latest technology'
-    },
-    {
-      id: 3,
-      title: 'Library & Study Area',
-      category: 'facilities',
-      imageUrl: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop',
-      description: 'Extensive library with thousands of books'
-    },
-    {
-      id: 4,
-      title: 'Sports Complex',
-      category: 'sports',
-      imageUrl: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&h=400&fit=crop',
-      description: 'Multi-purpose sports facility'
-    },
-    {
-      id: 5,
-      title: 'Annual Day Celebration',
-      category: 'events',
-      imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop',
-      description: 'Students performing at annual day'
-    },
-    {
-      id: 6,
-      title: 'Science Laboratory',
-      category: 'facilities',
-      imageUrl: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&h=400&fit=crop',
-      description: 'Well-equipped science lab for experiments'
-    },
-    {
-      id: 7,
-      title: 'Graduation Ceremony',
-      category: 'events',
-      imageUrl: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop',
-      description: 'Annual graduation ceremony'
-    },
-    {
-      id: 8,
-      title: 'Auditorium',
-      category: 'campus',
-      imageUrl: 'https://images.unsplash.com/photo-1462826303086-329426d1aef5?w=600&h=400&fit=crop',
-      description: 'Spacious auditorium for events'
-    },
-    {
-      id: 9,
-      title: 'Basketball Court',
-      category: 'sports',
-      imageUrl: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop',
-      description: 'Outdoor basketball court'
-    }
-  ];
+    // ✅ Custom navigation button refs
+    const prevRef = useRef<HTMLButtonElement | null>(null);
+    const nextRef = useRef<HTMLButtonElement | null>(null);
 
-  const categories = [
-    { value: 'all', label: 'All' },
-    { value: 'campus', label: 'Campus' },
-    { value: 'facilities', label: 'Facilities' },
-    { value: 'sports', label: 'Sports' },
-    { value: 'events', label: 'Events' }
-  ];
+    const galleryImages: GalleryImage[] = [
+        {
+            id: 1,
+            src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200",
+            title: "Campus Building",
+            description:
+                "Our modern campus facilities with state-of-the-art infrastructure",
+            category: "Infrastructure",
+        },
+        {
+            id: 2,
+            src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200",
+            title: "Library",
+            description:
+                "Extensive collection with digital resources and comfortable study areas",
+            category: "Infrastructure",
+        },
+        {
+            id: 3,
+            src: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1200",
+            title: "Classroom Learning",
+            description:
+                "Interactive and engaged learning environment with modern teaching aids",
+            category: "Academics",
+        },
+        {
+            id: 4,
+            src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200",
+            title: "Laboratory",
+            description:
+                "Advanced research and experimentation facilities for hands-on learning",
+            category: "Research",
+        },
+        {
+            id: 5,
+            src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200",
+            title: "Workshops & Seminars",
+            description: "Regular knowledge sharing sessions with industry experts",
+            category: "Events",
+        },
+        {
+            id: 6,
+            src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=1200",
+            title: "Sports Complex",
+            description:
+                "Excellence in sports and fitness activities for overall development",
+            category: "Sports",
+        },
+        {
+            id: 7,
+            src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200",
+            title: "Computer Lab",
+            description:
+                "High-tech computing facilities with latest software and hardware",
+            category: "Infrastructure",
+        },
+        {
+            id: 8,
+            src: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1200",
+            title: "Auditorium",
+            description:
+                "Large venue for events, ceremonies, and cultural programs",
+            category: "Infrastructure",
+        },
+    ];
 
-  const filteredItems = selectedCategory === 'all'
-    ? galleryItems
-    : galleryItems.filter(item => item.category === selectedCategory);
+    const handleImageClick = (image: GalleryImage): void => {
+        setSelectedImage(image);
+        setShowModal(true);
+    };
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-blue-600 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-5xl font-bold text-center mb-3">Institute Gallery</h1>
-          <p className="text-xl text-center text-blue-100">Explore our campus, facilities, and memorable moments</p>
-        </div>
-      </header>
+    const handleClose = (): void => {
+        setShowModal(false);
+        setSelectedImage(null);
+    };
 
-      {/* Filter Buttons */}
-      <div className="max-w-7xl mx-auto px-4 my-12">
-        <div className="flex flex-wrap justify-center gap-3">
-          {categories.map(category => (
-            <button
-              key={category.value}
-              className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
-                selectedCategory === category.value 
-                  ? 'bg-blue-600 text-white shadow-lg' 
-                  : 'bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50'
-              }`}
-              onClick={() => setSelectedCategory(category.value)}
-            >
-              {category.label}
-            </button>
-          ))}
-        </div>
-      </div>
+    return (
+        <>
+            <section className="py-5 bg-light">
+                <div className="container position-relative">
+                    {/* Header */}
+                    <div className="text-center mb-5">
+                        <h2 className="display-5 fw-bold text-dark mb-3">
+                            Our Institute Gallery
+                        </h2>
+                        <p className="lead text-muted">
+                            Explore our campus, facilities, and vibrant student life
+                        </p>
+                    </div>
 
-      {/* Gallery Grid */}
-      <div className="max-w-7xl mx-auto px-4 mb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map(item => (
-            <div 
-              key={item.id} 
-              className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform hover:-translate-y-2 hover:shadow-xl"
-              onClick={() => setSelectedImage(item)}
-            >
-              <img 
-                src={item.imageUrl} 
-                alt={item.title}
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-4">
-                <span className="inline-block bg-gray-200 text-gray-700 text-xs font-semibold uppercase px-3 py-1 rounded-full mb-2">
-                  {item.category}
-                </span>
-                <h5 className="text-xl font-bold mb-2">{item.title}</h5>
-                <p className="text-gray-600">{item.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+                    {/* Swiper Slider */}
+                    <Swiper
+                        modules={[Navigation, Pagination, Autoplay]}
+                        pagination={{ clickable: true }}
+                        autoplay={{ delay: 3000, disableOnInteraction: false }}
+                        loop={true}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        breakpoints={{
+                            320: { slidesPerView: 1 },
+                            576: { slidesPerView: 2 },
+                            768: { slidesPerView: 3 },
+                            992: { slidesPerView: 4 },
+                        }}
+                        onInit={(swiper) => {
+                            // ✅ connect buttons after init
+                            // @ts-ignore
+                            swiper.params.navigation.prevEl = prevRef.current;
+                            // @ts-ignore
+                            swiper.params.navigation.nextEl = nextRef.current;
+                            swiper.navigation.init();
+                            swiper.navigation.update();
+                        }}
+                        className="institute-gallery-swiper pb-5"
+                    >
+                        {galleryImages.map((image) => (
+                            <SwiperSlide key={image.id}>
+                                <div
+                                    className="card h-100 shadow-sm border-0 gallery-card"
+                                    onClick={() => handleImageClick(image)}
+                                    style={{ cursor: "pointer", overflow: "hidden" }}
+                                >
+                                    <div
+                                        className="position-relative"
+                                        style={{ height: "250px" }}
+                                    >
+                                        <img
+                                            src={image.src}
+                                            alt={image.title}
+                                            className="card-img-top h-100 w-100"
+                                            style={{
+                                                objectFit: "cover",
+                                                transition: "transform 0.3s ease",
+                                            }}
+                                            onMouseOver={(e) =>
+                                                (e.currentTarget.style.transform = "scale(1.1)")
+                                            }
+                                            onMouseOut={(e) =>
+                                                (e.currentTarget.style.transform = "scale(1)")
+                                            }
+                                        />
+                                        <div className="position-absolute top-0 end-0 m-2">
+                                            <span className="badge bg-primary">
+                                                {image.category}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="card-body text-center">
+                                        <h6 className="fw-bold mb-1">{image.title}</h6>
+                                        <p className="text-muted small mb-0">
+                                            {image.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
 
-        {filteredItems.length === 0 && (
-          <div className="text-center py-12">
-            <h4 className="text-2xl text-gray-500">No images found in this category</h4>
-          </div>
-        )}
-      </div>
+                    {/* ✅ Custom Navigation Buttons */}
+                    <button
+                        ref={prevRef}
+                        className="btn btn-light rounded-circle position-absolute top-50 start-0 translate-middle-y shadow-sm"
+                        style={{ width: "35px", height: "35px" }}
+                        aria-label="Previous"
+                    >
+                        <ChevronLeft size={18} />
+                    </button>
+                    <button
+                        ref={nextRef}
+                        className="btn btn-light rounded-circle position-absolute top-50 end-0 translate-middle-y shadow-sm"
+                        style={{ width: "35px", height: "35px" }}
+                        aria-label="Next"
+                    >
+                        <ChevronRight size={18} />
+                    </button>
+                </div>
+            </section>
 
-      {/* Lightbox Modal */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="relative max-w-5xl w-full">
-            <button 
-              className="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 z-10"
-              onClick={() => setSelectedImage(null)}
-            >
-              ×
-            </button>
-            <div className="text-center">
-              <img 
-                src={selectedImage.imageUrl} 
-                alt={selectedImage.title}
-                className="max-h-[70vh] w-auto mx-auto rounded-lg mb-4"
-              />
-              <h3 className="text-white text-3xl font-bold mb-2">{selectedImage.title}</h3>
-              <p className="text-gray-300 text-lg">{selectedImage.description}</p>
-            </div>
-          </div>
-        </div>
-      )}
+            {/* Modal for Full View */}
+            <Modal show={showModal} onHide={handleClose} centered size="xl">
+                <Modal.Header closeButton className="border-0">
+                    <Modal.Title>{selectedImage?.title}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="p-0">
+                    {selectedImage && (
+                        <>
+                            <img
+                                src={selectedImage.src}
+                                alt={selectedImage.title}
+                                className="img-fluid w-100"
+                                style={{ maxHeight: "80vh", objectFit: "contain" }}
+                            />
+                            <div className="p-4">
+                                <span className="badge bg-primary mb-2">
+                                    {selectedImage.category}
+                                </span>
+                                <p className="mb-0 text-muted fs-5">
+                                    {selectedImage.description}
+                                </p>
+                            </div>
+                        </>
+                    )}
+                </Modal.Body>
+            </Modal>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-6 mt-12">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-gray-300">&copy; 2024 Institute Gallery. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
-  );
+            {/* Custom CSS */}
+            <style>{`
+        .gallery-card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .swiper-pagination-bullet {
+          background: #000 !important;
+          opacity: 0.6;
+        }
+
+        .swiper-pagination-bullet-active {
+          background: #0d6efd !important;
+          opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+          .gallery-card {
+            margin-bottom: 1rem;
+          }
+        }
+      `}</style>
+        </>
+    );
 };
 
 export default InstituteGallery;
