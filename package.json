@@ -2,7 +2,7 @@
   "name": "vctc-pune",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://206.189.143.73/beta/",
+  "homepage": ".",
   "engines": {
     "node": "22.x",
     "pnpm": "10.12.4"
