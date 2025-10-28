@@ -34,7 +34,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter basename={'/beta'} >
+      <BrowserRouter  >
         <ThemeProvider>
           <ScrollToTop />
           <Routes>
