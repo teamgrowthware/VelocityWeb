@@ -101,7 +101,7 @@ const WhyJoin = () => {
         .why-join-section {
           min-height: 100vh;
           background: linear-gradient(135deg, #fff5f0 0%, #ffffff 50%, #fef1f8 100%);
-          padding-top: 40px;
+          padding-top: 30px;
           opacity: 0;
           animation: fadeIn 0.8s ease-out forwards;
         }
@@ -121,7 +121,7 @@ const WhyJoin = () => {
         }
 
         .section-title {
-          font-size: 3.5rem;
+          font-size: 2.5rem;
           font-weight: bold;
           color: #1e293b;
           margin-bottom: 1rem;
@@ -135,7 +135,7 @@ const WhyJoin = () => {
         }
 
         .section-subtitle {
-          font-size: 1.25rem;
+          font-size: 1.15rem;
           color: #64748b;
           max-width: 700px;
           margin: 0 auto;

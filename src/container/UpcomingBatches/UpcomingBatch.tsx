@@ -3,18 +3,18 @@ import { getCenters } from "../../servies/services"
 import { Calendar, ChevronRight, Clock, CreditCard, Users } from "lucide-react"
 
 const UpcomingBatch = () => {
-    const [centerData, setCenterData] = useState<any>([])
+  const [centerData, setCenterData] = useState<any>([])
 
-    useEffect(() => {
-        const getData = async () => {
-            const data = await getCenters()
-            setCenterData(data?.data?.data)
-        }
-        getData()
-    }, [])
-    return (
-        <>
-            <style>{`
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getCenters()
+      setCenterData(data?.data?.data)
+    }
+    getData()
+  }, [])
+  return (
+    <>
+      <style>{`
         .batch-header {
           background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
           color: white;
@@ -71,8 +71,8 @@ const UpcomingBatch = () => {
 
         .course-badge {
           background: linear-gradient(135deg, #0d6efd, #0a58ca);
-          width: 40px;
-          height: 40px;
+          width: 30px;
+          height: 30px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -174,102 +174,102 @@ const UpcomingBatch = () => {
           transform: translateX(4px);
         }
       `}</style>
-            <div className='row'>
+      <div className='row'>
 
-                <h4 className="display-5 fw-bold text-dark mb-2">Upcoming Batches</h4>
-                <div className="card batch-card">
-                    <div className="table-responsive">
-                        <table className="table table-hover mb-0">
-                            <thead>
-                                <tr>
-                                    <th>Course Name</th>
-                                    <th>Duration</th>
-                                    <th>Start Date</th>
-                                    <th>Schedule</th>
-                                    <th className="text-center">Payment</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {centerData?.map((item: any, idx: number) => (
-                                    <tr key={item.id}>
-                                        <td>
-                                            <div className="d-flex align-items-center gap-3">
-                                                <div className="course-badge">
-                                                    {idx + 1}
-                                                </div>
-                                                <div>
-                                                    <p className="course-name">{item.name}</p>
-                                                    {item.start_date !== 'TBD' && (
-                                                        <span className="badge badge-new">New Batch</span>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </td>
+        <h4 className="display-6 fw-bold text-dark mb-2">Upcoming Batches</h4>
+        <div className="card batch-card">
+          <div className="table-responsive">
+            <table className="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>Course Name</th>
+                  <th>Duration</th>
+                  <th>Start Date</th>
+                  <th>Schedule</th>
+                  <th className="text-center">Payment</th>
+                </tr>
+              </thead>
+              <tbody>
+                {centerData?.map((item: any, idx: number) => (
+                  <tr key={item.id}>
+                    <td>
+                      <div className="d-flex align-items-center gap-3">
+                        <div className="course-badge">
+                          {idx + 1}
+                        </div>
+                        <div>
+                          <p className="course-name">{item.name}</p>
+                          {item.start_date !== 'TBD' && (
+                            <span className="badge badge-new">New Batch</span>
+                          )}
+                        </div>
+                      </div>
+                    </td>
 
-                                        <td>
-                                            <div className="icon-wrapper">
-                                                <Clock size={18} />
-                                                <span className="fw-500">{item.duration}</span>
-                                            </div>
-                                        </td>
+                    <td>
+                      <div className="icon-wrapper">
+                        <Clock size={18} />
+                        <span className="fw-500">{item.duration}</span>
+                      </div>
+                    </td>
 
-                                        <td>
-                                            <div className="icon-wrapper">
-                                                <Calendar size={18} />
-                                                {item.start_date === 'TBD' ? (
-                                                    <span className="badge badge-coming">Coming Soon</span>
-                                                ) : (
-                                                    <span className="fw-500">
-                                                        {/* {new Date(item.start_date).toLocaleDateString('en-US', {
+                    <td>
+                      <div className="icon-wrapper">
+                        <Calendar size={18} />
+                        {item.start_date === 'TBD' ? (
+                          <span className="badge badge-coming">Coming Soon</span>
+                        ) : (
+                          <span className="fw-500">
+                            {/* {new Date(item.start_date).toLocaleDateString('en-US', {
                                                             month: 'short',
                                                             day: 'numeric',
                                                             year: 'numeric'
                                                         })} */}
-                                                        {item.start_date}
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </td>
+                            {item.start_date}
+                          </span>
+                        )}
+                      </div>
+                    </td>
 
-                                        <td>
-                                            <div className="icon-wrapper">
-                                                <Users size={18} />
-                                                <span className="fw-500">{item.batch_days}</span>
-                                            </div>
-                                        </td>
+                    <td>
+                      <div className="icon-wrapper">
+                        <Users size={18} />
+                        <span className="fw-500">{item.batch_days}</span>
+                      </div>
+                    </td>
 
-                                        <td className="text-center ">
+                    <td className="text-center ">
 
-                                            {item.end_date === 'https://www.google.com' ? (
-                                                <button
-                                                    disabled
-                                                    className="pay-btn"
-                                                >
-                                                    <CreditCard size={16} />
-                                                    Pay Now
-                                                </button>
-                                            ) : (
-                                                <a
-                                                    href={item.end_date}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="pay-btn"
-                                                >
-                                                    <CreditCard size={16} />
-                                                    Pay Now
-                                                    <ChevronRight size={16} className="chevron-icon" />
-                                                </a>
-                                            )}
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+                      {item.end_date === 'https://www.google.com' ? (
+                        <button
+                          disabled
+                          className="pay-btn"
+                        >
+                          <CreditCard size={16} />
+                          Pay Now
+                        </button>
+                      ) : (
+                        <a
+                          href={item.end_date}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="pay-btn"
+                        >
+                          <CreditCard size={16} />
+                          Pay Now
+                          <ChevronRight size={16} className="chevron-icon" />
+                        </a>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default UpcomingBatch
