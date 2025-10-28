@@ -14,7 +14,7 @@ import { setUpAxios } from './servies/services';
 import PageNotFound from './container/PageNotFound/PageNotFound';
 import Home from './container/Home/Home';
 import { ThemeProvider } from './container/Context/Theme/Context';
-import CourseDetails from './container/courseDetails/CourseDetails';
+// import CourseDetails from './container/courseDetails/CourseDetails';
 import Courses from './container/Courses/Courses';
 import TestimonialsWrapper from './container/Testimonials/TestimonialsWrapper';
 import CMSPages from './container/CMS/CMSPages';
@@ -27,6 +27,7 @@ import Blog from './container/Blog/Blog';
 import BlogDetails from './container/Blog/BlogDetails';
 import ThankYouCampaign from './container/Campaign/ThankYouCampaign';
 import Ourgallary from './container/Gallary/OurGallary';
+import CoursesDetails from './container/courseDetails/CoursesDetails';
 
 function App() {
   setUpAxios();
@@ -42,7 +43,7 @@ function App() {
             <Route path="/courses" element={<Courses />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogDetails />} />
-            <Route path="/courses/:title" element={<CourseDetails />} />
+            <Route path="/courses/:title" element={<CoursesDetails />} />
             <Route path="/cms/:slug" element={<CMSPages />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/upcoming-batches" element={<UpcomingBatches />} />
