@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://206.189.143.73/beta/",
   "engines": {
-    "node": "18.20.3",
+    "node": "22.x",
     "pnpm": "10.12.4"
   },
   "engineStrict": true,
