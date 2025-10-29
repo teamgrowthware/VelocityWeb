@@ -7,11 +7,13 @@ import useMobile from "../../Library/Utility/useMobile"
 
 const CourseCluster = () => {
     const navigate = useNavigate()
-    const [selectedItem, setSelectedItem] = useState('AI and Data Science')
+    const [selectedItem, setSelectedItem] = useState<string | null>("AI and Data Science")
     const [selectedItemData, setSelectedItemData] = useState([])
     const { mobileOnly } = useMobile()
 
     const [data, setData] = useState([])
+    const [categoryList, setCategoryList] = useState([])
+
     useEffect(() => {
         const getData = async () => {
             const clustersData = await getTestimonialsByCourseId('clusters')
@@ -29,7 +31,18 @@ const CourseCluster = () => {
         setSelectedItemData(clustersListData)
     }, [data])
 
-    const [categoryList, setCategoryList] = useState([])
+    const showcloseItem = useCallback((id: string) => {
+        if (selectedItem === id) {
+            // If same item clicked, close it (toggle)
+            setSelectedItem(null)
+            setSelectedItemData([])
+            return
+        }
+
+        setSelectedItem(id)
+        const clustersListData = data.filter((item: any) => item?.cms_category === id)
+        setSelectedItemData(clustersListData)
+    }, [data, selectedItem])
     useEffect(() => {
         const getData = async () => {
             const clustersData = await getCategoryforCMSType('clusters')
@@ -213,7 +226,7 @@ const CourseCluster = () => {
                                     <div key={item?.title}>
                                         <div
                                             className={`category-card d-flex justify-content-between align-items-center ${selectedItem === item?.title ? 'active' : ''}`}
-                                            onClick={() => showItem(item?.title)}
+                                            onClick={() => showcloseItem(item?.title)}
                                         >
                                             <Button className="courseBtn">{item?.title}</Button>
                                             <span className="material-symbols-outlined category-arrow">arrow_forward_ios</span>
@@ -221,10 +234,10 @@ const CourseCluster = () => {
 
                                         {item?.title === selectedItem && (
                                             <div className="mobile-courses-content">
-                                                <h2 className="courses-heading">{selectedItem}</h2>
+                                                {/* <h2 className="courses-heading">{selectedItem}</h2> */}
                                                 <div className="row g-3">
                                                     {selectedItemData?.map((course: any, idx: number) => (
-                                                        <div key={idx} className="col-6">
+                                                        <div key={idx} className="col-12 mb-3">
                                                             <div
                                                                 className="course-card"
                                                                 onClick={() => navigate(`${course?.cms_tags}`)}

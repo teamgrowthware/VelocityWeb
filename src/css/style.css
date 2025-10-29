@@ -44,6 +44,7 @@ body {
     /* background: #fff;
     box-shadow: 0px 0px 5px #cccccc80;
     justify-content: center; */
+    padding: 10px 0px;
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -159,6 +160,15 @@ body {
     height: 300px;
     background-position: center !important;
 }
+
+@media (max-width: 1024px) {
+    .bannerInner {
+        height: 20% !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+    }
+}
+
 
 .overLay {
     position: absolute;
@@ -2052,6 +2062,10 @@ a:hover.none {
         display: block;
         margin: 0px;
     }
+
+    /* .logoPlaceholder img {
+        width: 60% !important;
+    } */
 }
 
 .modelPopupOverlay {

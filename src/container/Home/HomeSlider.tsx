@@ -1,13 +1,11 @@
 import React from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import headerMain from "../../images/HomeSlider/Header.png";
 import group1570 from "../../images/HomeSlider/Group 1570.png";
 import group5836 from "../../images/HomeSlider/Group 5836.png";
 import group5828 from "../../images/HomeSlider/Group 5828.png";
 import icon from "../../images/HomeSlider/Icon.png";
 import group1580 from "../../images/HomeSlider/Group 1580.png";
 import group1580_1 from "../../images/HomeSlider/Group 1580 (1).png";
-import group from "../../images/HomeSlider/Group.png";
 import "./HomeSlider.css";
 
 const HomeSlider: React.FC = () => {
@@ -16,8 +14,8 @@ const HomeSlider: React.FC = () => {
             <Container>
                 <Row className="align-items-center">
                     {/* Left Content */}
-                    <Col lg={6} md={12} className="text-start mb-5 mb-lg-0">
-                        <h1 className="fw-bold   mb-4 hero-heading">
+                    <Col lg={6} md={12} className="text-lg-start text-center mb-5 mb-lg-0">
+                        <h1 className="fw-bold  fs-1 mb-4 hero-heading">
                             Upgrade Your Skills. <br />
                             Accelerate Your <br />
                             Career with <span className="text-primary">Velocity</span>
@@ -26,13 +24,15 @@ const HomeSlider: React.FC = () => {
                             Master the most in-demand IT courses, from coding to cloud, and
                             accelerate your journey toward a high-paying tech career.
                         </p>
-                        <Button
-                            variant="primary"
-                            size="lg"
-                            className="px-4 py-2 fw-semibold rounded-3"
-                        >
-                            Explore Courses
-                        </Button>
+                        <div className="d-lg-flex justify-content-lg-start justify-content-center">
+                            <Button
+                                variant="primary"
+                                size="lg"
+                                className="px-4 py-2 fw-semibold rounded-3"
+                            >
+                                Explore Courses
+                            </Button>
+                        </div>
                     </Col>
 
                     {/* Right Image Section */}

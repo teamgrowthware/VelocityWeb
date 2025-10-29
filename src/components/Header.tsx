@@ -1,37 +1,70 @@
 import { NavLink } from "react-router-dom";
-import Logo from "../images/logo.png"
+import Logo from "../images/logo.png";
 import ResponsiveMenu from "./ResponsiveMenu";
+import { useEffect, useState } from "react";
+import { Phone } from "lucide-react";
 
-const Header = ({
-  isLoading
-}: { isLoading?: boolean }) => {
+const Header = ({ isLoading }: { isLoading?: boolean }) => {
+  const [showFloat, setShowFloat] = useState(false);
+  useEffect(() => {
+    const checkWidth = () => {
+      if (window.innerWidth <= 990) {
+        setShowFloat(true);
+      } else {
+        setShowFloat(false);
+      }
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
   return (
     <>
-      <div className="header">
-
+      <div className="header py-3 border-bottom">
         <div className="container">
-          <div className="row justify-content-center align-items-center">
-            <div className="col-md-2 col-4">
-              <div className="logoPlaceholder">
-                <NavLink to={"/"}> <img src={Logo} alt="" title="" style={{ width: "30%" }} />
-                </NavLink>
-              </div>
-            </div>
-            <div className="col-md-8 col-4 text-right">
-              <ResponsiveMenu></ResponsiveMenu>
+          <div className="d-flex justify-content-between align-items-center">
+            {/* Logo (Left) */}
+            <div className="logoPlaceholder">
+              <NavLink to={"/"}>
+                <img
+                  src={Logo}
+                  alt="Velocity Logo"
+                  title="Velocity"
+                  className="img-fluid"
+                  style={{
+                    height: "50px",
+                    width: "auto",
+                    objectFit: "contain",
+                  }}
+                />
+              </NavLink>
             </div>
 
-            <div className="col-md-2 col-4 text-right">
-              <NavLink to={"/contact-us"}>  <a className={"btn btn-primary"} href="tel:+919422761663">Call Us</a></NavLink>
+            {/* Right Section */}
+            <div className="d-flex align-items-center gap-3">
+              {/* Menu (Right Corner) */}
+              <ResponsiveMenu />
+
+              {/* Call Us Button (Visible only ≥ 992px) */}
+              <NavLink to={"/contact-us"} className="d-none d-lg-block">
+                <a className="btn btn-primary px-3 py-2 fw-semibold" href="tel:+919422761663">
+                  Call Us
+                </a>
+              </NavLink>
             </div>
           </div>
-
         </div>
-
       </div>
-      {isLoading &&
-        <div className="loading-bar"></div>
-      }
+      {showFloat && (
+        <a
+          href="tel:+919422761663"
+          className="btn btn-primary position-fixed bottom-0 end-0 m-3 d-lg-none shadow"
+          style={{ borderRadius: "50px", zIndex: 1050 }}
+        >
+          <Phone />
+        </a>
+      )}
+      {isLoading && <div className="loading-bar"></div>}
     </>
   );
 };

@@ -12,7 +12,6 @@ const Home = () => {
         <>
             <Wrapper>
                 <HomeSlider></HomeSlider>
-                <WhyJoin></WhyJoin>
                 <CourseCluster></CourseCluster>
                 <div className="container mb-5">
                     <div className="row">
@@ -21,7 +20,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-
+                <WhyJoin></WhyJoin>
                 <Clients></Clients>
                 <div className="container">
                     <div className="row">
