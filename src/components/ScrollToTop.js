@@ -1,25 +1,18 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom'
-const ScrollToTop = ({
-	path = ''
-}) => {
-	const newPath = useLocation();
-	useEffect(() => {
-		if (newPath !== path) {
-			window.scrollTo(0, 0);
-		}
-	}, [newPath, path])
+// src/ScrollToTop.js
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+export default function ScrollToTop() {
+	const { pathname } = useLocation();
 
 	useEffect(() => {
-		window.gtag('config', 'G-NHHSB3447S', {
-			page_path: newPath.pathname,
-		});
-	}, [newPath]);
-	console.log("newPath.pathname", newPath.pathname)
-	return (
-		<>
-		</>
-	)
+		// Use small delay so scroll happens after page render
+		const timeout = setTimeout(() => {
+			window.scrollTo({ top: 0, behavior: "instant" });
+		}, 0);
+		console.log("-----------------------------------")
+		return () => clearTimeout(timeout);
+	}, [pathname]);
+
+	return null;
 }
-
-export default ScrollToTop;

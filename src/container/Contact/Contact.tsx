@@ -167,7 +167,7 @@ const Contact = () => {
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.7004881440207!2d73.8515857!3d18.4519033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eac9278b4389%3A0x85f842d659238364!2sVelocity%20Corporate%20Training%20Center%20Katraj%20pune!5e0!3m2!1sen!2sin!4v1738240739536!5m2!1sen!2sin"
                                     title="Katraj Branch Location"
                                     width="100%"
-                                    height="450"
+                                    height="250"
                                     loading="lazy"
                                     className="border rounded-3"
                                     style={{ border: '3px solid #667eea' }}
@@ -213,7 +213,7 @@ const Contact = () => {
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.249750223696!2d73.92811047519274!3d18.562775782538942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c114cb2be381%3A0xb647cfeb251665eb!2sVelocity%20Corporate%20Training%20Centre!5e0!3m2!1sen!2sin!4v1740928810141!5m2!1sen!2sin"
                                     title="Viman Nagar Branch Location"
                                     width="100%"
-                                    height="450"
+                                    height="250"
                                     loading="lazy"
                                     className="border rounded-3"
                                     style={{ border: '3px solid #667eea' }}

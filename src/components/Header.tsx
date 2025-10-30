@@ -56,13 +56,16 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
         </div>
       </div>
       {showFloat && (
-        <a
-          href="tel:+919422761663"
-          className="btn btn-primary position-fixed bottom-0 end-0 m-3 d-lg-none shadow"
-          style={{ borderRadius: "50px", zIndex: 1050 }}
-        >
-          <Phone />
-        </a>
+        <NavLink to={"/contact-us"} >
+          <a
+            href="#"
+            className="btn btn-primary position-fixed bottom-0 end-0 m-3 d-lg-none shadow"
+            style={{ borderRadius: "50px", zIndex: 1050 }}
+          >
+            <Phone />
+          </a>
+        </NavLink>
+
       )}
       {isLoading && <div className="loading-bar"></div>}
     </>

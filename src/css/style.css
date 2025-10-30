@@ -124,7 +124,7 @@ body {
 .header ul li li a:hover,
 .header ul li li a.active {
     /* background: #fd5f07; */
-    color: #fff;
+    /* color: #fff; */
 }
 
 .header ul li:hover .hoverMenu {
@@ -144,7 +144,7 @@ body {
 .hoverMenuOuter a:hover.active {
     border-bottom: 2px solid #fd5f07 !important;
     /* background: #fd5f07 !important; */
-    color: #fff !important;
+    /* color: #fff !important; */
 }
 
 .text-right {
@@ -1561,6 +1561,7 @@ button:focus:not(:focus-visible) {
         background: #fff;
         height: 100vh;
         overflow: scroll;
+        padding-bottom: 40px;
     }
 
     .main_nav.main_nav_mobile ul li {
