@@ -103,7 +103,7 @@ const Contact = () => {
     return (
         <Wrapper pageTitle="Contact Us" breadcrumbList={null}>
             {/* Banner Section - Using Bootstrap background utilities */}
-            <div className="bannerInner" style={{ background: `url(${pageContent?.cms_image ? process.env.react_app_base_url + "/" + pageContent?.cms_image : BannerCourses})` }}> </div>
+            {/* <div className="bannerInner" style={{ background: `url(${pageContent?.cms_image ? process.env.react_app_base_url + "/" + pageContent?.cms_image : BannerCourses})` }}> </div> */}
 
 
             <div className="container py-5">

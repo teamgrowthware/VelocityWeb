@@ -129,7 +129,7 @@ const CourseDetails = () => {
     return (
         <>
             <Wrapper>
-                <div className="bannerInner" style={{ background: `url(${pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses})` }}> </div>
+                {/* <div className="bannerInner" style={{ background: `url(${pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses})` }}> </div> */}
 
                 <div className="contentMain">
                     <div className="container-lg">

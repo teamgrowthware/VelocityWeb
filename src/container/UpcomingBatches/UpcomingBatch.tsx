@@ -4,12 +4,30 @@ import { Calendar, ChevronRight, Clock, CreditCard, Users } from "lucide-react"
 
 const UpcomingBatch = () => {
   const [centerData, setCenterData] = useState<any>([])
+  const parseCustomDate = (dateStr: string): Date | null => {
+    if (!dateStr || dateStr === "TBD") return null
+    const cleanDateStr = dateStr.replace(/(\d+)(st|nd|rd|th)/, "$1")
+    const parsed = Date.parse(cleanDateStr)
+    return isNaN(parsed) ? null : new Date(parsed)
+  }
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getCenters()
-      setCenterData(data?.data?.data)
+      const response = await getCenters()
+      const data = response?.data?.data || []
+      const sortedData = [...data].sort((a, b) => {
+        const dateA = parseCustomDate(a.start_date)
+        const dateB = parseCustomDate(b.start_date)
+        if (!dateA && !dateB) return 0
+        if (!dateA) return 1
+        if (!dateB) return -1
+
+        return dateA.getTime() - dateB.getTime()
+      })
+
+      setCenterData(sortedData)
     }
+
     getData()
   }, [])
   return (

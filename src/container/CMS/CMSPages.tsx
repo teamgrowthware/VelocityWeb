@@ -6,61 +6,61 @@ import ReferrerForm from './ReferrerForm';
 import BannerCourses from '../../images/BannerCourses.png';
 
 const CMSPages = () => {
-    const { pagesList } = useContext(ThemeContext);
-    const [pageContent, setPageContent] = useState<any>({});
-    const [isVisible, setIsVisible] = useState(false);
-    const { slug } = useParams();
+  const { pagesList } = useContext(ThemeContext);
+  const [pageContent, setPageContent] = useState<any>({});
+  const [isVisible, setIsVisible] = useState(false);
+  const { slug } = useParams();
 
-    useEffect(() => {
-        const content = pagesList?.find((item: any) => item?.slug === slug);
-        setPageContent(content);
-        setTimeout(() => setIsVisible(true), 100);
-    }, [pagesList, slug]);
+  useEffect(() => {
+    const content = pagesList?.find((item: any) => item?.slug === slug);
+    setPageContent(content);
+    setTimeout(() => setIsVisible(true), 100);
+  }, [pagesList, slug]);
 
-    const bannerImage = pageContent?.cms_image
-        ? `${process.env.REACT_APP_BASE_URL}/${pageContent.cms_image}`
-        : BannerCourses;
+  const bannerImage = pageContent?.cms_image
+    ? `${process.env.REACT_APP_BASE_URL}/${pageContent.cms_image}`
+    : BannerCourses;
 
-    return (
-        <Wrapper>
-            <div className="bannerInner" style={{ background: `url(${pageContent?.cms_image ? process.env.react_app_base_url + "/" + pageContent?.cms_image : BannerCourses})` }}> </div>
-            <div className="py-5 content-section position-relative overflow-hidden">
-                <div className="container position-relative">
-                    <div className="row g-4">
-                        <div className={slug === 'refer-and-earn' ? "col-lg-7" : "col-lg-12"}>
-                            <div className={`content-card bg-white rounded-4 shadow-lg p-4 p-md-5 ${isVisible ? 'visible' : ''}`}>
-                                {pageContent?.title && (
-                                    <div className="content-header mb-4">
-                                        <div className="d-flex align-items-center mb-3">
-                                            <div className="header-icon me-3">
-                                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-primary">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                                </svg>
-                                            </div>
-                                            <h1 className="fw-bold mb-0 text-primary">{pageContent.title}</h1>
-                                        </div>
-                                        <div className="title-underline"></div>
-                                    </div>
-                                )}
-
-                                <div
-                                    className="ql-editor cms-content"
-                                    dangerouslySetInnerHTML={{
-                                        __html: pageContent?.description,
-                                    }}
-                                ></div>
-                            </div>
-                        </div>
-                        {slug === 'refer-and-earn' &&
-                            <div className={slug === 'refer-and-earn' ? "col-lg-5" : "col-lg-112"}>
-                                <ReferrerForm></ReferrerForm>
-                            </div>
-                        }
+  return (
+    <Wrapper>
+      {/* <div className="bannerInner" style={{ background: `url(${pageContent?.cms_image ? process.env.react_app_base_url + "/" + pageContent?.cms_image : BannerCourses})` }}> </div> */}
+      <div className="py-5 content-section position-relative overflow-hidden">
+        <div className="p-4 position-relative">
+          <div className="row g-4">
+            <div className={slug === 'refer-and-earn' ? "col-lg-7" : "col-lg-12"}>
+              <div className={`content-card bg-white rounded-4 shadow-lg p-4 p-md-5 ${isVisible ? 'visible' : ''}`}>
+                {pageContent?.title && (
+                  <div className="content-header mb-4">
+                    <div className="d-flex align-items-center mb-3">
+                      <div className="header-icon me-3">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-primary">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                      </div>
+                      <h1 className="fw-bold mb-0 text-primary">{pageContent.title}</h1>
                     </div>
-                </div>
-            </div>
+                    <div className="title-underline"></div>
+                  </div>
+                )}
 
-            <style>{`
+                <div
+                  className="ql-editor cms-content"
+                  dangerouslySetInnerHTML={{
+                    __html: pageContent?.description,
+                  }}
+                ></div>
+              </div>
+            </div>
+            {slug === 'refer-and-earn' &&
+              <div className={slug === 'refer-and-earn' ? "col-lg-5" : "col-lg-112"}>
+                <ReferrerForm></ReferrerForm>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <style>{`
 
         /* Content Section */
         .content-section {
@@ -185,8 +185,8 @@ const CMSPages = () => {
           }
         }
       `}</style>
-        </Wrapper>
-    );
+    </Wrapper>
+  );
 };
 
 export default CMSPages;

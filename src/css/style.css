@@ -498,7 +498,7 @@ ol .ql-indent-2 {
 }
 
 .wrapper {
-    max-width: 1560px;
+    /* max-width: 1560px; */
     margin: auto;
     background: #fff;
     box-shadow: 0px 0px 5px #ccc;
@@ -951,9 +951,10 @@ p {
 }
 
 .eventsUpcomingBatchWrapper {
-    max-width: 1440px;
+    /* max-width: 1440px; */
     margin: auto;
     margin-top: 30px;
+    padding: 20px !important;
 }
 
 .terms_conditions h5 {

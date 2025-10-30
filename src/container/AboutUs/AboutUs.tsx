@@ -5,30 +5,30 @@ import BannerCourses from "../../images/BannerCourses.png";
 import { getCenters } from "../../servies/services";
 
 const AboutUs = () => {
-    const { pagesList } = useContext(ThemeContext);
-    const [pageContent, setPageContent] = useState<any>({});
-    const [centerData, setCenterData] = useState<any>([]);
+  const { pagesList } = useContext(ThemeContext);
+  const [pageContent, setPageContent] = useState<any>({});
+  const [centerData, setCenterData] = useState<any>([]);
 
-    useEffect(() => {
-        const getData = async () => {
-            const data = await getCenters();
-            setCenterData(data?.data?.data);
-        };
-        getData();
-    }, []);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getCenters();
+      setCenterData(data?.data?.data);
+    };
+    getData();
+  }, []);
 
-    useEffect(() => {
-        setPageContent(pagesList?.find((item: any) => item?.slug === "about-us"));
-    }, [pagesList]);
+  useEffect(() => {
+    setPageContent(pagesList?.find((item: any) => item?.slug === "about-us"));
+  }, [pagesList]);
 
-    return (
-        <>
-            <link
-                href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-                rel="stylesheet"
-            />
-            <style>
-                {`
+  return (
+    <>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet"
+      />
+      <style>
+        {`
           /* Fade-in animation */
           @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -116,91 +116,91 @@ const AboutUs = () => {
             }
           }
         `}
-            </style>
+      </style>
 
-            <Wrapper>
-                {/* Banner */}
-                <div
-                    className="bannerInner"
-                    style={{
-                        backgroundImage: `url(${pageContent?.image
-                            ? process.env.react_app_base_url + "/" + pageContent?.image
-                            : BannerCourses
-                            })`,
-                    }}
-                ></div>
+      <Wrapper>
+        {/* Banner */}
+        <div
+          className="bannerInner"
+          style={{
+            backgroundImage: `url(${pageContent?.image
+              ? process.env.react_app_base_url + "/" + pageContent?.image
+              : BannerCourses
+              })`,
+          }}
+        ></div>
 
-                {/* About Section */}
-                <section className="eventsUpcomingBatchWrapper" id="upcoming_batches">
-                    <div className="container">
-                        <div className="row justify-content-center">
-                            <div className="col-lg-8 col-md-10">
-                                <div className="eventWrapper">
-                                    <h2 className="blue-theme-h2 display-6">About Velocity Pune</h2>
-                                    <p className="fs-5">
-                                        Velocity Pune is a premier IT training institute dedicated to
-                                        empowering individuals with the skills and knowledge required to
-                                        excel in the dynamic field of information technology. Our
-                                        comprehensive curriculum, experienced faculty, and state-of-the-art
-                                        facilities ensure that students receive industry-relevant
-                                        education, preparing them for successful careers in the IT sector.
-                                        Offering a diverse range of courses, from foundational programming
-                                        languages to advanced technologies, we cater to both beginners and
-                                        professionals seeking to enhance their expertise.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+        {/* About Section */}
+        <section className="eventsUpcomingBatchWrapper" id="upcoming_batches">
+          <div className="">
+            <div className="row justify-content-center">
+              <div className="">
+                <div className="eventWrapper">
+                  <h2 className="blue-theme-h2 display-6">About Velocity Pune</h2>
+                  <p className="fs-5">
+                    Velocity Pune is a premier IT training institute dedicated to
+                    empowering individuals with the skills and knowledge required to
+                    excel in the dynamic field of information technology. Our
+                    comprehensive curriculum, experienced faculty, and state-of-the-art
+                    facilities ensure that students receive industry-relevant
+                    education, preparing them for successful careers in the IT sector.
+                    Offering a diverse range of courses, from foundational programming
+                    languages to advanced technologies, we cater to both beginners and
+                    professionals seeking to enhance their expertise.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-                        {/* Mission & Vision */}
-                        <div className="terms_conditions">
-                            <div className="row gy-4">
-                                {/* Mission */}
-                                <div className="col-md-6">
-                                    <div className="inner-card text-center h-100">
-                                        <span className="material-symbols-outlined">
-                                            rocket_launch
-                                        </span>
-                                        <h4 className="blue-theme-h4 h3">Our Mission</h4>
-                                        <p className="mt-3">
-                                            Our mission is to deliver world-class IT education by offering
-                                            cutting-edge, industry-aligned training programs that combine
-                                            technical expertise with practical learning. We strive to inspire
-                                            creativity, nurture innovation, and develop holistic skill sets
-                                            that enable students to thrive in the competitive IT landscape.
-                                            Through a commitment to lifelong learning and inclusivity, we aim
-                                            to bridge the skills gap, advance technological growth, and
-                                            empower individuals to transform their aspirations into reality.
-                                        </p>
-                                    </div>
-                                </div>
+            {/* Mission & Vision */}
+            <div className="terms_conditions">
+              <div className="row gy-4">
+                {/* Mission */}
+                <div className="col-md-6">
+                  <div className="inner-card text-center h-100">
+                    <span className="material-symbols-outlined">
+                      rocket_launch
+                    </span>
+                    <h4 className="blue-theme-h4 h3">Our Mission</h4>
+                    <p className="mt-3">
+                      Our mission is to deliver world-class IT education by offering
+                      cutting-edge, industry-aligned training programs that combine
+                      technical expertise with practical learning. We strive to inspire
+                      creativity, nurture innovation, and develop holistic skill sets
+                      that enable students to thrive in the competitive IT landscape.
+                      Through a commitment to lifelong learning and inclusivity, we aim
+                      to bridge the skills gap, advance technological growth, and
+                      empower individuals to transform their aspirations into reality.
+                    </p>
+                  </div>
+                </div>
 
-                                {/* Vision */}
-                                <div className="col-md-6">
-                                    <div className="inner-card text-center h-100">
-                                        <span className="material-symbols-outlined">
-                                            auto_stories
-                                        </span>
-                                        <h4 className="blue-theme-h4 h3">Our Vision</h4>
-                                        <p className="mt-3">
-                                            Our vision is to become a leading center of excellence in IT
-                                            education, recognized globally for delivering transformative,
-                                            industry-relevant training. We aspire to empower individuals with
-                                            the skills, knowledge, and confidence to innovate, lead, and
-                                            contribute meaningfully to the ever-evolving world of technology.
-                                            By fostering a culture of excellence and inclusivity, we aim to
-                                            shape future-ready professionals who drive progress and create a
-                                            positive impact on society.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </Wrapper>
-        </>
-    );
+                {/* Vision */}
+                <div className="col-md-6">
+                  <div className="inner-card text-center h-100">
+                    <span className="material-symbols-outlined">
+                      auto_stories
+                    </span>
+                    <h4 className="blue-theme-h4 h3">Our Vision</h4>
+                    <p className="mt-3">
+                      Our vision is to become a leading center of excellence in IT
+                      education, recognized globally for delivering transformative,
+                      industry-relevant training. We aspire to empower individuals with
+                      the skills, knowledge, and confidence to innovate, lead, and
+                      contribute meaningfully to the ever-evolving world of technology.
+                      By fostering a culture of excellence and inclusivity, we aim to
+                      shape future-ready professionals who drive progress and create a
+                      positive impact on society.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </Wrapper>
+    </>
+  );
 };
 
 export default AboutUs;

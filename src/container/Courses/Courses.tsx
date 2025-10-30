@@ -13,19 +13,21 @@ const Courses = () => {
         <Wrapper>
             <div style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
 
-                <div className="bannerInner" style={{ background: `url(${BannerCourses})` }}> </div>
+                {/* <div className="bannerInner" style={{ background: `url(${BannerCourses})` }}> </div> */}
 
                 <div style={{
                     background: 'linear-gradient(to bottom, #f8f9fa, #ffffff)',
                     minHeight: 'calc(100vh - 400px)',
-                    padding: '60px 20px'
+                    padding: '30px 20px'
                 }}>
-                    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-                            gap: '2rem'
-                        }}>
+                    <div >
+                        <div
+                            style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+                                gap: '1rem'
+                            }}
+                        >
                             {coursesList.map((item: any, index: any) => (
                                 <div
                                     key={item.slug}

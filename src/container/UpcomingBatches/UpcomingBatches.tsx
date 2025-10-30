@@ -16,12 +16,12 @@ const UpcomingBatches = () => {
     return (
         <>
             <Wrapper>
-                <div className="bannerInner" style={{ background: `url(${pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses})` }}> </div>
+                {/* <div className="bannerInner" style={{ background: `url(${pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses})` }}> </div> */}
 
                 <div className='eventsUpcomingBatchWrapper' id='upcoming_batches'>
-                    <div className="container">
+                    <div className="p-4">
                         <UpcomingBatch></UpcomingBatch>
-                        <div className="container my-5">
+                        <div className=" my-5">
                             <div className="row justify-content-center">
                                 <div className="col-lg-10">
                                     <div className="card shadow-sm border-0">
