@@ -120,7 +120,7 @@ const AboutUs = () => {
 
       <Wrapper>
         {/* Banner */}
-        <div
+        {/* <div
           className="bannerInner"
           style={{
             backgroundImage: `url(${pageContent?.image
@@ -128,7 +128,7 @@ const AboutUs = () => {
               : BannerCourses
               })`,
           }}
-        ></div>
+        ></div> */}
 
         {/* About Section */}
         <section className="eventsUpcomingBatchWrapper" id="upcoming_batches">

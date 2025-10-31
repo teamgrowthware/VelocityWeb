@@ -3,6 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel, Modal } from 'react-bootstrap';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import img1 from '../../images/ourGallary/img1.jpeg'
+import img2 from '../../images/ourGallary/img2.jpeg'
+import img3 from '../../images/ourGallary/img3.jpeg'
+import img4 from '../../images/ourGallary/img4.jpeg'
+
 
 interface GalleryImage {
     id: number;
@@ -18,11 +23,32 @@ const Ourgallary: React.FC = () => {
     const [index, setIndex] = useState<number>(0);
 
     const galleryImages: GalleryImage[] = [
+        // {
+        //     id: 1,
+        //     src: img1,
+        //     title: 'Campus Building',
+        //     description: '',
+        //     category: 'Infrastructure'
+        // },
         {
             id: 1,
-            src: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200',
+            src: img2,
+            title: 'Students',
+            description: '',
+            category: 'Infrastructure'
+        },
+        {
+            id: 1,
+            src: img3,
             title: 'Campus Building',
-            description: 'Our modern campus facilities with state-of-the-art infrastructure',
+            description: '',
+            category: 'Infrastructure'
+        },
+        {
+            id: 1,
+            src: img4,
+            title: 'Computer Lab',
+            description: 'High-tech computing facilities with latest software and hardware',
             category: 'Infrastructure'
         },
         {
@@ -59,13 +85,6 @@ const Ourgallary: React.FC = () => {
             title: 'Sports Complex',
             description: 'Excellence in sports and fitness activities for overall development',
             category: 'Sports'
-        },
-        {
-            id: 7,
-            src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200',
-            title: 'Computer Lab',
-            description: 'High-tech computing facilities with latest software and hardware',
-            category: 'Infrastructure'
         },
         {
             id: 8,
