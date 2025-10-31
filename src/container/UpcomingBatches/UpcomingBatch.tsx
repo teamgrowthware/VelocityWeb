@@ -76,6 +76,9 @@ const UpcomingBatch = () => {
           padding: 1.2rem 0.8rem;
           vertical-align: middle;
         }
+          .tablecontent{
+          font-weight:600 
+          }
 
         .course-badge {
           background: linear-gradient(135deg, #0d6efd, #0a58ca);
@@ -217,7 +220,7 @@ const UpcomingBatch = () => {
                     <td>
                       <div className="icon-wrapper">
                         <Clock size={18} />
-                        <span className="fw-500">{item.duration}</span>
+                        <span className="tablecontent">{item.duration}</span>
                       </div>
                     </td>
 
@@ -227,7 +230,7 @@ const UpcomingBatch = () => {
                         {item.start_date === 'TBD' ? (
                           <span className="badge badge-coming">Coming Soon</span>
                         ) : (
-                          <span className="fw-500">
+                          <span className="tablecontent">
                             {/* {new Date(item.start_date).toLocaleDateString('en-US', {
                                                             month: 'short',
                                                             day: 'numeric',
@@ -242,7 +245,7 @@ const UpcomingBatch = () => {
                     <td>
                       <div className="icon-wrapper">
                         <Users size={18} />
-                        <span className="fw-500">{item.batch_days}</span>
+                        <span className="tablecontent">{item.batch_days}</span>
                       </div>
                     </td>
 
