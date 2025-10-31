@@ -116,7 +116,7 @@ const EnquiryForm = ({
             <h5>Enquiry Now</h5>
             <div className="row">
                 <Input col="12" inputType="text" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter Name" inputName="name"></Input>
-                <MobileInput col="12" inputType="text" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter Name" inputName="name"></MobileInput>
+                <MobileInput col="12" inputType="text" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter number" inputName="mobile" ></MobileInput>
                 <Input col="12" inputType="email" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter Email Id" inputName="email"></Input>
                 <Input col="12" inputType="number" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter Contact No" inputName="mobile"></Input>
                 <Select

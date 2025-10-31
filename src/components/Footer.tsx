@@ -78,7 +78,7 @@ const Footer = () => {
             </div>
 
             {/* Floating Menu */}
-            {/* <div className="floatedMenu">
+            <div className="floatedMenu">
                 <ul>
                     <li><a className={"btn btn-primary"} href="tel:+919422761663"><span className="material-symbols-outlined">
                         phone_in_talk
@@ -94,7 +94,7 @@ const Footer = () => {
                         </span></NavLink>
                     </li>
                 </ul>
-            </div> */}
+            </div>
             {/* <div className="SubscribeNewsletter">
                 <div><span className="material-symbols-outlined mt-2">
                     login

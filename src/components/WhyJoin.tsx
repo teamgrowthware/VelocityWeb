@@ -99,7 +99,7 @@ const WhyJoin = () => {
         }
 
         .why-join-section {
-          min-height: 100vh;
+          // min-height: 100vh;
           background: linear-gradient(135deg, #fff5f0 0%, #ffffff 50%, #fef1f8 100%);
           padding-top: 30px;
           opacity: 0;
@@ -368,7 +368,7 @@ const WhyJoin = () => {
       `}</style>
 
       <div className={`why-join-section ${pageLoaded ? 'loaded' : ''}`}>
-        <div className="container">
+        <div className="p-4">
           <div className={`section-header ${pageLoaded ? 'loaded' : ''}`}>
             <h1 className="section-title">
               Why to join <span className="highlight">Velocity?</span>

@@ -1,18 +1,25 @@
-// src/ScrollToTop.js
+// src/components/ScrollToTop.js
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function ScrollToTop() {
+const ScrollToTop = () => {
 	const { pathname } = useLocation();
 
 	useEffect(() => {
-		// Use small delay so scroll happens after page render
-		const timeout = setTimeout(() => {
-			window.scrollTo({ top: 0, behavior: "instant" });
-		}, 0);
-		console.log("-----------------------------------")
-		return () => clearTimeout(timeout);
+		// stop browser from restoring scroll
+		if ("scrollRestoration" in window.history) {
+			window.history.scrollRestoration = "manual";
+		}
+
+		// scroll to top on every route change
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: "smooth" // you can remove this for instant scroll
+		});
 	}, [pathname]);
 
 	return null;
-}
+};
+
+export default ScrollToTop;

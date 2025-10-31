@@ -20,8 +20,8 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
   }, []);
   return (
     <>
-      <div className="header py-3 border-bottom">
-        <div className="container">
+      <div className="header  border-bottom">
+        <div className="px-4">
           <div className="d-flex justify-content-between align-items-center">
             {/* Logo (Left) */}
             <div className="logoPlaceholder">
@@ -55,7 +55,7 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
           </div>
         </div>
       </div>
-      {showFloat && (
+      {/* {showFloat && (
         <NavLink to={"/contact-us"} >
           <a
             href="#"
@@ -66,7 +66,7 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
           </a>
         </NavLink>
 
-      )}
+      )} */}
       {isLoading && <div className="loading-bar"></div>}
     </>
   );

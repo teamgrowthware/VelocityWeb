@@ -102,8 +102,8 @@ const InstituteGallery: React.FC = () => {
 
     return (
         <>
-            <section className="py-5 bg-light">
-                <div className="container position-relative">
+            <section className=" bg-light">
+                <div className="p-4 position-relative">
                     {/* Header */}
                     <div className="text-center mb-5">
                         <h2 className="display-5 fw-bold text-dark mb-3">

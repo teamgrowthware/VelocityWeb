@@ -1,7 +1,7 @@
 import {
-  BrowserRouter,
   Routes,
-  Route
+  Route,
+  BrowserRouter
 } from 'react-router-dom';
 import './css/bootstrap.css';
 import './css/style.css';
@@ -28,34 +28,43 @@ import BlogDetails from './container/Blog/BlogDetails';
 import ThankYouCampaign from './container/Campaign/ThankYouCampaign';
 import Ourgallary from './container/Gallary/OurGallary';
 import CoursesDetails from './container/courseDetails/CoursesDetails';
+import { useEffect } from 'react';
+
 
 function App() {
   setUpAxios();
 
   return (
+    <BrowserRouter>
+      <ThemeProvider>
+        <InnerApp />
+      </ThemeProvider>
+    </BrowserRouter>
+  );
+}
+function InnerApp() {
+
+  return (
     <>
-      <BrowserRouter  >
-        <ThemeProvider>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/testimonials" element={<TestimonialsWrapper />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogDetails />} />
-            <Route path="/courses/:title" element={<CoursesDetails />} />
-            <Route path="/cms/:slug" element={<CMSPages />} />
-            <Route path="/contact-us" element={<Contact />} />
-            <Route path="/upcoming-batches" element={<UpcomingBatches />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/campaign/share-market" element={<CampaignShareMarket />} />
-            <Route path="/campaign/share-market-thank-you" element={<ThankYouCampaign />} />
-            <Route path="/gallary" element={<Ourgallary />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-          <ToastContainer></ToastContainer>
-        </ThemeProvider>
-      </BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/testimonials" element={<TestimonialsWrapper />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogDetails />} />
+        <Route path="/courses/:title" element={<CoursesDetails />} />
+        <Route path="/cms/:slug" element={<CMSPages />} />
+        <Route path="/contact-us" element={<Contact />} />
+        <Route path="/upcoming-batches" element={<UpcomingBatches />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/campaign/share-market" element={<CampaignShareMarket />} />
+        <Route path="/campaign/share-market-thank-you" element={<ThankYouCampaign />} />
+        <Route path="/gallary" element={<Ourgallary />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+      <ToastContainer></ToastContainer>
+
     </>
   );
 }

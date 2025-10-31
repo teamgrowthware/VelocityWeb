@@ -106,7 +106,7 @@ const Contact = () => {
             {/* <div className="bannerInner" style={{ background: `url(${pageContent?.cms_image ? process.env.react_app_base_url + "/" + pageContent?.cms_image : BannerCourses})` }}> </div> */}
 
 
-            <div className="container py-5">
+            <div className=" p-5">
                 <h1 className="text-center fw-bold text-black shadow-sm animate-fadeInDown" style={{
                     background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                     WebkitBackgroundClip: 'text',

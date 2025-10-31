@@ -13,7 +13,7 @@ const Home = () => {
             <Wrapper>
                 <HomeSlider></HomeSlider>
                 <CourseCluster></CourseCluster>
-                <div className="container mb-5">
+                <div className="p-4 mb-5">
                     <div className="row">
                         <div className="col-md-12">
                             <UpcomingBatch></UpcomingBatch>
@@ -22,7 +22,7 @@ const Home = () => {
                 </div>
                 <WhyJoin></WhyJoin>
                 <Clients></Clients>
-                <div className="container">
+                <div className="p-4">
                     <div className="row">
                         <div className="col-md-12">
                             <Testimonials slice={9}></Testimonials>

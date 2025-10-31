@@ -33,14 +33,6 @@ const UpcomingBatch = () => {
   return (
     <>
       <style>{`
-        .batch-header {
-          background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
-          color: white;
-          padding: 2.5rem 1rem;
-          border-radius: 1.5rem;
-          margin-bottom: 2rem;
-          box-shadow: 0 10px 30px rgba(13, 110, 253, 0.15);
-        }
 
         .batch-card {
           border: none;
@@ -74,11 +66,9 @@ const UpcomingBatch = () => {
 
         .table tbody tr {
           border-bottom: 1px solid #e8e8e8;
-        //   transition: all 0.3s ease;
         }
 
         .table tbody tr:hover {
-        //   background-color: #f0f7ff;
           box-shadow: inset 0 0 0 1px rgba(13, 110, 253, 0.1);
         }
 
@@ -194,7 +184,7 @@ const UpcomingBatch = () => {
       `}</style>
       <div className='row'>
 
-        <h4 className="display-6 fw-bold text-dark mb-2">Upcoming Batches</h4>
+        <h4 className="display-6 fw-bold text-dark my-2">Upcoming Batches</h4>
         <div className="card batch-card">
           <div className="table-responsive">
             <table className="table table-hover mb-0">

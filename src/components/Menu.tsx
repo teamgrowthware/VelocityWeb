@@ -13,7 +13,7 @@ const Menu = () => {
                 <li><NavLink to={"/upcoming-batches"}>Upcoming Batches</NavLink></li>
                 {/* <li><NavLink to={"/blog"}>Blog</NavLink></li>s */}
                 <li><NavLink to={"/testimonials"}>Testimonials</NavLink></li>
-                <li><NavLink to={"/gallary"}>Gallary</NavLink></li>
+                <li><NavLink to={"/gallary"}>Collage Training</NavLink></li>
                 <li><NavLink to={"/cms/refer-and-earn"}>Refer & Earn</NavLink></li>
                 {/* <li><NavLink to={"/contact-us"}>Contact Us</NavLink></li> */}
                 <li className="footerMenu"><NavLink to={"/cms/privacy-policy"}>Privacy Policy</NavLink></li>

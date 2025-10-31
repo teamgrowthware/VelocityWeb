@@ -25,20 +25,19 @@ const CourseModules = ({ id, title, courseModuleCallback }: any) => {
     }, [courseModuleCallback, id, title]);
 
     const addItem = (id: string, index: number) => {
-        // ✅ Allow first 3 modules to open freely
+        //  Allow first 3 modules to open freely
         if (index < 3) {
             setShowModule((prev: any) =>
                 prev.includes(id) ? prev.filter((item: any) => item !== id) : [...prev, id]
             );
         } else {
-            // ❌ 4th and beyond require enquiry form
             setPendingModuleId(id);
             setShowPopup(true);
         }
     };
 
     const handleFormSubmit = () => {
-        // ✅ Open locked module after form submission
+        //  Open locked module after form submission
         if (pendingModuleId) {
             setShowModule((prev: any) => [...prev, pendingModuleId]);
             setPendingModuleId(null);
