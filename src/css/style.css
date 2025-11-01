@@ -1562,7 +1562,7 @@ button:focus:not(:focus-visible) {
         background: #fff;
         height: 100vh;
         overflow: scroll;
-        padding-bottom: 40px;
+        padding-bottom: 90px;
     }
 
     .main_nav.main_nav_mobile ul li {

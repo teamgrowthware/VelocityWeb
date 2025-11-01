@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Menu from "./Menu"
 import { Button } from "../Library/Module"
-import { MenuIcon } from "lucide-react"
+import { MenuIcon, X } from "lucide-react"
 
 const ResponsiveMenu = () => {
 
@@ -65,11 +65,7 @@ const ResponsiveMenu = () => {
                                 buttonStyleType="primary"
                                 className="btn btn-primary"
                             >
-                                <span className='lineBox'>
-                                    <span className='line'></span>
-                                    <span className='line'></span>
-                                    <span className='line'></span>
-                                </span>
+                                <X />
                                 <span>Close</span>
                             </Button>
                         </div>
