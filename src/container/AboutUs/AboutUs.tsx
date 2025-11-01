@@ -3,6 +3,7 @@ import { ThemeContext } from "../Context/Theme/Context";
 import Wrapper from "../Wrapper";
 import BannerCourses from "../../images/BannerCourses.png";
 import { getCenters } from "../../servies/services";
+import Roadmap from "./RoadMap";
 
 const AboutUs = () => {
   const { pagesList } = useContext(ThemeContext);
@@ -129,6 +130,7 @@ const AboutUs = () => {
               })`,
           }}
         ></div> */}
+        <Roadmap />
 
         {/* About Section */}
         <section className="eventsUpcomingBatchWrapper" id="upcoming_batches">
