@@ -13,7 +13,7 @@ const Home = () => {
             <Wrapper>
                 <HomeSlider></HomeSlider>
                 <CourseCluster></CourseCluster>
-                <div className="p-4 mb-5">
+                <div className="p-4">
                     <div className="row">
                         <div className="col-md-12">
                             <UpcomingBatch></UpcomingBatch>

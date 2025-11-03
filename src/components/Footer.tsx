@@ -62,6 +62,34 @@ const Footer = () => {
 
     return (
         <>
+            <style>
+                {`
+            .floatedMenu [data-tooltip] {
+    position: relative;
+}
+
+.floatedMenu [data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    margin-right: 8px;
+    font-size: 10px;
+}
+
+.floatedMenu [data-tooltip]:hover::before {
+    opacity: 1;
+}`}
+            </style>
             {/* Stats Section */}
             <div className="pfa">
                 <div className="overlay"></div>
@@ -80,21 +108,41 @@ const Footer = () => {
             {/* Floating Menu */}
             <div className="floatedMenu">
                 <ul>
-                    <li><a className={"btn btn-primary"} href="tel:+919422761663"><span className="material-symbols-outlined">
-                        phone_in_talk
-                    </span></a></li>
                     <li>
-                        <NavLink className={"btn btn-primary"} to={"/cms/refer-and-earn"}>
+                        <a
+                            className="btn btn-primary"
+                            href="tel:+919422761663"
+                            data-tooltip="Call Us"
+                        >
+                            <span className="material-symbols-outlined">
+                                phone_in_talk
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <NavLink
+                            className="btn btn-primary"
+                            to="/cms/refer-and-earn"
+                            data-tooltip="Refer and Earn"
+                        >
                             <span className="material-symbols-outlined">
                                 inbox_text_person
-                            </span></NavLink></li>
-                    <li><NavLink className={"btn btn-primary"} to={"/courses"}>
-                        <span className="material-symbols-outlined">
-                            view_list
-                        </span></NavLink>
+                            </span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            className="btn btn-primary"
+                            to="/courses"
+                            data-tooltip="View Courses"
+                        >
+                            <span className="material-symbols-outlined">
+                                view_list
+                            </span>
+                        </NavLink>
                     </li>
                 </ul>
-            </div>
+            </div>``
             {/* <div className="SubscribeNewsletter">
                 <div><span className="material-symbols-outlined mt-2">
                     login

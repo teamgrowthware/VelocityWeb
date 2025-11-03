@@ -2039,21 +2039,21 @@ a:hover.none {
 
 @media only screen and (max-width: 999px) {
     .floatedMenu {
-        background: #fff;
+        /* background: #fff;
         position: fixed;
         right: 0px;
-        top: 100%;
+        top: 50%;
         z-index: 1000;
         padding: 10px;
         box-shadow: 0px -4px 3px #cccccc80;
         border-radius: 15px 15px 0px 0px;
         margin-top: -60px;
-        width: 200px;
-        left: 50%;
-        margin-left: -100px;
+        width: 200px; */
+        /* left: 50%; */
+        /* margin-left: -100px; */
     }
 
-    .floatedMenu ul {
+    /* .floatedMenu ul {
         display: flex;
         justify-content: center;
         align-content: center;
@@ -2063,7 +2063,7 @@ a:hover.none {
     .floatedMenu ul li {
         display: block;
         margin: 0px;
-    }
+    } */
 
     /* .logoPlaceholder img {
         width: 60% !important;
