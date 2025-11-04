@@ -3,6 +3,7 @@ import { Button, Input, Select } from "../../Library/Module";
 import { ThemeContext } from "../Context/Theme/Context";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { onChange } from "react-toastify/dist/core/store";
 
 interface CourseOption {
     text: string;
@@ -21,7 +22,7 @@ interface FormData {
 }
 
 const ReferrerForm: React.FC = () => {
-    const [courseOptions, setCourseOptions] = useState<CourseOption[]>([]);
+    const [courseOptions, setCourseOptions] = useState<any>([]);
     const [formData, setFormData] = useState<FormData>({});
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [focusedField, setFocusedField] = useState<string>("");
@@ -42,6 +43,7 @@ const ReferrerForm: React.FC = () => {
                 value: item?.slug ?? '',
                 id: item?.slug ?? '',
             }));
+            console.log("listt", coursesList)
             setCourseOptions(list);
         }
     }, [coursesList]);
@@ -156,21 +158,35 @@ const ReferrerForm: React.FC = () => {
                             </div>
 
                             <div className="col-md-12">
-                                <div className="form-field-wrapper">
-                                    <Select
-                                        col="12"
-                                        inputName="course"
-                                        labelName="Course of Interest"
-                                        onChangeSingleCallback={onChangeSingleCallback}
-                                        selectedItem={courseOptions.find(selected => selected.value === formData.course)}
-                                        required={true}
-                                        placeholder="Select a course"
-                                        search_option={false}
-                                        isLoading={false}
-                                        value={formData.course}
-                                    />
+                                <div
+                                    className="form-field-wrapper position-relative"
+                                    style={{ zIndex: 10, overflow: "visible" }}
+                                >
+                                    <label htmlFor="course" className="form-label fw-bold">
+                                        Referrer Course <span className="text-danger">*</span>
+                                    </label>
+
+                                    <select
+                                        id="course"
+                                        name="course"
+                                        className="form-select"
+                                        required
+                                        value={formData?.course || ""}
+                                        onChange={(e) => onChangeSingleCallback({ course: e.target.value })}
+
+                                        style={{ zIndex: 9999, position: "relative" }}
+                                    >
+                                        <option value="">Select Course</option>
+                                        {courseOptions?.map((option: any) => (
+                                            <option key={option.value} value={option.value}>
+                                                {option.value}
+                                            </option>
+                                        ))}
+                                    </select>
+
                                 </div>
                             </div>
+
                         </div>
 
                         {/* Friend's Details Section */}
