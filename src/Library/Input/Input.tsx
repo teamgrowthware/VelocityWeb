@@ -175,7 +175,7 @@ const Input = ({
               className={`form-control ${className} ${hasError ? "parsley-error" : ""
                 } ${hasCustomError && inputValue?.toString()?.length > 2 ? "" : "parsley-error"} 
               ${icon ? "has-icon" : ""}`}
-              placeholder={`${placeholder} ${required ? "*" : ""}`}
+              placeholder={`${placeholder} ${required ? "" : ""}`}
               min={min}
               max={max}
               maxLength={maxLength}

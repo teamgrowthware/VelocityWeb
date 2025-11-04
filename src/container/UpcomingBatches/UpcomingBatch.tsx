@@ -73,7 +73,7 @@ const UpcomingBatch = () => {
         }
 
         .table tbody td {
-          padding: 1.2rem 0.8rem;
+          // padding: 1.2rem 0.8rem;
           vertical-align: middle;
         }
           .tablecontent{
@@ -210,9 +210,9 @@ const UpcomingBatch = () => {
                         </div>
                         <div>
                           <p className="course-name">{item.name}</p>
-                          {item.start_date !== 'TBD' && (
+                          {/* {item.start_date !== 'TBD' && (
                             <span className="badge badge-new">New Batch</span>
-                          )}
+                          )} */}
                         </div>
                       </div>
                     </td>

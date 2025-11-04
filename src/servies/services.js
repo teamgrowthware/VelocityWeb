@@ -153,7 +153,7 @@ export const getModuleByCourseId = async (id, useCache) => {
             "auth-token": `${token}`,
         }
     })
-    console.log("response", response)
+    console.log("response---fromcourses", response)
     return response;
 };
 

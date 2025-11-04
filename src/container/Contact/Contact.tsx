@@ -19,6 +19,14 @@ const Contact = () => {
     const [pageContent, setPageContent] = useState<any>({})
     const [formData, setFormData] = useState<any>();
     const [courseOptions, setCourseOptions] = useState<any>([]);
+    // const reference = [
+    //     { text: "WhatsApp", value: "whatsapp", id: "whatsapp" },
+    //     { text: "Instagram", value: "instagram", id: "instagram" },
+    //     { text: "Google", value: "google", id: "google" }
+    // ];
+    const [reference,setReference] = useState<any>([ { text: "WhatsApp", value: "whatsapp", id: "whatsapp" },
+        { text: "Instagram", value: "instagram", id: "instagram" },
+        { text: "Google", value: "google", id: "google" }]);
     const onChangeSingleCallback = (data: any) => {
         setFormData((prevState: any) => ({
             ...prevState,
@@ -107,7 +115,7 @@ const Contact = () => {
 
 
             <div className=" p-5">
-                <h1 className="text-center fw-bold text-black shadow-sm animate-fadeInDown" style={{
+                <h1 className="text-center fw-bold text-black  animate-fadeInDown" style={{
                     background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
@@ -233,9 +241,9 @@ const Contact = () => {
                                     <h3 className="card-title mb-1 text-primary">Enquire Now </h3>
                                     <p className="mb-4 text-muted">Drop us a line, someone from our team will get in touch with you shortly.</p>
                                     <div className="row g-3">
-                                        <Input col="6" inputType="text" onChangeSingleCallback={onChangeSingleCallback} labelName="Name" inputName="name" value={formData?.name || ''}></Input>
-                                        <Input col="6" inputType="email" onChangeSingleCallback={onChangeSingleCallback} labelName="Email Id" inputName="email" value={formData?.email || ''}></Input>
-                                        <Input col="6" inputType="number" onChangeSingleCallback={onChangeSingleCallback} labelName="Contact No" inputName="mobile" value={formData?.mobile || ''}></Input>
+                                        <Input col="6" inputType="text" onChangeSingleCallback={onChangeSingleCallback} labelName="Name" required inputName="name" value={formData?.name || ''}></Input>
+                                        <Input col="6" inputType="email" required onChangeSingleCallback={onChangeSingleCallback} labelName="Email Id" inputName="email" value={formData?.email || ''}></Input>
+                                        <Input col="6" inputType="number" required onChangeSingleCallback={onChangeSingleCallback} labelName="Contact No" inputName="mobile" value={formData?.mobile || ''}></Input>
                                         <Select
                                             col="6"
                                             inputName={"course"}
@@ -251,6 +259,23 @@ const Contact = () => {
                                             isLoading={true}
                                             value={formData?.course}
                                         />
+                                        <Select
+                                            col="6"
+                                            inputName={"reference"}
+                                            labelName={"Reference"}
+                                            options={reference?? []}
+                                            onChangeSingleCallback={onChangeSingleCallback}
+                                            selectedItem={reference.find(
+                                                (selected: any) => selected.value === formData?.reference
+                                            )}
+                                            // required={true}
+                                            placeholder={"Select Reference"}
+                                            search_option={false}
+                                            isLoading={true}
+                                            value={formData?.reference}
+                                        />
+
+
                                         <div className="col-12">
                                             {/* Assuming you have a Textarea component or using a simple Input for message */}
                                             {/* Note: Original code was missing the message input field, I'll add a placeholder one for completeness. */}

@@ -59,16 +59,16 @@ const CourseCluster = () => {
         <>
             <style>{`
                 .clusters-section {
-                    padding: 10px 0;
+                    padding: 0px 0;
                     // min-height: 80vh;
                     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
                 }
                 
                 .clusters-title {
-                    font-size: 2.5rem;
+                    font-size: 2rem;
                     font-weight: 700;
                     text-align: center;
-                    margin-bottom: 50px;
+                    margin-bottom: 20px;
                     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
                     color: #333;
                 }
@@ -132,8 +132,8 @@ const CourseCluster = () => {
                     color: #667eea;
                     font-size: 1.8rem;
                     font-weight: 700;
-                    margin-bottom: 30px;
-                    padding-bottom: 15px;
+                    margin-bottom: 20px;
+                    padding-bottom: 5px;
                 }
                 
                 .course-card {

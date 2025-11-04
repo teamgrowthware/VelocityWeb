@@ -91,7 +91,7 @@ const Footer = () => {
 }`}
             </style>
             {/* Stats Section */}
-            <div className="pfa">
+            {/* <div className="pfa">
                 <div className="overlay"></div>
                 <div className="container">
                     <div className="row">
@@ -103,7 +103,7 @@ const Footer = () => {
                         <div className="col"> <strong>50+</strong> Academic Associations</div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Floating Menu */}
             <div className="floatedMenu">
@@ -142,7 +142,7 @@ const Footer = () => {
                         </NavLink>
                     </li>
                 </ul>
-            </div>``
+            </div>
             {/* <div className="SubscribeNewsletter">
                 <div><span className="material-symbols-outlined mt-2">
                     login

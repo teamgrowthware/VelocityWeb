@@ -13,10 +13,12 @@ const CourseModules = ({ id, title, courseModuleCallback }: any) => {
 
     useEffect(() => {
         setCourseModule([]);
+        console.log("--curses called--",id,title)
         if (id && title) {
             const getData = async () => {
                 const moduleData = await getModuleByCourseId(id);
                 setCourseModule(moduleData?.data?.data);
+                console.log("--------------cuuuuuu----",moduleData?.data?.data)
                 setIsCourseModuleLoading(true);
                 courseModuleCallback?.(moduleData?.data?.data);
             };
