@@ -92,9 +92,9 @@ const CourseModules = ({ id, title, courseModuleCallback }: any) => {
       `}</style>
 
             <div className="course-modules-container">
-                <div className="p-4">
+                <div className="px-4">
                     <div className="modules-wrapper">
-                        <h2 className="text-center mb-4 fw-bold text-primary">Course Modules</h2>
+                        <h2 className="text-center fw-bold text-primary">Course Modules</h2>
 
                         {!isCourseModuleLoading && (
                             <div className="text-center py-5">

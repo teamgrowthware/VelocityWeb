@@ -19,7 +19,7 @@ const UpcomingBatches = () => {
                 {/* <div className="bannerInner" style={{ background: `url(${pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses})` }}> </div> */}
 
                 <div className='eventsUpcomingBatchWrapper' id='upcoming_batches'>
-                    <div className="p-4">
+                    <div className="">
                         <UpcomingBatch></UpcomingBatch>
                         <div className=" my-5">
                             <div className="row justify-content-center">
@@ -53,10 +53,12 @@ const UpcomingBatches = () => {
                                             </p>
 
                                             <p className="text-muted">
-                                                If you have any queries or doubts regarding payment, please contact us at:
+                                                If you have any queries or doubts regarding payment, please contact us at: 
                                                 <a href="mailto:support@vctcpune.com" className="text-primary text-decoration-none fw-semibold">
-                                                    support@vctcpune.com
+                                                     info@vctcpune.com
                                                 </a>
+                                               <p className="pt-2"> Mobile No - <span className="text-primary text-decoration-none fw-semibold">9156376070/ 9322077876
+                                                </span> </p>
                                             </p>
                                         </div>
                                     </div>

@@ -84,7 +84,7 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
                 />
                 <div className="d-flex flex-column">
                   <div className="logo-1">VELOCITY</div>
-                  <div className="tagline">Empowering Education</div>
+                  <div className="tagline">Corporate Training Center, Pune</div>
                 </div>
               </NavLink>
             </div>
@@ -97,7 +97,7 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
               {/* Call Us Button (Visible only ≥ 992px) */}
               <NavLink to={"/contact-us"} className="d-none d-lg-block">
                 <a className="btn btn-primary px-3 py-2 fw-semibold" href="tel:+919422761663">
-                  Call Us
+                  Contact Us
                 </a>
               </NavLink>
             </div>

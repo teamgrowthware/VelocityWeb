@@ -164,12 +164,20 @@ const Footer = () => {
                                 <p className="footer-description">
                                     Empowering students to become industry-ready developers through comprehensive training and mentorship.
                                 </p>
-                                <div className="visit-us">
+                                <div className=" row">
+                                    <div className="visit-us">
                                     <span className="material-symbols-outlined">location_on</span>
                                     <div>
                                         <p className="mb-0"><strong>Visit Us</strong></p>
-                                        <p>123 Tech Park, Indore</p>
-                                        <p>Madhya Pradesh, 452001</p>
+                                        <p  style={{fontSize:'12px'}}>Main Office Address: Panche Mall, 12, Datta Nagar Rd, near Bharti Vidyapeeth, Shriram Nagar, Katraj, Pune, Maharashtra 411046</p>
+                                    </div>
+                                    </div>
+                                    <div className="visit-us">
+                                    <span className="material-symbols-outlined">location_on</span>
+                                    <div>
+                                        <p className="mb-0"><strong>Visit Us</strong></p>
+                                        <p  style={{fontSize:'12px'}}>Main Office Address: Panche Mall, 12, Datta Nagar Rd, near Bharti Vidyapeeth, Shriram Nagar, Katraj, Pune, Maharashtra 411046</p>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -189,6 +197,7 @@ const Footer = () => {
                                     {/* <li><NavLink to={"/blog"}>Blog</NavLink></li>s */}
                                     <li><NavLink to={"/testimonials"}>Testimonials</NavLink></li>
                                     <li><NavLink to={"/cms/refer-and-earn"}>Refer & Earn</NavLink></li>
+                                      <li><NavLink to={"/gallary"}>Corporate Training</NavLink></li>
 
                                 </ul>
                             </div>

@@ -111,12 +111,12 @@ const Ourgallary: React.FC = () => {
 
     return (
         <><Header />
-            <section className=" bg-light">
-                <div className="p-4">
+            <section className="pt-2 bg-light">
+                <div className="p-2">
                     {/* Header */}
-                    <div className="text-center mb-5">
-                        <h2 className="display-4 fw-bold text-dark mb-3">Our Institute Gallery</h2>
-                        <p className="lead text-muted">
+                    <div className="text-center mb-2">
+                        <h2 className="fs-1 fw-bold text-dark mb-3">Our Institute Gallery</h2>
+                        <p className="lead text-muted m-0" >
                             Explore our campus, facilities, and vibrant student life
                         </p>
                     </div>
@@ -142,7 +142,7 @@ const Ourgallary: React.FC = () => {
                                             src={image.src}
                                             alt={image.title}
                                             style={{
-                                                height: '600px',
+                                                height: '500px',
                                                 objectFit: 'cover',
                                                 borderRadius: '10px'
                                             }}

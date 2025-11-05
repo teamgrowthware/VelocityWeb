@@ -83,7 +83,7 @@ const Testimonials = ({ slice }: { slice?: number }) => {
     };
 
     return (
-        <div className="p-5">
+        <div className="">
             {/* Header */}
             <div className="text-center mb-5">
                 <h1 className="display-5 fw-bold">

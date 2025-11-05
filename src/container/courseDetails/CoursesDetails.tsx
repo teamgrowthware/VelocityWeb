@@ -54,7 +54,7 @@ const CoursesDetails = () => {
     const UpcomingCourse = useCallback(() => {
         return isLoadinngUB && (
             <>
-                <div className="card-body p-0">
+                <div className="card-body p-0 rounded mt-4" >
                     <div className="table-responsive">
                         <table className="table table-hover mb-0 modern-table">
 
@@ -234,7 +234,7 @@ const CoursesDetails = () => {
                                         <div className="infoBoxCourse">
                                             <ul className="list-unstyled m-0">
                                                 <li className="border-bottom" style={{ background: 'linear-gradient(to right, #f8f9ff 0%, #ffffff 100%)' }}>
-                                                    <div className="d-flex align-items-center justify-content-between p-3 px-4">
+                                                    <div className="d-flex align-items-center justify-content-between">
                                                         <div className="d-flex align-items-center gap-2">
                                                             <span className="material-symbols-outlined text-white bg-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px', fontSize: '20px' }}>
                                                                 currency_rupee
@@ -246,7 +246,7 @@ const CoursesDetails = () => {
                                                 </li>
 
                                                 <li className="border-bottom" style={{ background: '#ffffff' }}>
-                                                    <div className="d-flex align-items-center justify-content-between p-3 px-4">
+                                                    <div className="d-flex align-items-center justify-content-between">
                                                         <div className="d-flex align-items-center gap-2">
                                                             <span className="material-symbols-outlined text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px', fontSize: '20px', background: '#5a67d8' }}>
                                                                 currency_rupee
@@ -260,7 +260,7 @@ const CoursesDetails = () => {
                                                 </li>
 
                                                 <li className="border-bottom" style={{ background: 'linear-gradient(to right, #f8f9ff 0%, #ffffff 100%)' }}>
-                                                    <div className="d-flex align-items-center justify-content-between p-3 px-4">
+                                                    <div className="d-flex align-items-center justify-content-between ">
                                                         <div className="d-flex align-items-center gap-2">
                                                             <span className="material-symbols-outlined text-white bg-info rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px', fontSize: '20px' }}>
                                                                 schedule
@@ -271,7 +271,7 @@ const CoursesDetails = () => {
                                                     </div>
                                                 </li>
                                                 <li className="border-bottom" style={{ background: '#ffffff' }}>
-                                                    <div className="d-flex align-items-center justify-content-between p-3 px-4">
+                                                    <div className="d-flex align-items-center justify-content-between ">
                                                         <div className="d-flex align-items-center gap-2">
                                                             <span className="material-symbols-outlined text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px', fontSize: '20px', background: '#4299e1' }}>
                                                                 view_module
@@ -284,7 +284,7 @@ const CoursesDetails = () => {
 
                                                 {/* Contact */}
                                                 <li className="border-bottom" style={{ background: 'linear-gradient(to right, #f8f9ff 0%, #ffffff 100%)' }}>
-                                                    <div className="d-flex align-items-center justify-content-between p-3 px-4">
+                                                    <div className="d-flex align-items-center justify-content-between ">
                                                         <div className="d-flex align-items-center gap-2">
                                                             <span className="material-symbols-outlined text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px', fontSize: '20px', background: '#3182ce' }}>
                                                                 call
@@ -297,7 +297,7 @@ const CoursesDetails = () => {
 
                                                 {/* WhatsApp */}
                                                 <li style={{ background: '#ffffff' }}>
-                                                    <div className="d-flex align-items-center justify-content-between p-3 px-4">
+                                                    <div className="d-flex align-items-center justify-content-between ">
                                                         <div className="d-flex align-items-center gap-2">
                                                             <span className="material-symbols-outlined text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px', fontSize: '20px', background: '#2b6cb0' }}>
                                                                 chat

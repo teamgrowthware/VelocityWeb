@@ -24,7 +24,7 @@ const CMSPages = () => {
   return (
     <Wrapper>
       {/* <div className="bannerInner" style={{ background: `url(${pageContent?.cms_image ? process.env.react_app_base_url + "/" + pageContent?.cms_image : BannerCourses})` }}> </div> */}
-      <div className="py-5 content-section position-relative overflow-hidden">
+      <div className="py-2 content-section position-relative overflow-hidden">
         <div className="p-4 position-relative">
           <div className="row g-4">
             <div className={slug === 'refer-and-earn' ? "col-lg-7" : "col-lg-12"}>

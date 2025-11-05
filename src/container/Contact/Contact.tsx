@@ -123,8 +123,8 @@ const Contact = () => {
                 }}>
                     Contact Us
                 </h1>
-                <p className="text-center mb-5 text-muted animate-fadeInDown delay-100">
-                    We would love to provide you with more information and answer any questions that you might have. <br />
+                <p className="text-center  text-muted animate-fadeInDown delay-100">
+                    We would love to provide you with more information and answer any questions that you might have. 
                     We look forward to hearing from you.
                 </p>
 
@@ -202,7 +202,7 @@ const Contact = () => {
                                     <p className="contact-info-item">
                                         <a className="text-decoration-none text-dark" href="tel:+919422761663">
                                             <span className="material-symbols-outlined align-middle me-2" style={{ color: '#667eea' }}>phone_in_talk</span>
-                                            +91 94227 61663
+                                            +91 8459402118
                                         </a>
                                     </p>
                                     <p className="contact-info-item">
@@ -232,18 +232,18 @@ const Contact = () => {
                 </div>
 
                 {/* Enquiry Form Section */}
-                <div className="card shadow-lg p-4 rounded-3 bg-light border-primary border-3">
+                <div className="card shadow-lg  rounded-3 bg-light border-primary border-3">
                     <div className="card-body">
                         <div className="row justify-content-center align-content-start">
 
                             <div className="col-lg-9">
-                                <div className="p-3">
-                                    <h3 className="card-title mb-1 text-primary">Enquire Now </h3>
+                                <div className="">
+                                    <h3 className="card-title text-primary">Enquire Now </h3>
                                     <p className="mb-4 text-muted">Drop us a line, someone from our team will get in touch with you shortly.</p>
                                     <div className="row g-3">
-                                        <Input col="6" inputType="text" onChangeSingleCallback={onChangeSingleCallback} labelName="Name" required inputName="name" value={formData?.name || ''}></Input>
-                                        <Input col="6" inputType="email" required onChangeSingleCallback={onChangeSingleCallback} labelName="Email Id" inputName="email" value={formData?.email || ''}></Input>
-                                        <Input col="6" inputType="number" required onChangeSingleCallback={onChangeSingleCallback} labelName="Contact No" inputName="mobile" value={formData?.mobile || ''}></Input>
+                                        <Input col="4" inputType="text" onChangeSingleCallback={onChangeSingleCallback} labelName="Name" required inputName="name" value={formData?.name || ''}></Input>
+                                        <Input col="4" inputType="email" required onChangeSingleCallback={onChangeSingleCallback} labelName="Email Id" inputName="email" value={formData?.email || ''}></Input>
+                                        <Input col="4" inputType="number" required onChangeSingleCallback={onChangeSingleCallback} labelName="Contact No" inputName="mobile" value={formData?.mobile || ''}></Input>
                                         <Select
                                             col="6"
                                             inputName={"course"}
@@ -288,7 +288,7 @@ const Contact = () => {
                                                 value={formData?.message || ''}
                                             />
                                         </div>
-                                        <div className="col-12 mt-4">
+                                        <div className="col-12 mt-1">
                                             <Button
                                                 onClick={() => submit()}
                                                 disabled={isInValid}
