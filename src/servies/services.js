@@ -222,7 +222,7 @@ export const getSliders = async () => {
 
 // https://vctcpune.com/nodeapi/api/v1/centerbatch/byCourseId/63a541f10e1f6a2fe00a708d?status=0
 export const getCourseSlug = async (id, useCache) => {
-    console.log("service FieldById", id)
+    console.log("service FieldById", id,token)
     const response = await API.get(process.env.react_app_base_url + `/api/v1/cources/course-slug/${id}`, {
         headers: {
             "auth-token": `${token}`,

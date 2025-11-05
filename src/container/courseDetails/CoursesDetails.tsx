@@ -20,11 +20,12 @@ const CoursesDetails = () => {
 
     useEffect(() => {
         if (title) {
+            console.log("ttttttttt",title)
             setPageContent([])
             const getData = async () => {
                 setPageContentLoading(false)
                 const data = await getCourseSlug(title);
-                console.log("getCourseSlug", data?.data?.data);
+                console.log("getCourseSlug----", data?.data?.data);
                 setPageContent(data?.data?.data);
                 setPageContentLoading(true)
             };

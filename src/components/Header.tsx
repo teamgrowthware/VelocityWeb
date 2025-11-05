@@ -20,61 +20,77 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
   }, []);
   return (
     <>
-    <style>
-      {
-        `
+      <style>
+        {
+          `
         @font-face {
   font-family: 'DesiVelocity';
   src: url('/src/assets/fonts/DesiVelocity.ttf') format('truetype');
 }
 
-.logoPlaceholder .brand-text {
-  font-family: 'DesiVelocity', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #0d6efd;
-}
-    .logo-7 {
-            font-family: 'Exo 2', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, #0d6efd 0%, #764ba2 100%);
+    .logo-1 {
+            font-family: 'Orbitron', sans-serif;
+          font-size: 1.5rem;
+            font-weight: 900;
+          background: #4c526a;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-style: italic;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            transform: skewX(-10deg);
+            position: relative;
+            cursor: pointer;
+            transition: letter-spacing 0.3s ease;
         }
-  `
 
-      }
-    </style>
+        .logo-1:hover {
+            letter-spacing: 4px;
+        }
+            .tagline {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #8c3f52;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  line-height: 1;
+}
+  @media (max-width: 768px) {
+  .logo-1 {
+    font-size: 1.2rem;
+  }
+  .tagline {
+    font-size: 0.55rem;
+  }
+}
+    `      }
+      </style>
       <div className="header  border-bottom">
         <div className="px-4">
           <div className="d-flex justify-content-between align-items-center">
             {/* Logo (Left) */}
             <div className="logoPlaceholder">
-              <NavLink to={"/"} className="d-flex align-items-center text-decoration-none">
+              <NavLink to={"/"}
+                className="d-flex align-items-center text-decoration-none gap-3">
                 <img
                   src={Logo}
                   alt="Velocity Logo"
                   title="Velocity"
-                  className="img-fluid me-2"
+                  className="img-fluid"
                   style={{
                     height: "50px",
                     width: "auto",
                     objectFit: "contain",
                   }}
                 />
-                               <div className="logo-7">VELOCITY</div>
-
+                <div className="d-flex flex-column">
+                  <div className="logo-1">VELOCITY</div>
+                  <div className="tagline">Empowering Education</div>
+                </div>
               </NavLink>
             </div>
 
             {/* Right Section */}
-            <div className="d-flex align-items-center gap-3">
+            <div className="d-flex align-items-center gap-3 " style={{paddingLeft:'40px'}}>
               {/* Menu (Right Corner) */}
               <ResponsiveMenu />
 
