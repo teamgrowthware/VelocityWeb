@@ -2162,7 +2162,7 @@ a:hover.none {
 
 .close.float-menu-outer .float-menu-button {
     left: 0px;
-    top: -44px;
+    top: -440px;
     box-shadow: 0px 5px 15px #00000090;
     align-items: center;
     justify-content: center;
@@ -2245,6 +2245,11 @@ a:hover.none {
         z-index: 10002;
         margin: 0px;
     }
+    .close.float-menu-outer .float-menu-button {
+    left: 0px;
+    top: -44px !important;
+   
+}
 }
 
 .form-control.PhoneInput {

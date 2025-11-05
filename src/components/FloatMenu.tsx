@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import EnquiryForm from "../container/Contact/EnquiryForm";
 import { Button } from "../Library/Module";
+import { ChevronsRight, MessageCircle } from "lucide-react";
 
 const FloatMenu = ({
     type,
@@ -15,7 +16,20 @@ const FloatMenu = ({
             setOpen(false)
         )
     }, [isOpen])
-    
+      const [icon, setIcon] = useState(false);
+  useEffect(() => {
+    const checkWidth = () => {
+      if (window.innerWidth <= 990) {
+        setIcon(true);
+      } else {
+        setIcon(false);
+      }
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+
     return (
         <>
             {type === "courseModule" && open && <div className="float-menu-overlay"></div>}
@@ -23,13 +37,13 @@ const FloatMenu = ({
                 <div style={{ position: "relative" }}>
                     <Button
                         onClick={() => setOpen(!open)}
-                        className="btn btn-outline-primary float-menu-button"
+                        className="btn btn-outline-primary float-menu-button m-0"
                     >
                         {!open && "Enquire Now"}
                         {open ? <span className="material-symbols-outlined">
                             close
-                        </span> : <span className="material-symbols-outlined">
-                            arrow_menu_open
+                        </span> : <span className="material-symbols-outlined mb-1">
+                            <ChevronsRight />
                         </span>}
                     </Button>
 
