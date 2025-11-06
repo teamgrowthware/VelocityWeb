@@ -7,11 +7,11 @@ import { toast } from "react-toastify";
 import validateEmail, { hasOnlyLetters, isOnlyNumbers } from "../../Library/Utility/Utility";
 import MobileInput from "../../Library/Input/MobileInput";
 
-declare global {
-    interface Window {
-        fbq: (...args: any[]) => void;
-    }
-}
+// declare global {
+//     interface Window {
+//         fbq: (...args: any[]) => void;
+//     }
+// }
 
 
 const EnquiryForm = ({
@@ -53,7 +53,7 @@ const EnquiryForm = ({
 
 
     const submit = async () => {
-        if (formData?.name?.length > 1 &&
+        if (formData?.name?.length !== null &&
             formData?.email?.length > 1 &&
             formData?.mobile?.length > 1 &&
             formData?.course?.length > 1
@@ -63,7 +63,7 @@ const EnquiryForm = ({
             const hasOnlyLetterstt = hasOnlyLetters(formData?.name)
             const isOnlyNumbersValid = isOnlyNumbers(formData?.mobile)
 
-            if (cusotmValidateInput && hasOnlyLetterstt && isOnlyNumbersValid && formData?.mobile?.length === 10) {
+            if (cusotmValidateInput  && isOnlyNumbersValid && formData?.mobile?.length === 10) {
                 const date = new Date()
                 const userInput = {
                     name: formData.name,
@@ -112,8 +112,8 @@ const EnquiryForm = ({
     }, [formData])
 
     return (
-        <div>
-            <h5>Enquiry Now</h5>
+        <div className="">
+            <h5>Enquiry Now--</h5>
             <div className="row">
                 <Input col="12" inputType="text" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter Name" inputName="name"></Input>
                 <MobileInput col="12" inputType="text" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter number" inputName="mobile" ></MobileInput>

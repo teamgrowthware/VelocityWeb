@@ -68,7 +68,7 @@ const HomeSlider: React.FC = () => {
 
   <Col xs={6} md={4} lg={2} className="d-flex flex-column align-items-center">
     <Users className="text-primary mb-2" size={26} />
-    <div><strong>5+</strong> Expert Instructors</div>
+    <div><strong>50+</strong> Expert Instructors</div>
   </Col>
 
   <Col xs={6} md={4} lg={2} className="d-flex flex-column align-items-center">

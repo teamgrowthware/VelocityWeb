@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "../../Library/Module";
 import { getModuleByCourseId } from "../../servies/services";
 import EnquiryForm from "../Contact/EnquiryForm";
+import { MessageCircle } from "lucide-react";
 
 const CourseModules = ({ id, title, courseModuleCallback }: any) => {
     const [showModule, setShowModule] = useState<any>([]);
@@ -13,12 +14,12 @@ const CourseModules = ({ id, title, courseModuleCallback }: any) => {
 
     useEffect(() => {
         setCourseModule([]);
-        console.log("--curses called--",id,title)
+        console.log("--curses called--", id, title)
         if (id && title) {
             const getData = async () => {
                 const moduleData = await getModuleByCourseId(id);
                 setCourseModule(moduleData?.data?.data);
-                console.log("--------------cuuuuuu----",moduleData?.data?.data)
+                console.log("--------------cuuuuuu----", moduleData?.data?.data)
                 setIsCourseModuleLoading(true);
                 courseModuleCallback?.(moduleData?.data?.data);
             };
@@ -39,7 +40,6 @@ const CourseModules = ({ id, title, courseModuleCallback }: any) => {
     };
 
     const handleFormSubmit = () => {
-        //  Open locked module after form submission
         if (pendingModuleId) {
             setShowModule((prev: any) => [...prev, pendingModuleId]);
             setPendingModuleId(null);
@@ -92,7 +92,7 @@ const CourseModules = ({ id, title, courseModuleCallback }: any) => {
       `}</style>
 
             <div className="course-modules-container">
-                <div className="px-4">
+                <div className="px-2 px-sm-4">
                     <div className="modules-wrapper">
                         <h2 className="text-center fw-bold text-primary">Course Modules</h2>
 
@@ -116,10 +116,15 @@ const CourseModules = ({ id, title, courseModuleCallback }: any) => {
                                                 ? "keyboard_arrow_down"
                                                 : "chevron_right"}
                                         </span>
-                                        <Button className="courseBtn">{item?.name}</Button>
+                                        <Button className="courseBtn fs-24">{item?.name}</Button>
                                         {index >= 3 && (
-                                            <span className="badge bg-warning text-dark ms-auto">
-                                                Enquiry Required
+
+                                            <span className="badge bg-warning text-dark ms-auto d-flex align-items-center">
+                                                <span className="d-none d-sm-inline">Enquiry Required</span>
+
+                                                <span className="d-inline d-sm-none">
+                                                    <MessageCircle size={16} />
+                                                </span>
                                             </span>
                                         )}
                                     </div>

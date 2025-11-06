@@ -30,7 +30,7 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
 
     .logo-1 {
             font-family: 'Orbitron', sans-serif;
-          font-size: 1.5rem;
+          font-size: 0.9rem;
             font-weight: 900;
           background: #4c526a;
             -webkit-background-clip: text;
@@ -43,9 +43,11 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
             transition: letter-spacing 0.3s ease;
         }
 
-        .logo-1:hover {
-            letter-spacing: 4px;
-        }
+        // .logo-1:hover {
+        //     letter-spacing: 4px;
+        // }
+
+       
             .tagline {
   font-size: 0.65rem;
   font-weight: 600;
@@ -54,13 +56,11 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
   text-transform: capitalize;
   line-height: 1;
 }
-  @media (max-width: 768px) {
+  @media (max-width: 400px) {
   .logo-1 {
-    font-size: 1.2rem;
+    font-size: 0.5rem;
   }
-  .tagline {
-    font-size: 0.55rem;
-  }
+
 }
     `      }
       </style>
@@ -83,8 +83,8 @@ const Header = ({ isLoading }: { isLoading?: boolean }) => {
                   }}
                 />
                 <div className="d-flex flex-column">
-                  <div className="logo-1">VELOCITY</div>
-                  <div className="tagline">Corporate Training Center, Pune</div>
+                  <div className="logo-1">VELOCITY Corporate</div>
+                  <div className="logo-1"> Training Center</div>
                 </div>
               </NavLink>
             </div>

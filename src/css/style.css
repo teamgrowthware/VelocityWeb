@@ -334,7 +334,6 @@ h2 {
     -webkit-transition: all 500ms ease;
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
-    font-size: 18px;
 }
 
 .syllabus {
@@ -1644,6 +1643,7 @@ button:focus:not(:focus-visible) {
         line-height: 24px;
         height: 70px;
         line-height: 30px;
+        font-size: 12px !important;
     }
 }
 
@@ -2148,9 +2148,9 @@ a:hover.none {
 
 .float-menu {
     box-shadow: 5px 5px 15px #ccc;
-    background: #ffe8db;
+    background: #FFFFFF;
     padding: 16px;
-    width: 400px;
+    width: 80%;
 }
 
 .float-menu-button {
@@ -2174,7 +2174,7 @@ a:hover.none {
 
 .btn.float-menu-button {
     border: 1px solid #2158e1 !important;
-    color:#2158e1;
+    color:#FFF;
     background: none !important;
     height: 30px;
     padding: 0px;
@@ -2234,6 +2234,9 @@ a:hover.none {
 @media only screen and (max-width: 540px) {
     .float-menu-outer {
         width: 90%;
+    }
+    .float-menu {
+        /* width:200px; */
     }
 
     .modelPopup {

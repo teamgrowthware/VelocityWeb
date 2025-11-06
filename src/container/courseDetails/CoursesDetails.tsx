@@ -133,7 +133,7 @@ const CoursesDetails = () => {
                 {/* <div className="bannerInner" style={{ background: `url(${pageContent?.image ? process.env.react_app_base_url + "/" + pageContent?.image : BannerCourses})` }}> </div> */}
 
                 <div className="contentMain">
-                    <div className="p-4">
+                    <div className="px-2 px-sm-4">
                         <div className="row">
                             <div className="col-md-8">
                                 <div className="innerBox">

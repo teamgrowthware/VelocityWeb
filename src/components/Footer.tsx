@@ -28,11 +28,11 @@ const Footer = () => {
     }, [formData?.email_id?.length, formData?.mobile?.length]);
 
     const submit = async () => {
-        if (formData?.email_id?.length > 1 && formData?.mobile?.length > 1) {
+        // if (formData?.email_id?.length > 1 && formData?.mobile?.length > 1) {
             const customValidateInput = validateEmail(formData?.email_id);
             const isOnlyNumbersValid = isOnlyNumbers(formData?.mobile);
 
-            if (customValidateInput && isOnlyNumbersValid) {
+            if (formData.email !==null && formData?.mobile !==null) {
                 const userInput = {
                     email: formData.email_id,
                     mobile: formData.mobile,
@@ -55,9 +55,10 @@ const Footer = () => {
             } else {
                 toast.error("Enter valid email id or mobile number");
             }
-        } else {
-            toast.error("Fill all required fields");
-        }
+        // }
+        //  else {
+        //     toast.error("Fill all required fields");
+        // }
     };
 
     return (
@@ -161,9 +162,7 @@ const Footer = () => {
                         <div className="col-12 col-md-3 mb-4 mb-md-0">
                             <div className="footer-section">
                                 <h4 className="footer-title">Velocity</h4>
-                                <p className="footer-description">
-                                    Empowering students to become industry-ready developers through comprehensive training and mentorship.
-                                </p>
+                                
                                 <div className=" row">
                                     <div className="visit-us">
                                     <span className="material-symbols-outlined">location_on</span>

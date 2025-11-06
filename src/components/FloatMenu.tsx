@@ -29,6 +29,11 @@ const FloatMenu = ({
     window.addEventListener("resize", checkWidth);
     return () => window.removeEventListener("resize", checkWidth);
   }, []);
+    const handleClosePopup = () => {
+        setOpen(false);
+
+    };
+
 
     return (
         <>
@@ -48,11 +53,16 @@ const FloatMenu = ({
                     </Button>
 
                     {open && (
-                        <>
-                            <div className="float-menu">
-                                <EnquiryForm></EnquiryForm>
-                            </div>
-                        </>
+                       
+                <div className="popup-overlay" onClick={handleClosePopup}>
+                    <div className="popup-box" onClick={(e) => e.stopPropagation()}>
+                        <button className="popup-close" onClick={handleClosePopup}>×</button>
+                        <h4 className="text-center mb-3 fw-bold text-primary">Enquiry Form</h4>
+                        <EnquiryForm
+                        />
+                    </div>
+                </div>
+        
                     )}
 
                 </div>
