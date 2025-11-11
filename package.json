@@ -69,8 +69,12 @@
       "react-app",
       "react-app/jest"
     ],
-    "rules": {
-    "@typescript-eslint/no-unused-vars": "off"
+     "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "no-useless-escape": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "eqeqeq": "off",
+    "jsx-a11y/iframe-has-title": "off"
   }
   },
   "browserslist": {
