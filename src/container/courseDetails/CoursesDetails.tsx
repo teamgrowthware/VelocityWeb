@@ -291,7 +291,8 @@ const CoursesDetails = () => {
                                                             </span>
                                                             <p className="mb-0 fw-semibold text-dark">Contact</p>
                                                         </div>
-                                                        <p className="mb-0 fw-bold mx-2 " style={{ color: '#3182ce' }}>{pageContent?.course_contact}</p>
+                                                         <p className="mb-0 fw-bold mx-2 " style={{ color: '#3182ce' }}>9322077876</p>
+                                                        {/* <p className="mb-0 fw-bold mx-2 " style={{ color: '#3182ce' }}>{pageContent?.course_contact}</p> */}
                                                     </div>
                                                 </li>
 

@@ -53,7 +53,7 @@ const Contact = () => {
 
     const submit = async () => {
         if (formData?.name?.length > 1 &&
-            formData?.email?.length > 1 &&
+            formData?.email?.length !==null &&
             formData?.mobile?.length > 1 &&
             formData?.course?.length > 1
         ) {
@@ -62,7 +62,7 @@ const Contact = () => {
             const hasOnlyLetterstt = hasOnlyLetters(formData?.name)
             const isOnlyNumbersValid = isOnlyNumbers(formData?.mobile)
 
-            if (cusotmValidateInput && hasOnlyLetterstt && isOnlyNumbersValid && formData?.mobile?.length === 10) {
+            if ( hasOnlyLetterstt && isOnlyNumbersValid && formData?.mobile?.length === 10) {
                 const date = new Date()
                 const userInput = {
                     name: formData.name,

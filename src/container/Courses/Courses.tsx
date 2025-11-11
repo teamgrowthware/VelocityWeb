@@ -49,7 +49,7 @@ const Courses = () => {
                                     }}
                                 >
                                     {/* Image */}
-                                    <div style={{
+                                    <div onClick={() => navigate(`/courses/${item?.slug}`)} style={{
                                         position: 'relative',
                                         width: '100%',
                                         height: '180px',

@@ -53,9 +53,10 @@ const EnquiryForm = ({
 
 
     const submit = async () => {
+        console.log("jjjj",formData?.mobile,formData.name)
         if (formData?.name?.length !== null &&
-            formData?.email?.length > 1 &&
-            formData?.mobile?.length > 1 &&
+            formData?.email?.length !==null &&
+            formData?.mobile?.length !==null &&
             formData?.course?.length > 1
         ) {
 
@@ -63,7 +64,7 @@ const EnquiryForm = ({
             const hasOnlyLetterstt = hasOnlyLetters(formData?.name)
             const isOnlyNumbersValid = isOnlyNumbers(formData?.mobile)
 
-            if (cusotmValidateInput  && isOnlyNumbersValid && formData?.mobile?.length === 10) {
+            if (cusotmValidateInput  && formData?.mobile?.length === 10) {
                 const date = new Date()
                 const userInput = {
                     name: formData.name,
@@ -104,7 +105,7 @@ const EnquiryForm = ({
     }
 
     useEffect(() => {
-        if (formData?.name?.length > 1 && formData?.email?.length > 1 && formData?.mobile?.length > 1 && formData?.course?.length > 1) {
+        if (formData?.name !==null && formData?.email !==null && formData?.mobile !==null  && formData?.course?.length > 1) {
             setIsInValid(false)
         } else {
             setIsInValid(true)
@@ -116,7 +117,7 @@ const EnquiryForm = ({
             <h5>Enquiry Now--</h5>
             <div className="row">
                 <Input col="12" inputType="text" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter Name" inputName="name"></Input>
-                <MobileInput col="12" inputType="text" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter number" inputName="mobile" ></MobileInput>
+                {/* <MobileInput col="12" inputType="text" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter number" inputName="mobile" ></MobileInput> */}
                 <Input col="12" inputType="email" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter Email Id" inputName="email"></Input>
                 <Input col="12" inputType="number" onChangeSingleCallback={onChangeSingleCallback} placeholder="Enter Contact No" inputName="mobile"></Input>
                 <Select
