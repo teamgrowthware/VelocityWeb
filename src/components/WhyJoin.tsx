@@ -417,6 +417,7 @@ const WhyJoin = () => {
               })
             )}
           </div>
+          <div></div>
         </div>
       </div>
     </>

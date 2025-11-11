@@ -28,7 +28,6 @@ import BlogDetails from './container/Blog/BlogDetails';
 import ThankYouCampaign from './container/Campaign/ThankYouCampaign';
 import Ourgallary from './container/Gallary/OurGallary';
 import CoursesDetails from './container/courseDetails/CoursesDetails';
-import { useEffect } from 'react';
 
 
 function App() {
