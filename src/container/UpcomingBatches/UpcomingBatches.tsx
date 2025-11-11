@@ -1,17 +1,16 @@
 import { useContext, useEffect, useState } from "react"
 import { ThemeContext } from "../Context/Theme/Context"
 import Wrapper from "../Wrapper"
-import BannerCourses from "../../images/BannerCourses.png"
 import UpcomingBatch from "./UpcomingBatch"
 
 const UpcomingBatches = () => {
-    const { pagesList } = useContext(ThemeContext)
-    const [pageContent, setPageContent] = useState<any>({})
+    // const { pagesList } = useContext(ThemeContext)
+    // const [pageContent, setPageContent] = useState<any>({})
 
 
-    useEffect(() => {
-        setPageContent(pagesList?.find((item: any) => item?.slug === "upcoming-batches"))
-    }, [pagesList])
+    // useEffect(() => {
+    //     setPageContent(pagesList?.find((item: any) => item?.slug === "upcoming-batches"))
+    // }, [pagesList])
 
     return (
         <>

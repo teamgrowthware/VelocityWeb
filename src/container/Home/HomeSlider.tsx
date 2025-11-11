@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Row, Col, Container } from "react-bootstrap";
-import { GraduationCap, Building2, Users, BookOpen, Handshake, University } from "lucide-react";
+import { GraduationCap, Building2, Users, BookOpen, University } from "lucide-react";
 import group1570 from "../../images/HomeSlider/Group 1570.png";
 import group5836 from "../../images/HomeSlider/Group 5836.png";
 import group5828 from "../../images/HomeSlider/Group 5828.png";

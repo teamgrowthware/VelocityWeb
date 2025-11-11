@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Wrapper from "../Wrapper";
 import { useParams } from "react-router-dom";
-import TabContainer from "../../Library/Tab/TabContainer";
+// import TabContainer from "../../Library/Tab/TabContainer";
 import { getCenterBatchByCourseId, getCourseSlug } from "../../servies/services";
 import Testimonials from "../Testimonials/Testimonials";
 import CourseModules from "./CourseModules";
 import Clients from "../../components/Clients";
-import BannerCourses from "../../images/BannerCourses.png"
+// import BannerCourses from "../../images/BannerCourses.png"
 
 const CoursesDetails = () => {
     const { title } = useParams();
@@ -15,7 +15,7 @@ const CoursesDetails = () => {
     const [upcomingBatches, setUpcomingBatches] = useState([]);
     const [courseModule, setCourseModule] = useState([])
     const [activeItem, setActiveItem] = useState<any>("Why");
-    const [activeTab, setActiveTab] = useState('')
+    // const [activeTab, setActiveTab] = useState('')
     const [isLoadinngUB, setIsLoadingUB] = useState(false)
 
     useEffect(() => {
