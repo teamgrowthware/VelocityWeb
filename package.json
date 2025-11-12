@@ -6,7 +6,7 @@
     "node": "20.x",
     "pnpm": "10.12.4"
   },
-"engineStrict": false,
+  "engineStrict": false,
   "dependencies": {
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
@@ -15,6 +15,7 @@
     "axios": "^1.7.7",
     "axios-extensions": "^3.1.6",
     "bootstrap": "^5.3.8",
+    "cross-env": "^10.1.0",
     "date-fns": "^3.6.0",
     "filepond": "^4.31.3",
     "filepond-plugin-image-exif-orientation": "^1.0.11",
@@ -69,13 +70,13 @@
       "react-app",
       "react-app/jest"
     ],
-     "rules": {
-    "@typescript-eslint/no-unused-vars": "off",
-    "no-useless-escape": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-    "eqeqeq": "off",
-    "jsx-a11y/iframe-has-title": "off"
-  }
+    "rules": {
+      "@typescript-eslint/no-unused-vars": "off",
+      "no-useless-escape": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "eqeqeq": "off",
+      "jsx-a11y/iframe-has-title": "off"
+    }
   },
   "browserslist": {
     "production": [
