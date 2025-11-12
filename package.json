@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "22.x",
+     "node": "18.x",
     "pnpm": "10.12.4"
   },
-  "engineStrict": true,
+"engineStrict": false,
   "dependencies": {
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
