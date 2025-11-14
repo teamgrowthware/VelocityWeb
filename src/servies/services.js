@@ -122,7 +122,7 @@ export const authenticate = async (data) => {
 };
 
 export const getCourses = async (id, useCache) => {
-    console.log("service FieldById", id)
+    // console.log("service FieldById", id)
     const response = await API.get(process.env.react_app_base_url + '/api/v1/cources?status=0&sortBy=order_id=-1', {
         headers: {
             "auth-token": `${token}`,
@@ -134,13 +134,13 @@ export const getCourses = async (id, useCache) => {
 
 // https://vctcpune.com/nodeapi/api/v1/centerbatch/byCourseId/63a541f10e1f6a2fe00a708d?status=0
 export const getCenterBatchByCourseId = async (id, useCache) => {
-    console.log("service FieldById", id)
+    // console.log("service FieldById", id)
     const response = await API.get(process.env.react_app_base_url + `/api/v1/centerbatch/byCourseId/${id}?status=0`, {
         headers: {
             "auth-token": `${token}`,
         }
     })
-    console.log("response", response)
+    // console.log("response", response)
     return response;
 };
 
@@ -160,13 +160,13 @@ export const getModuleByCourseId = async (id, useCache) => {
 // https://vctcpune.com/nodeapi/api/v1/cms/cms/bytype/Testimonials?status=0
 
 export const getTestimonialsByCourseId = async (id, useCache) => {
-    console.log("service FieldById", id)
+    // console.log("service FieldById", id)
     const response = await API.get(process.env.react_app_base_url + `/api/v1/cms/cms/bytype/${id}?status=0`, {
         headers: {
             "auth-token": `${token}`,
         }
     })
-    console.log("response", response)
+    // console.log("response", response)
     return response;
 };
 
@@ -174,24 +174,24 @@ export const getTestimonialsByCourseId = async (id, useCache) => {
 
 
 export const getCategoryforCMSType = async (id, useCache) => {
-    console.log("service FieldById", id)
+    // console.log("service FieldById ", id)
     const response = await API.get(process.env.react_app_base_url + `/api/v1/cms/cms_categories_by_cms_type/${id}?status=0`, {
         headers: {
             "auth-token": `${token}`,
         }
     })
-    console.log("response", response)
+    // console.log("response", response)
     return response;
 };
 
 export const getCMS = async (id, useCache) => {
-    console.log("service FieldById", id)
+    // console.log("service FieldById", id)
     const response = await API.get(process.env.react_app_base_url + '/api/v1/cms/pages', {
         headers: {
             "auth-token": `${token}`,
         }
     })
-    console.log("response", response)
+    // console.log("response", response)
     return response;
 };
 
@@ -204,7 +204,7 @@ export const getCenters = async (id, useCache) => {
             "auth-token": `${token}`,
         }
     })
-    console.log("response", response)
+    // console.log("response", response)
     return response;
 };
 

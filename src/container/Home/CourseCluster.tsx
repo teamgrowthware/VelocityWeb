@@ -24,7 +24,7 @@ const CourseCluster = () => {
     }, [])
 
     const showItem = useCallback((id: any) => {
-        console.log("showItem id-----", id, data)
+        console.log("showItem id---d--", id, data)
         setSelectedItem(id)
         const clustersListData: any = data?.filter((item: any) => item?.cms_category === id)
         console.log("showItem id----- clustersListData", clustersListData)
