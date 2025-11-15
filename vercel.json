@@ -1,7 +1,4 @@
 {
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm run build",
-  "outputDirectory": "build",
   "rewrites": [
     {
       "source": "/nodeapi/:path*",
