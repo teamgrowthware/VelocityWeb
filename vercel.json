@@ -1,8 +1,1 @@
-{
-  "rewrites": [
-    {
-      "source": "/nodeapi/:path*",
-      "destination": "http://143.110.242.160:3050/:path*"
-    }
-  ]
-}
+
