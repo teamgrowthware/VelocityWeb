@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import { Button } from "../../Library/Module"
-import { NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { getCategoryforCMSType, getTestimonialsByCourseId } from "../../servies/services"
 import DefaultImage from "../../images/mediaPython.jpeg"
 import useMobile from "../../Library/Utility/useMobile"
@@ -358,12 +358,9 @@ const CourseCluster = () => {
                                         />
                                         <div className="mobile-course-body">
                                             <h4 className="mobile-course-title">{course?.cms_title}</h4>
-                                            <NavLink
-                                                to={`${course?.cms_tags}`}
-                                                className="mobile-course-link"
-                                            >
+                                            <div className="mobile-course-link">
                                                 Explore Course
-                                            </NavLink>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
@@ -405,12 +402,9 @@ const CourseCluster = () => {
                                                                 src={course?.cms_image ? process.env.react_app_base_url + "/" + course?.cms_image : DefaultImage}
                                                                 alt={course?.cms_title}
                                                             />
-                                                            <NavLink
-                                                                to={`${course?.cms_tags}`}
-                                                                className="course-link"
-                                                            >
+                                                            <div className="course-link">
                                                                 Read More
-                                                            </NavLink>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

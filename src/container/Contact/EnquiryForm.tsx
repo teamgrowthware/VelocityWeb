@@ -84,8 +84,9 @@ const EnquiryForm = ({
                         window.fbq('track', 'Lead');
                     }
                     toast.success("Email has been sent");
-                    sessionStorage.setItem("enquiryFormSubmitted", courseId)
-                    callback?.(true)
+                    sessionStorage.setItem("enquiryFormSubmitted", courseId);
+                    // Pass formData to callback so CourseModules can store email/phone
+                    callback?.(formData);
                     setFormData({
                         name: '',
                         email: '',
